@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import MessageStructure from '../../model/message';
-import { Post } from '../Post/Post';
-import { Timeline } from '../Timeline/Timeline';
-import './Main.css';
+import MessageStructure from '../../model/Message';
+import { Post } from '../../components/Post/Post';
+import { Timeline } from '../../components/Timeline/Timeline';
 import { messages } from '../../data/messages';
 
-export const Main = () => {
+export const HomePage = () => {
   const [messagesData, setMessagesData] = useState<MessageStructure[]>([]);
   const prevId = useRef<number>(messages.length + 1);
 
@@ -65,9 +64,7 @@ export const Main = () => {
   }
 
   return (
-    <main className="main">
-      <h1 className="page-title">Tweetování</h1>
-
+    <>
       <Post onNewMessage={(textMessage) => addNewMessage(textMessage)} />
 
       <Timeline
@@ -76,6 +73,6 @@ export const Main = () => {
         onClickBookmark={handleClickBookmark}
         onClickDelete={handleClickDelete}
       />
-    </main>
+    </>
   );
 }

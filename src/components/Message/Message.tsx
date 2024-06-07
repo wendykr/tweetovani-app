@@ -1,5 +1,5 @@
 import './Message.css';
-import MessageStructure from '../../model/message';
+import MessageStructure from '../../model/Message';
 
 interface MessageProps {
   message: MessageStructure;

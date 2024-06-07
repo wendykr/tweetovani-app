@@ -1,13 +1,16 @@
-import './App.css'
-import { Main } from './components/Main/Main'
-import { Sidebar } from './components/Sidebar/Sidebar'
+import './App.css';
+import { Sidebar } from './components/Sidebar/Sidebar';
+import { Outlet } from 'react-router-dom';
 
 function App() {
 
   return (
     <div className="container">
       <Sidebar />
-      <Main />
+      <main className="main">
+        <h1 className="page-title">Tweetování</h1>
+        <Outlet />
+      </main>
     </div>
   )
 }

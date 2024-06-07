@@ -1,5 +1,5 @@
 import { Message } from '../Message/Message';
-import MessageStructure from '../../model/message';
+import MessageStructure from '../../model/Message';
 import './Timeline.css';
 
 interface TimelineProps {
