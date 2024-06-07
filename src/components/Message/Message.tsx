@@ -8,7 +8,7 @@ interface MessageProsp {
   onClickDelete: (messageId: number) => void;
 }
 
-export const Message = ({messagesData, onClickLike, onClickBookmark, onClickDelete}: MessageProsp) => {
+export const Message = ({ messagesData, onClickLike, onClickBookmark, onClickDelete }: MessageProsp) => {
 
   return (
     <>

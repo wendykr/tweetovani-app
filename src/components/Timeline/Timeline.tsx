@@ -1,46 +1,15 @@
+import MessageStructure from '../../model/message';
 import { Message } from '../Message/Message';
 import './Timeline.css';
-import MessageStructure from '../../model/message';
-import { messages } from '../../data/messages';
-import { useEffect, useState } from 'react';
 
-export const Timeline = () => {
-  const [messagesData, setMessagesData] = useState<MessageStructure[]>([]);
+interface TimelineProps {
+  messagesData: MessageStructure[];
+  onClickLike: (messageId: number) => void;
+  onClickBookmark: (messageId: number) => void;
+  onClickDelete: (messageId: number) => void;
+}
 
-  useEffect(() => {
-    setMessagesData(messages);
-  }, []);
-
-  const handleClickLike = (messageId: number) => {
-    setMessagesData((prevMessages) => {
-      const updatedMessages = prevMessages.map(message => {
-        if (message.id === messageId) {
-          return { ...message, like: message.like + 1 };
-        }
-        return message;
-      });
-      return updatedMessages;
-    });
-  }
-
-  const handleClickBookmark = (messageId: number) => {
-    setMessagesData((prevMessages) => {
-      const updatedMessages = prevMessages.map(message => {
-        if (message.id === messageId) {
-          return { ...message, bookmark: !message.bookmark };
-        }
-        return message;
-      });
-      return updatedMessages;
-    });
-  }
-
-  const handleClickDelete = (messageId: number) => {
-    setMessagesData((prevMessages) => {
-      const currentMessages = prevMessages.filter((message) => message.id !== messageId);
-      return currentMessages;
-    });
-  }
+export const Timeline = ({ messagesData, onClickLike, onClickBookmark, onClickDelete }: TimelineProps) => {
 
   return (
     <div className="timeline">
@@ -48,9 +17,9 @@ export const Timeline = () => {
         (messagesData && messagesData.length > 0)
           ? <Message 
               messagesData={messagesData}
-              onClickLike={handleClickLike}
-              onClickBookmark={handleClickBookmark}
-              onClickDelete={handleClickDelete}
+              onClickLike={onClickLike}
+              onClickBookmark={onClickBookmark}
+              onClickDelete={onClickDelete}
             />
           : <div className="timeline__empty">
               <h3>Zatím se nic neděje</h3>
