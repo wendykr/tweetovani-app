@@ -1,4 +1,6 @@
-export const messages = [
+import MessageStructure from "../model/message";
+
+export const messages: MessageStructure[] = [
   {
     id: 1,
     avatar: '../avatars/woman1.jpg',
