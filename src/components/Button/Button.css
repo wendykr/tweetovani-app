@@ -1,0 +1,13 @@
+.button {
+	padding: 0.7em 1em;
+	font-size: 1em;
+	color: white;
+	background: var(--primary) linear-gradient(30deg, var(--primary), var(--secondary));
+	border: 0;
+	border-radius: 100vh;
+	cursor: pointer;
+}
+
+.button:hover {
+	background: var(--primary-dark) linear-gradient(30deg, var(--primary-dark), var(--secondary-dark));
+}

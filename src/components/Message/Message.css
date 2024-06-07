@@ -1,0 +1,93 @@
+.message {
+	display: flex;
+	gap: 1em;
+	padding: 1em;
+	border-top: 1px solid var(--light-grey);
+}
+
+.message:hover {
+	background-color: var(--bright-grey);
+}
+
+.message__avatar img {
+	width: 3em;
+	aspect-ratio: 1/1;
+	object-fit: cover;
+	object-position: center;
+	border-radius: 50%;
+}
+
+.message__header {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.message__name {
+	font-weight: 700;
+}
+
+.message__handle {
+	color: var(--dark-grey);
+}
+
+.message__time {
+	color: var(--dark-grey);
+}
+.message__time::before {
+	content: '⋅ ';
+}
+
+.message__text {
+	margin: 0.5em 0 1em 0;
+}
+
+.message__footer {
+	display: flex;
+	gap: 1em;
+	margin-left: -12px;
+}
+
+.icon-button {
+	font-size: 16px;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.2em;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	cursor: pointer;
+}
+
+.icon-button__icon {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: 40px;
+	padding: 10px;
+	border-radius: 50%;
+}
+
+.icon-button__icon img {
+	height: 100%;
+	display: block;
+}
+
+.icon-button:hover .icon-button__icon {
+	background-color: var(--light-grey);
+}
+
+.icon-button--blue:hover {
+	color: var(--blue);
+}
+.icon-button--blue:hover .icon-button__icon {
+	background-color: var(--light-blue);
+}
+
+.icon-button--red:hover {
+	color: var(--red);
+}
+.icon-button--red:hover .icon-button__icon {
+	background-color: var(--light-red);
+}

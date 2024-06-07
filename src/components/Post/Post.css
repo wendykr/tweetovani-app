@@ -1,0 +1,11 @@
+.post {
+	border: 2px solid var(--primary);
+	margin: 1em;
+	padding: 1em;
+	border-radius: 1em;
+}
+
+.post__actions {
+	display: flex;
+	justify-content: flex-end;
+}
