@@ -1,7 +1,5 @@
-
 import './Message.css'
 import MessageStructure from '../../model/message';
-
 
 interface MessageProsp {
   messagesData: MessageStructure[];
@@ -11,13 +9,6 @@ interface MessageProsp {
 }
 
 export const Message = ({messagesData, onClickLike, onClickBookmark, onClickDelete}: MessageProsp) => {
-  // const [messagesData, setMessagesData] = useState<MessageStructure[]>([]);
-
-  // useEffect(() => {
-  //   setMessagesData(messages);
-  // }, []);
-
-
 
   return (
     <>
