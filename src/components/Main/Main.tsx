@@ -6,7 +6,7 @@ export const Main = () => {
 
   return (
     <main className="main">
-      <h1 className="page-title">Cvrlikání</h1>
+      <h1 className="page-title">Tweetování</h1>
 
       <Post />
 
