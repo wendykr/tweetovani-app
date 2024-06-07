@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import MessageStructure from '../../model/message';
 import { Post } from '../Post/Post';
 import { Timeline } from '../Timeline/Timeline';
@@ -7,6 +7,7 @@ import { messages } from '../../data/messages';
 
 export const Main = () => {
   const [messagesData, setMessagesData] = useState<MessageStructure[]>([]);
+  const prevId = useRef<number>(messages.length + 1);
 
   useEffect(() => {
     setMessagesData(messages);
@@ -44,9 +45,8 @@ export const Main = () => {
   }
 
   const addNewMessage = (textMessage: string) => {
-
     const newMessage = {
-      id: 4,
+      id: prevId.current,
       avatar: '../avatars/anonym.jpg',
       name: 'Anonymous',
       handle: '@anonym',
@@ -56,14 +56,15 @@ export const Main = () => {
       bookmark: false,
     };
 
-    setMessagesData([...messagesData, newMessage]);
+    setMessagesData((prevMessages) => [...prevMessages, newMessage]);
+    prevId.current += 1;
   }
 
   return (
     <main className="main">
       <h1 className="page-title">Tweetování</h1>
 
-      <Post onNewMessage={(textMessage) => addNewMessage(textMessage)}/>
+      <Post onNewMessage={(textMessage) => addNewMessage(textMessage)} />
 
       <Timeline
         messagesData={messagesData}
@@ -72,5 +73,5 @@ export const Main = () => {
         onClickDelete={handleClickDelete}
       />
     </main>
-  )
+  );
 }
