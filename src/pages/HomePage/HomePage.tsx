@@ -1,16 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
-import MessageStructure from '../../model/Message';
+import { Dispatch, SetStateAction, useRef } from 'react';
+
 import { Post } from '../../components/Post/Post';
 import { Timeline } from '../../components/Timeline/Timeline';
 import { messages } from '../../data/messages';
+import MessageStructure from '../../model/Message';
 
-export const HomePage = () => {
-  const [messagesData, setMessagesData] = useState<MessageStructure[]>([]);
+interface HomePageProps {
+  messagesData: MessageStructure[];
+  setMessagesData: Dispatch<SetStateAction<MessageStructure[]>>;
+}
+
+export const HomePage = ({ messagesData, setMessagesData }: HomePageProps) => {
   const prevId = useRef<number>(messages.length + 1);
-
-  useEffect(() => {
-    setMessagesData(messages);
-  }, []);
 
   const handleClickLike = (messageId: number) => {
     setMessagesData((prevMessages) => {
@@ -20,6 +21,7 @@ export const HomePage = () => {
         }
         return message;
       });
+      localStorage.setItem('messagesData', JSON.stringify(updatedMessages));
       return updatedMessages;
     });
   }
@@ -32,6 +34,7 @@ export const HomePage = () => {
         }
         return message;
       });
+      localStorage.setItem('messagesData', JSON.stringify(updatedMessages));
       return updatedMessages;
     });
   }
@@ -39,6 +42,7 @@ export const HomePage = () => {
   const handleClickDelete = (messageId: number) => {
     setMessagesData((prevMessages) => {
       const currentMessages = prevMessages.filter((message) => message.id !== messageId);
+      localStorage.setItem('messagesData', JSON.stringify(currentMessages));
       return currentMessages;
     });
   }
@@ -56,7 +60,9 @@ export const HomePage = () => {
         bookmark: false,
       };
   
-      setMessagesData((prevMessages) => [...prevMessages, newMessage]);
+      const updatedMessages = [...messagesData, newMessage];
+      setMessagesData(updatedMessages);
+      localStorage.setItem('messagesData', JSON.stringify(updatedMessages));
       prevId.current += 1;
     } else {
       return;
