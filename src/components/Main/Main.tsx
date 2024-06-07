@@ -45,19 +45,23 @@ export const Main = () => {
   }
 
   const addNewMessage = (textMessage: string) => {
-    const newMessage = {
-      id: prevId.current,
-      avatar: '../avatars/anonym.jpg',
-      name: 'Anonymous',
-      handle: '@anonym',
-      time: '0d',
-      text: textMessage,
-      like: 0,
-      bookmark: false,
-    };
-
-    setMessagesData((prevMessages) => [...prevMessages, newMessage]);
-    prevId.current += 1;
+    if (textMessage.length > 1) {
+      const newMessage = {
+        id: prevId.current,
+        avatar: '../avatars/anonym.jpg',
+        name: 'Anonymous',
+        handle: '@anonym',
+        time: '0d',
+        text: textMessage,
+        like: 0,
+        bookmark: false,
+      };
+  
+      setMessagesData((prevMessages) => [...prevMessages, newMessage]);
+      prevId.current += 1;
+    } else {
+      return;
+    }
   }
 
   return (
