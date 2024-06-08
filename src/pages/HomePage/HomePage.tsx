@@ -21,7 +21,7 @@ export const HomePage = ({ messagesData, setMessagesData }: HomePageProps) => {
         }
         return message;
       });
-      localStorage.setItem('messagesData', JSON.stringify(updatedMessages));
+      sessionStorage.setItem('messagesData', JSON.stringify(updatedMessages));
       return updatedMessages;
     });
   }
@@ -34,7 +34,7 @@ export const HomePage = ({ messagesData, setMessagesData }: HomePageProps) => {
         }
         return message;
       });
-      localStorage.setItem('messagesData', JSON.stringify(updatedMessages));
+      sessionStorage.setItem('messagesData', JSON.stringify(updatedMessages));
       return updatedMessages;
     });
   }
@@ -42,7 +42,7 @@ export const HomePage = ({ messagesData, setMessagesData }: HomePageProps) => {
   const handleClickDelete = (messageId: number) => {
     setMessagesData((prevMessages) => {
       const currentMessages = prevMessages.filter((message) => message.id !== messageId);
-      localStorage.setItem('messagesData', JSON.stringify(currentMessages));
+      sessionStorage.setItem('messagesData', JSON.stringify(currentMessages));
       return currentMessages;
     });
   }
@@ -62,7 +62,7 @@ export const HomePage = ({ messagesData, setMessagesData }: HomePageProps) => {
   
       const updatedMessages = [...messagesData, newMessage];
       setMessagesData(updatedMessages);
-      localStorage.setItem('messagesData', JSON.stringify(updatedMessages));
+      sessionStorage.setItem('messagesData', JSON.stringify(updatedMessages));
       prevId.current += 1;
     } else {
       return;

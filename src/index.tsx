@@ -13,12 +13,12 @@ const Main = () => {
   const [messagesData, setMessagesData] = useState<MessageStructure[]>([]);
 
   useEffect(() => {
-    const storedMessagesData = localStorage.getItem('messagesData');
+    const storedMessagesData = sessionStorage.getItem('messagesData');
     if (storedMessagesData) {
       setMessagesData(JSON.parse(storedMessagesData));
     } else {
       setMessagesData(messages);
-      localStorage.setItem('messagesData', JSON.stringify(messages));
+      sessionStorage.setItem('messagesData', JSON.stringify(messages));
     }
   }, []);
 
