@@ -1,4 +1,4 @@
-import MessageStructure from "../model/message";
+import MessageStructure from "../model/Message";
 
 export const messages: MessageStructure[] = [
   {
