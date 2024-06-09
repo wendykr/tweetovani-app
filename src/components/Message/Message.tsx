@@ -1,5 +1,9 @@
 import './Message.css';
 import MessageStructure from '../../model/Message';
+import { FaRegHeart } from 'react-icons/fa';
+import { FaRegBookmark } from 'react-icons/fa';
+import { FaBookmark } from 'react-icons/fa';
+import { FiTrash } from 'react-icons/fi';
 
 interface MessageProps {
   message: MessageStructure;
@@ -20,20 +24,40 @@ export const Message = ({ message, onClickLike, onClickBookmark, onClickDelete }
           <span className="message__handle">{message.handle}</span>
           <span className="message__time">{message.time}</span>
         </header>
-        <div className="message__text">
-          {message.text}
-        </div>
+        <div className="message__text">{message.text}</div>
         <footer className="message__footer">
-          <button className="icon-button icon-button--red" onClick={() => onClickLike(message.id)}>
-            <span className="icon-button__icon"><img src="icons/heart.svg" alt="Miluju to" /></span>
+          <button
+            className="icon-button icon-button--rosa"
+            onClick={() => onClickLike(message.id)}
+            title="Miluju to"
+          >
+            <span className="icon-button__icon">
+              <FaRegHeart className="message__icon" />
+            </span>
             {message.like}
           </button>
-          <button className="icon-button icon-button--blue" onClick={() => onClickBookmark(message.id)}>
-            <span className="icon-button__icon"><img src={message.bookmark ? 'icons/bookmark-active.svg' : 'icons/bookmark.svg'} alt={message.bookmark ? 'Odebrat ze záložek' : 'Přidat do záložek'} /></span>
+          <button
+            className="icon-button icon-button--blue"
+            onClick={() => onClickBookmark(message.id)}
+            title={message.bookmark ? 'Odebrat ze záložek' : 'Přidat do záložek'}
+          >
+            <span className="icon-button__icon">
+              {message.bookmark ? (
+                <FaBookmark className="message__icon" />
+              ) : (
+                <FaRegBookmark className="message__icon" />
+              )}
+            </span>
             {message.bookmark ? 'Odebrat ze záložek' : 'Přidat do záložek'}
           </button>
-          <button className="icon-button icon-button--red" onClick={() => onClickDelete(message.id)}>
-            <span className="icon-button__icon"><img src="icons/trash.svg" alt="Smazat zprávu" /></span>
+          <button
+            className="icon-button icon-button--red"
+            onClick={() => onClickDelete(message.id)}
+            title="Smazat zprávu"
+          >
+            <span className="icon-button__icon">
+              <FiTrash className="message__icon" />
+            </span>
             Smazat zprávu
           </button>
         </footer>

@@ -10,7 +10,6 @@
 	font-size: 1.3em;
 	white-space: pre-wrap;
 	border: 0;
-	border-bottom: 1px solid var(--light-grey);
 }
 
 .post__message:focus {

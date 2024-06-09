@@ -9,6 +9,7 @@ interface PostProps {
 
 export const Post = ({ onNewMessage }: PostProps) => {
   const [valueMessage, setValueMessage] = useState<string>('');
+  const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
 
   const handleClickSend = () => {
     onNewMessage(valueMessage);
@@ -20,10 +21,14 @@ export const Post = ({ onNewMessage }: PostProps) => {
       <Form
         valueMessage={valueMessage}
         setValueMessage={setValueMessage}
+        setIsButtonDisabled={setIsButtonDisabled}
       />
       <div className="post__actions">
-        <Button onClickSend={handleClickSend} />
+        <Button
+          onClickSend={handleClickSend}
+          isButtonDisabled={isButtonDisabled}
+        />
       </div>
     </div>
-  )
+  );
 }

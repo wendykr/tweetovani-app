@@ -21,7 +21,7 @@
 }
 
 .menu__logo .menu__link:hover {
-	background-color: var(--logo-hover-bg)
+	background-color: var(--menu-hover-bg)
 }
 
 .menu__icon {
