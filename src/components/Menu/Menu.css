@@ -9,7 +9,7 @@
 	padding: 0.7em;
 	border-radius: 100vh;
 	text-decoration: none;
-	color: var(--menu-text);
+	color: var(--menu-text--hover);
 }
 
 .menu__link:hover {
@@ -38,4 +38,9 @@
 
 .menu__link:hover .menu__text {
 	color: var(--menu-text-hover);
+}
+
+.menu__link--active {
+	color: var(--menu-text--hover);
+	font-weight: 600;
 }
