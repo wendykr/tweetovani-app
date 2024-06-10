@@ -18,16 +18,21 @@ export const Post = ({ onNewMessage }: PostProps) => {
 
   return (
     <div className="post">
-      <Form
-        valueMessage={valueMessage}
-        setValueMessage={setValueMessage}
-        setIsButtonDisabled={setIsButtonDisabled}
-      />
-      <div className="post__actions">
-        <Button
-          onClickSend={handleClickSend}
-          isButtonDisabled={isButtonDisabled}
+      <div className="post__user">
+        <img className="post__avatar" src="../avatars/anonym.jpg" />
+      </div>
+      <div className="post__form">
+        <Form
+          valueMessage={valueMessage}
+          setValueMessage={setValueMessage}
+          setIsButtonDisabled={setIsButtonDisabled}
         />
+        <div className="post__actions">
+          <Button
+            onClickSend={handleClickSend}
+            isButtonDisabled={isButtonDisabled}
+          />
+        </div>
       </div>
     </div>
   );
