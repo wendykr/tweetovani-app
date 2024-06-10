@@ -1,4 +1,4 @@
-import { Timeline } from '../../components/Timeline/Timeline';
+import { Message } from '../../components/Message/Message';
 import MessageStructure from '../../model/Message';
 import './BookmarkPage.css';
 import { FaRegBookmark } from 'react-icons/fa';
@@ -23,12 +23,15 @@ export const BookmarkPage = ({
   return (
     <>
       {filterMessagesData.length > 0 ? (
-        <Timeline
-          messagesData={filterMessagesData}
-          onClickLike={handleClickLike}
-          onClickBookmark={handleClickBookmark}
-          onClickDelete={handleClickDelete}
-        />
+        filterMessagesData.map((message) => (
+          <Message
+            key={message.id}
+            message={message}
+            onClickLike={handleClickLike}
+            onClickBookmark={handleClickBookmark}
+            onClickDelete={handleClickDelete}
+          />
+        ))
       ) : (
         <div className="bookmarkPage">
           <h3>Zatím tu nic nemáš</h3>

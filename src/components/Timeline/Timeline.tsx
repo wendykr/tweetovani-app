@@ -15,10 +15,15 @@ export const Timeline = ({
   onClickBookmark,
   onClickDelete,
 }: TimelineProps) => {
+
+  const sortedMessages = messagesData.sort((a, b) => {
+    return new Date(b.time).getTime() - new Date(a.time).getTime();
+  });
+
   return (
     <div className="timeline">
       {messagesData && messagesData.length > 0 ? (
-        messagesData.map((message) => (
+        sortedMessages.map((message) => (
           <Message
             key={message.id}
             message={message}
