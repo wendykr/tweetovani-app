@@ -1,8 +1,13 @@
 import { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import './index.css';
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from 'react-router-dom';
 import { HomePage } from './pages/HomePage/HomePage';
 import { LikePage } from './pages/LikePage/LikePage';
 import { BookmarkPage } from './pages/BookmarkPage/BookmarkPage';
@@ -22,32 +27,84 @@ const Main = () => {
     }
   }, []);
 
+  const handleClickLike = (messageId: number) => {
+    setMessagesData((prevMessages) => {
+      const updatedMessages = prevMessages.map((message) => {
+        if (message.id === messageId) {
+          return { ...message, like: message.like + 1 };
+        }
+        return message;
+      });
+      sessionStorage.setItem('messagesData', JSON.stringify(updatedMessages));
+      return updatedMessages;
+    });
+  };
+
+  const handleClickBookmark = (messageId: number) => {
+    setMessagesData((prevMessages) => {
+      const updatedMessages = prevMessages.map((message) => {
+        if (message.id === messageId) {
+          return { ...message, bookmark: !message.bookmark };
+        }
+        return message;
+      });
+      sessionStorage.setItem('messagesData', JSON.stringify(updatedMessages));
+      return updatedMessages;
+    });
+  };
+
+  const handleClickDelete = (messageId: number) => {
+    setMessagesData((prevMessages) => {
+      const currentMessages = prevMessages.filter(
+        (message) => message.id !== messageId
+      );
+      sessionStorage.setItem('messagesData', JSON.stringify(currentMessages));
+      return currentMessages;
+    });
+  };
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<App />}>
         <Route
           path="/"
           element={
-            <HomePage messagesData={messagesData} setMessagesData={setMessagesData} />
+            <HomePage
+              messagesData={messagesData}
+              setMessagesData={setMessagesData}
+              handleClickLike={handleClickLike}
+              handleClickBookmark={handleClickBookmark}
+              handleClickDelete={handleClickDelete}
+            />
           }
         />
         <Route
           path="/bookmark"
           element={
-            <BookmarkPage />
+            <BookmarkPage
+              messagesData={messagesData}
+              handleClickLike={handleClickLike}
+              handleClickBookmark={handleClickBookmark}
+              handleClickDelete={handleClickDelete}
+            />
           }
         />
         <Route
           path="/like"
           element={
-            <LikePage />
+            <LikePage
+              messagesData={messagesData}
+              handleClickLike={handleClickLike}
+              handleClickBookmark={handleClickBookmark}
+              handleClickDelete={handleClickDelete}
+            />
           }
         />
       </Route>
-    ),
+    )
   );
-return <RouterProvider router={router} />;
-}
+  return <RouterProvider router={router} />;
+};
 
 const rootElement: HTMLElement = document.getElementById('root')!;
-  ReactDOM.createRoot(rootElement).render(<Main />);
+ReactDOM.createRoot(rootElement).render(<Main />);

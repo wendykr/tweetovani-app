@@ -9,7 +9,12 @@ interface TimelineProps {
   onClickDelete: (messageId: number) => void;
 }
 
-export const Timeline = ({ messagesData, onClickLike, onClickBookmark, onClickDelete }: TimelineProps) => {
+export const Timeline = ({
+  messagesData,
+  onClickLike,
+  onClickBookmark,
+  onClickDelete,
+}: TimelineProps) => {
   return (
     <div className="timeline">
       {messagesData && messagesData.length > 0 ? (

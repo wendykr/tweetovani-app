@@ -8,44 +8,19 @@ import MessageStructure from '../../model/Message';
 interface HomePageProps {
   messagesData: MessageStructure[];
   setMessagesData: Dispatch<SetStateAction<MessageStructure[]>>;
+  handleClickLike: (messageId: number) => void;
+  handleClickBookmark: (messageId: number) => void;
+  handleClickDelete: (messageId: number) => void;
 }
 
-export const HomePage = ({ messagesData, setMessagesData }: HomePageProps) => {
+export const HomePage = ({
+  messagesData,
+  setMessagesData,
+  handleClickLike,
+  handleClickBookmark,
+  handleClickDelete,
+}: HomePageProps) => {
   const prevId = useRef<number>(messages.length + 1);
-
-  const handleClickLike = (messageId: number) => {
-    setMessagesData((prevMessages) => {
-      const updatedMessages = prevMessages.map(message => {
-        if (message.id === messageId) {
-          return { ...message, like: message.like + 1 };
-        }
-        return message;
-      });
-      sessionStorage.setItem('messagesData', JSON.stringify(updatedMessages));
-      return updatedMessages;
-    });
-  }
-
-  const handleClickBookmark = (messageId: number) => {
-    setMessagesData((prevMessages) => {
-      const updatedMessages = prevMessages.map(message => {
-        if (message.id === messageId) {
-          return { ...message, bookmark: !message.bookmark };
-        }
-        return message;
-      });
-      sessionStorage.setItem('messagesData', JSON.stringify(updatedMessages));
-      return updatedMessages;
-    });
-  }
-
-  const handleClickDelete = (messageId: number) => {
-    setMessagesData((prevMessages) => {
-      const currentMessages = prevMessages.filter((message) => message.id !== messageId);
-      sessionStorage.setItem('messagesData', JSON.stringify(currentMessages));
-      return currentMessages;
-    });
-  }
 
   const addNewMessage = (textMessage: string) => {
     if (textMessage.length > 1) {
@@ -59,7 +34,7 @@ export const HomePage = ({ messagesData, setMessagesData }: HomePageProps) => {
         like: 0,
         bookmark: false,
       };
-  
+
       const updatedMessages = [...messagesData, newMessage];
       setMessagesData(updatedMessages);
       sessionStorage.setItem('messagesData', JSON.stringify(updatedMessages));
@@ -67,7 +42,7 @@ export const HomePage = ({ messagesData, setMessagesData }: HomePageProps) => {
     } else {
       return;
     }
-  }
+  };
 
   return (
     <>
@@ -81,4 +56,4 @@ export const HomePage = ({ messagesData, setMessagesData }: HomePageProps) => {
       />
     </>
   );
-}
+};
