@@ -16,15 +16,16 @@ export const LikePage = ({
   handleClickBookmark,
   handleClickDelete,
 }: LikePageProps) => {
+  const filterMessagesData = messagesData.filter((message) => message.like > 0);
 
-  const filterMessagesData = messagesData.filter(
-    (message) => message.like > 0
-  );
+  const sortedMessages = filterMessagesData.sort((a, b) => {
+    return new Date(b.timeLike).getTime() - new Date(a.timeLike).getTime();
+  });
 
   return (
     <>
       {filterMessagesData.length > 0 ? (
-        filterMessagesData.map((message) => (
+        sortedMessages.map((message) => (
           <Message
             key={message.id}
             message={message}

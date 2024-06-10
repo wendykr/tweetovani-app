@@ -20,10 +20,14 @@ export const BookmarkPage = ({
     (message) => message.bookmark === true
   );
 
+  const sortedMessages = filterMessagesData.sort((a, b) => {
+    return new Date(b.timeBookmark).getTime() - new Date(a.timeBookmark).getTime();
+  });
+
   return (
     <>
       {filterMessagesData.length > 0 ? (
-        filterMessagesData.map((message) => (
+        sortedMessages.map((message) => (
           <Message
             key={message.id}
             message={message}

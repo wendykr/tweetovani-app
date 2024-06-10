@@ -6,5 +6,7 @@ export default interface MessageStructure {
   time: string;
   text: string;
   like: number;
+  timeLike: string;
   bookmark: boolean;
+  timeBookmark: string;
 }

@@ -13,9 +13,12 @@ import { LikePage } from './pages/LikePage/LikePage';
 import { BookmarkPage } from './pages/BookmarkPage/BookmarkPage';
 import { messages } from './data/messages';
 import MessageStructure from './model/Message';
+import dayjs from 'dayjs';
 
 const Main = () => {
   const [messagesData, setMessagesData] = useState<MessageStructure[]>([]);
+
+  const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
 
   useEffect(() => {
     const storedMessagesData = sessionStorage.getItem('messagesData');
@@ -31,7 +34,7 @@ const Main = () => {
     setMessagesData((prevMessages) => {
       const updatedMessages = prevMessages.map((message) => {
         if (message.id === messageId) {
-          return { ...message, like: message.like + 1 };
+          return { ...message, like: message.like + 1, timeLike: now };
         }
         return message;
       });
@@ -44,7 +47,12 @@ const Main = () => {
     setMessagesData((prevMessages) => {
       const updatedMessages = prevMessages.map((message) => {
         if (message.id === messageId) {
-          return { ...message, bookmark: !message.bookmark };
+          const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
+          return {
+            ...message,
+            bookmark: !message.bookmark,
+            timeBookmark: message.bookmark ? '0000-00-00 00:00:00' : now,
+          };
         }
         return message;
       });

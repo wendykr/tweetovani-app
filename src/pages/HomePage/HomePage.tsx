@@ -35,7 +35,9 @@ export const HomePage = ({
         time: now,
         text: textMessage,
         like: 0,
+        timeLike: '0000-00-00 00:00:00',
         bookmark: false,
+        timeBookmark: '0000-00-00 00:00:00',
       };
 
       const updatedMessages = [...messagesData, newMessage];
