@@ -12,11 +12,20 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { LikePage } from './pages/LikePage/LikePage';
 import { BookmarkPage } from './pages/BookmarkPage/BookmarkPage';
 import { messages } from './data/messages';
+import { persons } from './data/persons';
 import MessageStructure from './model/Message';
+import { PersonStructure } from './model/Person.ts';
 import dayjs from 'dayjs';
+import { getRandomPerson } from './helpers/getRandomPerson.ts';
 
 const Main = () => {
   const [messagesData, setMessagesData] = useState<MessageStructure[]>([]);
+  const [randomPerson, setRandomPerson] = useState<PersonStructure>({
+    id: 0,
+    name: '',
+    handle: '',
+    avatar: '',
+  });
 
   const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
 
@@ -27,6 +36,15 @@ const Main = () => {
     } else {
       setMessagesData(messages);
       sessionStorage.setItem('messagesData', JSON.stringify(messages));
+    }
+
+    const storedRandomPerson = sessionStorage.getItem('randomPerson');
+    if (storedRandomPerson) {
+      setRandomPerson(JSON.parse(storedRandomPerson));
+    } else {
+      const randomPerson = getRandomPerson(persons);
+      setRandomPerson(randomPerson);
+      sessionStorage.setItem('randomPerson', JSON.stringify(randomPerson));
     }
   }, []);
 
@@ -63,9 +81,12 @@ const Main = () => {
 
   const handleClickDelete = (messageId: number) => {
     setMessagesData((prevMessages) => {
-      const currentMessages = prevMessages.filter(
-        (message) => message.id !== messageId
-      );
+      const currentMessages = prevMessages.filter((message) => {
+        if (message.id === messageId && message.name === randomPerson.name) {
+          return false;
+        }
+        return true;
+      });
       sessionStorage.setItem('messagesData', JSON.stringify(currentMessages));
       return currentMessages;
     });
@@ -80,6 +101,7 @@ const Main = () => {
             <HomePage
               messagesData={messagesData}
               setMessagesData={setMessagesData}
+              randomPerson={randomPerson}
               handleClickLike={handleClickLike}
               handleClickBookmark={handleClickBookmark}
               handleClickDelete={handleClickDelete}
@@ -90,6 +112,7 @@ const Main = () => {
           path="/bookmark"
           element={
             <BookmarkPage
+              randomPerson={randomPerson}
               messagesData={messagesData}
               handleClickLike={handleClickLike}
               handleClickBookmark={handleClickBookmark}
@@ -102,6 +125,7 @@ const Main = () => {
           element={
             <LikePage
               messagesData={messagesData}
+              randomPerson={randomPerson}
               handleClickLike={handleClickLike}
               handleClickBookmark={handleClickBookmark}
               handleClickDelete={handleClickDelete}

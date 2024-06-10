@@ -5,16 +5,23 @@ import { FaRegBookmark } from 'react-icons/fa';
 import { FaBookmark } from 'react-icons/fa';
 import { FiTrash } from 'react-icons/fi';
 import dayjs from 'dayjs';
+import { PersonStructure } from '../../model/Person';
 
 interface MessageProps {
   message: MessageStructure;
+  randomPerson: PersonStructure;
   onClickLike: (messageId: number) => void;
   onClickBookmark: (messageId: number) => void;
   onClickDelete: (messageId: number) => void;
 }
 
-export const Message = ({ message, onClickLike, onClickBookmark, onClickDelete }: MessageProps) => {
-
+export const Message = ({
+  message,
+  onClickLike,
+  onClickBookmark,
+  onClickDelete,
+  randomPerson,
+}: MessageProps) => {
   const countDay = (time: string) => {
     const difference = dayjs().diff(dayjs(time), 'hour');
 
@@ -24,7 +31,7 @@ export const Message = ({ message, onClickLike, onClickBookmark, onClickDelete }
     } else {
       return `${difference}h`;
     }
-  }
+  };
 
   return (
     <article className="message" key={message.id}>
@@ -35,7 +42,9 @@ export const Message = ({ message, onClickLike, onClickBookmark, onClickDelete }
         <header className="message__header">
           <span className="message__name">{message.name}</span>
           <span className="message__handle">{message.handle}</span>
-          <span className="message__time" title={message.time}>{countDay(message.time)}</span>
+          <span className="message__time" title={message.time}>
+            {countDay(message.time)}
+          </span>
         </header>
         <div className="message__text">{message.text}</div>
         <footer className="message__footer">
@@ -52,7 +61,9 @@ export const Message = ({ message, onClickLike, onClickBookmark, onClickDelete }
           <button
             className="icon-button icon-button--blue"
             onClick={() => onClickBookmark(message.id)}
-            title={message.bookmark ? 'Odebrat ze záložek' : 'Přidat do záložek'}
+            title={
+              message.bookmark ? 'Odebrat ze záložek' : 'Přidat do záložek'
+            }
           >
             <span className="icon-button__icon">
               {message.bookmark ? (
@@ -63,16 +74,18 @@ export const Message = ({ message, onClickLike, onClickBookmark, onClickDelete }
             </span>
             {message.bookmark ? 'Odebrat ze záložek' : 'Přidat do záložek'}
           </button>
-          <button
-            className="icon-button icon-button--red"
-            onClick={() => onClickDelete(message.id)}
-            title="Smazat zprávu"
-          >
-            <span className="icon-button__icon">
-              <FiTrash className="message__icon" />
-            </span>
-            Smazat zprávu
-          </button>
+          {message.name === randomPerson.name && (
+            <button
+              className="icon-button icon-button--red"
+              onClick={() => onClickDelete(message.id)}
+              title="Smazat zprávu"
+            >
+              <span className="icon-button__icon">
+                <FiTrash className="message__icon" />
+              </span>
+              Smazat zprávu
+            </button>
+          )}
         </footer>
       </div>
     </article>

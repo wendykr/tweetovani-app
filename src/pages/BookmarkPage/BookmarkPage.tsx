@@ -1,10 +1,12 @@
 import { Message } from '../../components/Message/Message';
 import MessageStructure from '../../model/Message';
+import { PersonStructure } from '../../model/Person';
 import './BookmarkPage.css';
 import { FaRegBookmark } from 'react-icons/fa';
 
 interface BookmarkPageProps {
   messagesData: MessageStructure[];
+  randomPerson: PersonStructure;
   handleClickLike: (messageId: number) => void;
   handleClickBookmark: (messageId: number) => void;
   handleClickDelete: (messageId: number) => void;
@@ -12,6 +14,7 @@ interface BookmarkPageProps {
 
 export const BookmarkPage = ({
   messagesData,
+  randomPerson,
   handleClickLike,
   handleClickBookmark,
   handleClickDelete,
@@ -31,6 +34,7 @@ export const BookmarkPage = ({
           <Message
             key={message.id}
             message={message}
+            randomPerson={randomPerson}
             onClickLike={handleClickLike}
             onClickBookmark={handleClickBookmark}
             onClickDelete={handleClickDelete}

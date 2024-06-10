@@ -32,7 +32,7 @@ export const Form = ({
       <textarea
         name="post-message"
         id="post-message"
-        rows={4}
+        rows={1}
         className="post__message"
         placeholder="Řekni, co se děje?!"
         value={valueMessage}

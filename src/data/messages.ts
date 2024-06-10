@@ -19,7 +19,7 @@ export const messages: MessageStructure[] = [
     name: 'Jana Novotná',
     handle: '@janicka',
     time: '2024-06-09 06:05:00',
-    text: 'Tenhle příspěvek je uložený v záložkách. Temporibus ad nihil molestiae eaque officiis ipsum omnis incidunt voluptas nemo esse saepe cum repellendus.',
+    text: 'Temporibus ad nihil molestiae eaque officiis ipsum omnis incidunt voluptas nemo esse saepe cum repellendus.',
     like: 13,
     timeLike: '2024-06-09 18:00:00',
     bookmark: true,
@@ -36,5 +36,17 @@ export const messages: MessageStructure[] = [
     timeLike: '2024-05-20 14:00:00',
     bookmark: false,
     timeBookmark: '0000-00-00 00:00:00',
-  }
-]
+  },
+  {
+    id: 4,
+    avatar: '../avatars/man4.jpg',
+    name: 'Marek Černý',
+    handle: '@marekcerny',
+    time: '2024-05-28 07:00:40',
+    text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.',
+    like: 0,
+    timeLike: '0000-00-00 00:00:00',
+    bookmark: false,
+    timeBookmark: '0000-00-00 00:00:00',
+  },
+];

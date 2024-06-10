@@ -1,9 +1,11 @@
 import { Message } from '../Message/Message';
 import MessageStructure from '../../model/Message';
 import './Timeline.css';
+import { PersonStructure } from '../../model/Person';
 
 interface TimelineProps {
   messagesData: MessageStructure[];
+  randomPerson: PersonStructure;
   onClickLike: (messageId: number) => void;
   onClickBookmark: (messageId: number) => void;
   onClickDelete: (messageId: number) => void;
@@ -14,6 +16,7 @@ export const Timeline = ({
   onClickLike,
   onClickBookmark,
   onClickDelete,
+  randomPerson,
 }: TimelineProps) => {
 
   const sortedMessages = messagesData.sort((a, b) => {
@@ -30,6 +33,7 @@ export const Timeline = ({
             onClickLike={onClickLike}
             onClickBookmark={onClickBookmark}
             onClickDelete={onClickDelete}
+            randomPerson={randomPerson}
           />
         ))
       ) : (
