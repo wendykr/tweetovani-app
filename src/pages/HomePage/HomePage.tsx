@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction, useRef } from 'react';
+import dayjs from 'dayjs';
 
 import { Post } from '../../components/Post/Post';
 import { Timeline } from '../../components/Timeline/Timeline';
@@ -22,6 +23,8 @@ export const HomePage = ({
 }: HomePageProps) => {
   const prevId = useRef<number>(messages.length + 1);
 
+  const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
+
   const addNewMessage = (textMessage: string) => {
     if (textMessage.length > 1) {
       const newMessage = {
@@ -29,7 +32,7 @@ export const HomePage = ({
         avatar: '../avatars/anonym.jpg',
         name: 'Anonymous',
         handle: '@anonym',
-        time: '0d',
+        time: now,
         text: textMessage,
         like: 0,
         bookmark: false,

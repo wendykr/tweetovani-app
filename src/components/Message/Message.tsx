@@ -4,6 +4,7 @@ import { FaRegHeart } from 'react-icons/fa';
 import { FaRegBookmark } from 'react-icons/fa';
 import { FaBookmark } from 'react-icons/fa';
 import { FiTrash } from 'react-icons/fi';
+import dayjs from 'dayjs';
 
 interface MessageProps {
   message: MessageStructure;
@@ -13,6 +14,18 @@ interface MessageProps {
 }
 
 export const Message = ({ message, onClickLike, onClickBookmark, onClickDelete }: MessageProps) => {
+
+  const countDay = (time: string) => {
+    const difference = dayjs().diff(dayjs(time), 'hour');
+
+    if (difference >= 24) {
+      const days = Math.floor(difference / 24);
+      return `${days}d`;
+    } else {
+      return `${difference}h`;
+    }
+  }
+
   return (
     <article className="message" key={message.id}>
       <div className="message__avatar">
@@ -22,7 +35,7 @@ export const Message = ({ message, onClickLike, onClickBookmark, onClickDelete }
         <header className="message__header">
           <span className="message__name">{message.name}</span>
           <span className="message__handle">{message.handle}</span>
-          <span className="message__time">{message.time}</span>
+          <span className="message__time" title={message.time}>{countDay(message.time)}</span>
         </header>
         <div className="message__text">{message.text}</div>
         <footer className="message__footer">

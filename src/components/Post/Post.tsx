@@ -14,6 +14,7 @@ export const Post = ({ onNewMessage }: PostProps) => {
   const handleClickSend = () => {
     onNewMessage(valueMessage);
     setValueMessage('');
+    setIsButtonDisabled(true);
   }
 
   return (
