@@ -17,6 +17,7 @@ K dispozici je hotový statický HTML a CSS návrh [zde](https://github.com/Czec
 
 
 ## Abstrakt
-Z připravého [návrhu](https://github.com/Czechitas-podklady-WEB/cvrlikani-zadani) programuju aplikaci s dynamickým obsahem rozdělenou do několika komponent.
+Programuju aplikaci s dynamickým obsahem rozdělenou do několika komponent.  
+Využila jsem připravený [návrh](https://github.com/Czechitas-podklady-WEB/cvrlikani-zadani), který si upravuju svým potřebám.
 
 *Jelikož projekt nemám dokončený, další informace ještě budu doplňovat :)*
