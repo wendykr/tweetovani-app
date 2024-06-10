@@ -22,7 +22,7 @@ export const BookmarkPage = ({
 
   return (
     <>
-      {messagesData ? (
+      {filterMessagesData.length > 0 ? (
         <Timeline
           messagesData={filterMessagesData}
           onClickLike={handleClickLike}
