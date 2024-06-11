@@ -21,13 +21,13 @@ Programuju aplikaci s dynamickým obsahem rozdělenou do několika komponent.
 Využila jsem připravený [návrh](https://github.com/Czechitas-podklady-WEB/cvrlikani-zadani), který si upravuju svým potřebám.
 
 ### Aktuálně aplikace umožňuje:
-- na stránce **Home** zobrazuje výchozí zprávy uživatelů seřazeny chronologicky od nejnovějšího
+- na stránce **Domů** zobrazuje výchozí zprávy uživatelů seřazeny chronologicky od nejnovějšího
 - náhodně vygenerovaný profil uživatele, pod kterým lze:
   - **přidat** nový příspěvek
   - **mazat** vlastní příspěvek
   - **přidávat/odebírat** příspěvky ze záložky
   - **lajkovat** příspěvky
-- na stránce **Záložky** zobrazuje uložené příspěvky - seřazeny chronologicky dle času přidání do záložky od nejnovějšího
+- na stránce **Záložky** zobrazuje uložené příspěvky - seřazeny chronologicky podle času přidání do záložky od nejnovějšího
 - na stránce **Lajky** zobrazuje nejvíce oblíbené příspěvky - seřazeny chronologicky podle času lajknutí od nejnovějšího
 
 Na dalších funcionalitách aplikace pracuju.
