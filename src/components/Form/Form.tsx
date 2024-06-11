@@ -4,12 +4,18 @@ interface FormProps {
   valueMessage: string;
   setValueMessage: (value: string) => void;
   setIsButtonDisabled: (value: boolean) => void;
+  setCharactersCount: (value: number) => void;
+  textareaRef: React.RefObject<HTMLTextAreaElement>;
+  onFocus: () => void;
 }
 
 export const Form = ({
   valueMessage,
   setValueMessage,
   setIsButtonDisabled,
+  setCharactersCount,
+  textareaRef,
+  onFocus
 }: FormProps) => {
   const handleChangeMessage = (
     event: React.ChangeEvent<HTMLTextAreaElement>
@@ -19,12 +25,15 @@ export const Form = ({
     const hasNonSpaceCharacters = /\S/.test(inputValue);
 
     if (inputValue.length > 0 && hasNonSpaceCharacters) {
-      setIsButtonDisabled(false);
+      inputValue.length > 280
+        ? setIsButtonDisabled(true)
+        : setIsButtonDisabled(false);
     } else {
       setIsButtonDisabled(true);
     }
 
     setValueMessage(inputValue);
+    setCharactersCount(280 - inputValue.length)
   };
 
   return (
@@ -37,6 +46,8 @@ export const Form = ({
         placeholder="Řekni, co se děje?!"
         value={valueMessage}
         onChange={handleChangeMessage}
+        onFocus={onFocus}
+        ref={textareaRef}
       ></textarea>
     </form>
   );

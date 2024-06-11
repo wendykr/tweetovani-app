@@ -24,8 +24,11 @@ export const HomePage = ({
   handleClickBookmark,
   handleClickDelete,
 }: HomePageProps) => {
-  const prevId = useRef<number>(messages.length + 1);
-
+  const prevId = useRef<number>(
+    sessionStorage.getItem('messagesData')
+      ? JSON.parse(sessionStorage.getItem('messagesData')!).length + 1
+      : messages.length + 1
+  );
   const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
 
   const addNewMessage = (textMessage: string) => {
