@@ -10,6 +10,7 @@
 
 .main {
 	border-left: 1px solid var(--light-grey);
+	grid-column: 2 / 3;
 }
 
 .page-title {

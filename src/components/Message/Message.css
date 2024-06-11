@@ -103,3 +103,11 @@
 .message__icon {
 	font-size: 20px;
 }
+
+.fill-blue {
+	fill: var(--blue);
+}
+
+.fill-rosa {
+	fill: var(--rosa);
+}

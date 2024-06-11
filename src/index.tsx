@@ -52,7 +52,21 @@ const Main = () => {
     setMessagesData((prevMessages) => {
       const updatedMessages = prevMessages.map((message) => {
         if (message.id === messageId) {
-          return { ...message, like: message.like + 1, timeLike: now };
+          if (message.like) {
+            return {
+              ...message,
+              likeCount: message.likeCount - 1,
+              like: false,
+              timeLike: now,
+            };
+          } else {
+            return {
+              ...message,
+              likeCount: message.likeCount + 1,
+              like: true,
+              timeLike: now,
+            };
+          }
         }
         return message;
       });

@@ -1,6 +1,7 @@
 import './Message.css';
 import MessageStructure from '../../model/Message';
 import { FaRegHeart } from 'react-icons/fa';
+import { FaHeart } from 'react-icons/fa';
 import { FaRegBookmark } from 'react-icons/fa';
 import { FaBookmark } from 'react-icons/fa';
 import { FiTrash } from 'react-icons/fi';
@@ -54,9 +55,13 @@ export const Message = ({
             title="Miluju to"
           >
             <span className="icon-button__icon">
-              <FaRegHeart className="message__icon" />
+              {message.like ? (
+                <FaHeart className="message__icon fill-rosa" />
+              ) : (
+                <FaRegHeart className="message__icon" />
+              )}
             </span>
-            {message.like}
+            {message.likeCount}
           </button>
           <button
             className="icon-button icon-button--blue"
@@ -67,7 +72,7 @@ export const Message = ({
           >
             <span className="icon-button__icon">
               {message.bookmark ? (
-                <FaBookmark className="message__icon" />
+                <FaBookmark className="message__icon fill-blue" />
               ) : (
                 <FaRegBookmark className="message__icon" />
               )}

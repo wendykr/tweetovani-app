@@ -1,4 +1,7 @@
 .sidebar {
 	padding: 1em;
 	overflow: auto;
+	position: fixed;
+	width: 14em;
+	grid-column: 1 / 2;
 }

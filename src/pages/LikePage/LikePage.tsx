@@ -19,7 +19,7 @@ export const LikePage = ({
   handleClickBookmark,
   handleClickDelete,
 }: LikePageProps) => {
-  const filterMessagesData = messagesData.filter((message) => message.like > 0);
+  const filterMessagesData = messagesData.filter((message) => message.likeCount > 0 && message.like);
 
   const sortedMessages = filterMessagesData.sort((a, b) => {
     return new Date(b.timeLike).getTime() - new Date(a.timeLike).getTime();
