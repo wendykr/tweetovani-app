@@ -1,42 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
-	--font: 'Noto Sans', sans-serif;
+  --font: 'Noto Sans', sans-serif;
 
-	--primary: #1da1f2;
-	--primary-dark: #006dbf;
+  --primary: #1da1f2;
+  --primary-dark: #006dbf;
 
-	--bright-grey: #f8f8f8;
-	--light-grey: #e5e5e5;
-	--dark-grey: #536471;
+  --bright-grey: #f8f8f8;
+  --light-grey: #e5e5e5;
+  --dark-grey: #536471;
 
-	--red: red;
-	--light-red: #fabfbf;
-	--rosa: #f91880;
-	--light-rosa: #f7e0eb;
-	--blue: #1da1f2;
-	--light-blue: #b9daff;
+  --red: red;
+  --light-red: #fabfbf;
+  --rosa: #f91880;
+  --light-rosa: #f7e0eb;
+  --blue: #1da1f2;
+  --light-blue: #b9daff;
 
-	--logo-hover-bg: #eee2f5;
-	--menu-text: var(--dark-grey);
-	--menu-text-hover: #000000;
-	--menu-hover-bg: var(--light-grey);
+  --logo-hover-bg: #eee2f5;
+  --menu-text: var(--dark-grey);
+  --menu-text-hover: #000000;
+  --menu-hover-bg: var(--light-grey);
 }
 
 html {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-*, *::before, *::after {
-	box-sizing: inherit;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 body {
-	margin: 0;
-	font: 20px/1.5 var(--font);
+  margin: 0;
+  font: 20px/1.5 var(--font);
 }
 
 h1 {
-	font-size: 1.5em;
-	margin-top: 0;
+  font-size: 1.5em;
+  margin-top: 0;
+}
+
+.background-blue {
+  color: var(--blue);
 }

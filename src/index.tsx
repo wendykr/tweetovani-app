@@ -8,6 +8,8 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
+import { ToastContainer, toast, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { HomePage } from './pages/HomePage/HomePage';
 import { LikePage } from './pages/LikePage/LikePage';
 import { BookmarkPage } from './pages/BookmarkPage/BookmarkPage';
@@ -91,6 +93,53 @@ const Main = () => {
       sessionStorage.setItem('messagesData', JSON.stringify(updatedMessages));
       return updatedMessages;
     });
+
+    const message = messagesData.find((msg) => msg.id === messageId);
+    if (message) {
+      if (!message.bookmark) {
+        toast(`Přidáno do Záložky.`, {
+          position: 'bottom-center',
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: 0,
+          theme: 'light',
+          transition: Slide,
+          closeButton: false,
+          style: {
+            width: '220px',
+            height: '20px',
+            background: '#1da1f2',
+            color: '#ffffff',
+            fontSize: '18px',
+            textAlign: 'center',
+          },
+        });
+      } else {
+        toast(`Odebráno ze Záložky.`, {
+          position: 'bottom-center',
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: 0,
+          theme: 'light',
+          transition: Slide,
+          closeButton: false,
+          style: {
+            width: '220px',
+            height: '20px',
+            background: '#1da1f2',
+            color: '#ffffff',
+            fontSize: '18px',
+            textAlign: 'center',
+          },
+        });
+      }
+    }
   };
 
   const handleClickDelete = (messageId: number) => {
@@ -153,4 +202,9 @@ const Main = () => {
 };
 
 const rootElement: HTMLElement = document.getElementById('root')!;
-ReactDOM.createRoot(rootElement).render(<Main />);
+ReactDOM.createRoot(rootElement).render(
+  <>
+    <ToastContainer />
+    <Main />
+  </>
+);

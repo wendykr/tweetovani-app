@@ -1,4 +1,4 @@
-import './Button.css'
+import './Button.css';
 
 interface ButtonProps {
   onClickSend: () => void;
