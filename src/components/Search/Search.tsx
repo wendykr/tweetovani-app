@@ -1,7 +1,10 @@
 import './Search.css';
 import { CiSearch } from 'react-icons/ci';
+import { useSearch } from '../../context/SearchContext';
 
 export const Search = () => {
+  const { searchQuery, onSearchChange } = useSearch();
+
   return (
     <form className="search">
       <label className="search__label" htmlFor="searchInput">
@@ -12,6 +15,8 @@ export const Search = () => {
         type="text"
         id="searchInput"
         placeholder="Hledat"
+        onChange={onSearchChange}
+        value={searchQuery}
       />
     </form>
   );

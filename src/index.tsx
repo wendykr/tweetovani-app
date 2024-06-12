@@ -19,6 +19,7 @@ import MessageStructure from './model/Message';
 import { PersonStructure } from './model/Person.ts';
 import dayjs from 'dayjs';
 import { getRandomPerson } from './helpers/getRandomPerson.ts';
+import { SearchProvider, useSearch } from './context/SearchContext.tsx';
 
 const Main = () => {
   const [messagesData, setMessagesData] = useState<MessageStructure[]>([]);
@@ -30,6 +31,7 @@ const Main = () => {
   });
 
   const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
+  const { searchQuery } = useSearch();
 
   useEffect(() => {
     const storedMessagesData = sessionStorage.getItem('messagesData');
@@ -155,6 +157,16 @@ const Main = () => {
     });
   };
 
+  const filterMessagesData = (
+    messagesData: MessageStructure[],
+    searchTerm: string
+  ) =>
+    messagesData.filter((message) =>
+      message.text.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+  const filteredMessagesData = filterMessagesData(messagesData, searchQuery);
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<App />}>
@@ -162,7 +174,7 @@ const Main = () => {
           path="/"
           element={
             <HomePage
-              messagesData={messagesData}
+              messagesData={filteredMessagesData}
               setMessagesData={setMessagesData}
               randomPerson={randomPerson}
               handleClickLike={handleClickLike}
@@ -204,7 +216,9 @@ const Main = () => {
 const rootElement: HTMLElement = document.getElementById('root')!;
 ReactDOM.createRoot(rootElement).render(
   <>
-    <ToastContainer />
-    <Main />
+    <SearchProvider>
+      <ToastContainer />
+      <Main />
+    </SearchProvider>
   </>
 );
