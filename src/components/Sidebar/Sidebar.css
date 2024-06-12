@@ -1,7 +1,11 @@
 .sidebar {
-	padding: 1em;
-	overflow: auto;
-	position: fixed;
-	width: 14em;
-	grid-column: 1 / 2;
+  padding: 1em;
+  overflow: auto;
+  position: fixed;
+  width: 14em;
+  height: 100%;
+  grid-column: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

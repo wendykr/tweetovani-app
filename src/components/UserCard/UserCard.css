@@ -1,0 +1,34 @@
+.usercard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.usercard__avatar {
+  width: 50px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+.usercard__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.usercard__info--name,
+.usercard__info--handle {
+  margin: 0;
+}
+
+.usercard__info--name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.usercard__info--handle {
+  font-size: 16px;
+  color: var(--dark-grey);
+}
