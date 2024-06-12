@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
@@ -16,18 +16,13 @@ import { BookmarkPage } from './pages/BookmarkPage/BookmarkPage';
 import { messages } from './data/messages';
 import { persons } from './data/persons';
 import MessageStructure from './model/Message';
-import { PersonStructure } from './model/Person.ts';
 import dayjs from 'dayjs';
 import { getRandomPerson } from './helpers/getRandomPerson.ts';
+import { UserContext, UserProvider } from './context/UserContext.tsx';
 
 const Main = () => {
   const [messagesData, setMessagesData] = useState<MessageStructure[]>([]);
-  const [randomPerson, setRandomPerson] = useState<PersonStructure>({
-    id: 0,
-    name: '',
-    handle: '',
-    avatar: '',
-  });
+  const { randomPerson, setRandomPerson } = useContext(UserContext);
 
   const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
 
@@ -48,7 +43,7 @@ const Main = () => {
       setRandomPerson(randomPerson);
       sessionStorage.setItem('randomPerson', JSON.stringify(randomPerson));
     }
-  }, []);
+  }, [setRandomPerson]);
 
   const handleClickLike = (messageId: number) => {
     setMessagesData((prevMessages) => {
@@ -164,7 +159,6 @@ const Main = () => {
             <HomePage
               messagesData={messagesData}
               setMessagesData={setMessagesData}
-              randomPerson={randomPerson}
               handleClickLike={handleClickLike}
               handleClickBookmark={handleClickBookmark}
               handleClickDelete={handleClickDelete}
@@ -175,7 +169,6 @@ const Main = () => {
           path="/bookmark"
           element={
             <BookmarkPage
-              randomPerson={randomPerson}
               messagesData={messagesData}
               handleClickLike={handleClickLike}
               handleClickBookmark={handleClickBookmark}
@@ -188,7 +181,6 @@ const Main = () => {
           element={
             <LikePage
               messagesData={messagesData}
-              randomPerson={randomPerson}
               handleClickLike={handleClickLike}
               handleClickBookmark={handleClickBookmark}
               handleClickDelete={handleClickDelete}
@@ -204,7 +196,9 @@ const Main = () => {
 const rootElement: HTMLElement = document.getElementById('root')!;
 ReactDOM.createRoot(rootElement).render(
   <>
-    <ToastContainer />
-    <Main />
+    <UserProvider>
+      <ToastContainer />
+      <Main />
+    </UserProvider>
   </>
 );

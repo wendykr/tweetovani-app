@@ -1,12 +1,16 @@
 import './UserCard.css';
+import { useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
 
 export const UserCard = () => {
+  const { randomPerson } = useContext(UserContext);
+
   return (
     <div className="usercard">
-      <img src="./avatars/anonym.jpg" className="usercard__avatar" />
+      <img src={randomPerson.avatar} className="usercard__avatar" />
       <div className="usercard__info">
-        <p className="usercard__info--name">anonymous</p>
-        <p className="usercard__info--handle">@anonym</p>
+        <p className="usercard__info--name">{randomPerson.name}</p>
+        <p className="usercard__info--handle">{randomPerson.handle}</p>
       </div>
     </div>
   );

@@ -2,20 +2,22 @@ import { useRef, useState } from 'react';
 import { Button } from '../Button/Button';
 import { Form } from '../Form/Form';
 import './Post.css';
-import { PersonStructure } from '../../model/Person';
 import { declineCharacters } from '../../helpers/declineCharacters';
+import { useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
 
 interface PostProps {
   onNewMessage: (textMessage: string) => void;
-  randomPerson: PersonStructure;
 }
 
-export const Post = ({ onNewMessage, randomPerson }: PostProps) => {
+export const Post = ({ onNewMessage }: PostProps) => {
   const [valueMessage, setValueMessage] = useState<string>('');
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
   const [charactersCount, setCharactersCount] = useState<number>(280);
   const [isTextareaFocused, setIsTextareaFocused] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const { randomPerson } = useContext(UserContext);
 
   const handleClickSend = () => {
     onNewMessage(valueMessage);
