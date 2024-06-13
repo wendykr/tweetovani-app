@@ -27,6 +27,7 @@ const Main = () => {
     name: '',
     handle: '',
     avatar: '',
+    follow: false,
   });
 
   const now = dayjs().format('YYYY-MM-DD HH:mm:ss');

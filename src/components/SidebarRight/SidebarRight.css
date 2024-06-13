@@ -1,0 +1,6 @@
+.sidebar-right {
+  margin: 1em;
+  width: 17em;
+  position: fixed;
+  grid-column: 3 / 4;
+}
