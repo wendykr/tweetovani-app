@@ -1,8 +1,15 @@
 .usercard {
+  padding: 16px;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 12px;
+  border-radius: 45px;
+}
+
+.usercard:hover {
+  background-color: var(--menu-hover-bg);
+  cursor: pointer;
 }
 
 .usercard__avatar {
