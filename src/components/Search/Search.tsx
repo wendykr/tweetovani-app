@@ -1,5 +1,5 @@
 import './Search.css';
-import { CiSearch } from 'react-icons/ci';
+import { IoSearch } from 'react-icons/io5';
 import { useSearch } from '../../context/SearchContext';
 
 export const Search = () => {
@@ -8,7 +8,7 @@ export const Search = () => {
   return (
     <form className="search">
       <label className="search__label" htmlFor="searchInput">
-        <CiSearch className="search__icon" />
+        <IoSearch className="search__icon" />
       </label>
       <input
         className="search__input"

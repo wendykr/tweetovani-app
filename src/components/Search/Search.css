@@ -5,11 +5,21 @@
   position: fixed;
   grid-column: 3 / 4;
   background-color: var(--light-grey);
+  border: 1px solid var(--light-grey);
   border-radius: 25px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 8px;
+}
+
+.search:focus-within {
+  background-color: #ffffff;
+  border: 1px solid var(--blue);
+}
+
+.search:focus {
+  background-color: #ffffff;
 }
 
 .search__label {
@@ -18,7 +28,11 @@
 }
 
 .search__icon {
-  font-size: 26px;
+  font-size: 22px;
+}
+
+.search:focus-within .search__icon {
+  fill: var(--blue);
 }
 
 .search__input {
@@ -27,4 +41,8 @@
   font-size: 16px;
   border: none;
   outline: none;
+}
+
+.search__input:focus {
+  background-color: #ffffff;
 }
