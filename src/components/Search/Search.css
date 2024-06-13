@@ -1,9 +1,5 @@
 .search {
-  width: 11em;
-  margin: 1em;
   padding: 10px 16px;
-  position: fixed;
-  grid-column: 3 / 4;
   background-color: var(--light-grey);
   border: 1px solid var(--light-grey);
   border-radius: 25px;
