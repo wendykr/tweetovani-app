@@ -6,11 +6,11 @@ import { FaRegBookmark } from 'react-icons/fa';
 import { FaBookmark } from 'react-icons/fa';
 import { FiTrash } from 'react-icons/fi';
 import dayjs from 'dayjs';
-import { PersonStructure } from '../../model/Person';
+import { useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
 
 interface MessageProps {
   message: MessageStructure;
-  randomPerson: PersonStructure;
   onClickLike: (messageId: number) => void;
   onClickBookmark: (messageId: number) => void;
   onClickDelete: (messageId: number) => void;
@@ -21,8 +21,8 @@ export const Message = ({
   onClickLike,
   onClickBookmark,
   onClickDelete,
-  randomPerson,
 }: MessageProps) => {
+  const { randomPerson } = useContext(UserContext);
   const countDay = (time: string) => {
     const difference = dayjs().diff(dayjs(time), 'hour');
 
