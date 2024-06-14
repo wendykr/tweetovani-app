@@ -40,15 +40,25 @@
   font-size: 0.9em;
   color: white;
   background-color: #000000;
-  border: 0;
-  border-radius: 100vh;
+  border: 1px solid #000000;
+  border-radius: 45px;
   cursor: pointer;
 }
 
 .follow-user__button:hover {
-  background-color: #333333;
+  background-color: #000000;
 }
 
 .last-child {
   margin-left: auto;
+}
+
+.follow_active {
+  color: #000000;
+  background-color: white;
+  border: 1px solid var(--light-grey);
+}
+
+.follow_active:hover {
+  background-color: white;
 }

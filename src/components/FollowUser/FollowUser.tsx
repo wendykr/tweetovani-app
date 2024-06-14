@@ -21,10 +21,10 @@ export const FollowUser = ({
         <p className="follow-user__info--handle">{handle}</p>
       </div>
       <button
-        className="follow-user__button last-child"
+        className={`follow-user__button last-child ${follow ? 'follow_active' : ''}`}
         onClick={() => changeFollow(id)}
       >
-        {follow ? 'Nesledovat' : 'Sledovat'}
+        {follow ? 'Sleduji' : 'Sledovat'}
       </button>
     </li>
   );
