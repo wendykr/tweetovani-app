@@ -18,6 +18,7 @@ import { persons } from './data/persons';
 import MessageStructure from './model/Message';
 import dayjs from 'dayjs';
 import { getRandomPerson } from './helpers/getRandomPerson.ts';
+import { SearchProvider } from './context/SearchContext.tsx';
 import { UserContext, UserProvider } from './context/UserContext.tsx';
 
 const Main = () => {
@@ -196,9 +197,11 @@ const Main = () => {
 const rootElement: HTMLElement = document.getElementById('root')!;
 ReactDOM.createRoot(rootElement).render(
   <>
-    <UserProvider>
+  <UserProvider>
+    <SearchProvider>
       <ToastContainer />
       <Main />
+    </SearchProvider>
     </UserProvider>
   </>
 );
