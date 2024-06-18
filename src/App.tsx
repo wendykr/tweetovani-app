@@ -1,9 +1,20 @@
 import './App.css';
 import { Sidebar } from './components/Sidebar/Sidebar';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { SidebarRight } from './components/SidebarRight/SidebarRight';
+import { useSearch } from './context/SearchContext';
+import { useEffect } from 'react';
 
 function App() {
+  const { setSearchQuery } = useSearch();
+
+  const location = useLocation();
+  const path = location.pathname;
+
+  useEffect(() => {
+    setSearchQuery('');
+  }, [path, setSearchQuery]);
+
   return (
     <div className="container">
       <Sidebar />

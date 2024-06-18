@@ -2,11 +2,13 @@ import React, { ReactNode, createContext, useContext, useState } from 'react';
 
 interface SearchContextData {
   searchQuery: string;
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
   onSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const SearchContext = createContext<SearchContextData>({
   searchQuery: '',
+  setSearchQuery: () => {},
   onSearchChange: () => {},
 });
 
@@ -26,6 +28,7 @@ export const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
       value={{
         searchQuery,
         onSearchChange,
+        setSearchQuery,
       }}
     >
       {children}
