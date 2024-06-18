@@ -20,13 +20,14 @@ K dispozici je hotový statický HTML a CSS návrh [zde](https://github.com/Czec
 Programuju aplikaci s dynamickým obsahem rozdělenou do několika komponent.  
 Využila jsem připravený [návrh](https://github.com/Czechitas-podklady-WEB/cvrlikani-zadani), který si upravuju svým potřebám.
 
-### Aktuálně aplikace umožňuje:
+### Aktuální funkce aplikace:
 - na stránce **Domů** zobrazuje výchozí zprávy uživatelů seřazeny chronologicky od nejnovějšího
-- náhodně vygenerovaný profil uživatele, pod kterým lze:
+- v **levém Sidebaru** zobrazuje náhodně vygenerovaný profil uživatele, pod kterým lze:
   - **přidat** nový příspěvek
   - **mazat** vlastní příspěvek
   - **přidávat/odebírat** příspěvky ze záložky
   - **lajkovat** příspěvky
+- v **pravém Sidebaru** zobrazuje vyhledávací pole, přes které lze filtrovat zprávy podle hledaného výrazu
 - na stránce **Záložky** zobrazuje uložené příspěvky - seřazeny chronologicky podle času přidání do záložky od nejnovějšího
 - na stránce **Lajky** zobrazuje nejvíce oblíbené příspěvky - seřazeny chronologicky podle času lajknutí od nejnovějšího
 
