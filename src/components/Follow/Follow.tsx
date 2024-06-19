@@ -7,35 +7,51 @@ import { getRandomPerson } from '../../helpers/getRandomPerson';
 
 export const Follow = () => {
   const [randomFollowers, setRandomFollowers] = useState<PersonStructure[]>([]);
+  const [storedRandomPerson, setStoredRandomPerson] =
+    useState<PersonStructure>();
 
   useEffect(() => {
-    const storedRandomFollowers = sessionStorage.getItem('randomFollowers');
     const storedRandomPerson = sessionStorage.getItem('randomPerson');
-
-    if (storedRandomFollowers) {
-      setRandomFollowers(JSON.parse(storedRandomFollowers));
+    if (storedRandomPerson) {
+      setStoredRandomPerson(JSON.parse(storedRandomPerson));
     } else {
-      const followers: PersonStructure[] = [];
-
-      while (followers.length < 3) {
-        const currentFollower = getRandomPerson(persons);
-
-        if (
-          !followers.find(
-            (followers) =>
-              followers.id === currentFollower.id &&
-              storedRandomPerson &&
-              JSON.parse(storedRandomPerson)?.id === currentFollower.id
-          )
-        ) {
-          followers.push(currentFollower);
-        }
-      }
-
-      setRandomFollowers(followers);
-      sessionStorage.setItem('randomFollowers', JSON.stringify(followers));
+      const randomPerson = getRandomPerson(persons);
+      sessionStorage.setItem('randomPerson', JSON.stringify(randomPerson));
+      setStoredRandomPerson(randomPerson);
     }
   }, []);
+
+  useEffect(() => {
+    if (storedRandomPerson) {
+      const storedRandomFollowers = sessionStorage.getItem('randomFollowers');
+
+      if (storedRandomFollowers) {
+        setRandomFollowers(JSON.parse(storedRandomFollowers));
+      } else {
+        const followers: PersonStructure[] = [];
+
+        while (followers.length < 3) {
+          let currentFollower = getRandomPerson(persons);
+
+          while (
+            storedRandomPerson &&
+            storedRandomPerson.id === currentFollower.id
+          ) {
+            currentFollower = getRandomPerson(persons);
+          }
+
+          if (
+            !followers.find((follower) => follower.id === currentFollower.id)
+          ) {
+            followers.push(currentFollower);
+          }
+        }
+
+        setRandomFollowers(followers);
+        sessionStorage.setItem('randomFollowers', JSON.stringify(followers));
+      }
+    }
+  }, [storedRandomPerson]);
 
   const changeFollow = (followerId: number) => {
     setRandomFollowers((prevRandomFollowers) => {
