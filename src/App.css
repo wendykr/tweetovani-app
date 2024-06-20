@@ -1,12 +1,11 @@
 .container {
   display: grid;
-  grid-template-columns: 14em 1fr 19em;
+  grid-template-columns: 14em 1fr 21em;
   max-width: 70em;
   min-height: 100vh;
   margin: 0 auto;
-  border-left: 1px solid var(--light-grey);
-  border-right: 1px solid var(--light-grey);
   position: relative;
+  gap: 20px;
 }
 
 .main {

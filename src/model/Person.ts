@@ -3,4 +3,5 @@ export interface PersonStructure {
   avatar: string;
   name: string;
   handle: string;
+  follow: boolean;
 }
