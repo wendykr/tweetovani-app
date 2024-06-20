@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { PersonStructure } from '../../model/Person';
 import './FollowUser.css';
 
@@ -13,9 +14,23 @@ export const FollowUser = ({
   follow,
   changeFollow,
 }: FollowUserProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
     <li className="follow-user">
-      <img src={avatar} className="follow-user__avatar" />
+      <img
+        src={avatar}
+        className="follow-user__avatar"
+        alt={`${name}'s avatar`}
+      />
       <div className="follow-user__info">
         <p className="follow-user__info--name">{name}</p>
         <p className="follow-user__info--handle">{handle}</p>
@@ -23,8 +38,14 @@ export const FollowUser = ({
       <button
         className={`follow-user__button last-child ${follow ? 'follow_active' : ''}`}
         onClick={() => changeFollow(id)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
-        {follow ? 'Sleduji' : 'Sledovat'}
+        {follow && isHovered
+          ? 'Již nesledovat'
+          : follow
+            ? 'Sleduji'
+            : 'Sledovat'}
       </button>
     </li>
   );

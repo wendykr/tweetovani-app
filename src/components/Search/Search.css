@@ -1,5 +1,6 @@
 .search {
   padding: 10px 16px;
+  width: 19em;
   background-color: var(--light-grey);
   border: 1px solid var(--light-grey);
   border-radius: 25px;
