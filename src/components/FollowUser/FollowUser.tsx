@@ -25,28 +25,30 @@ export const FollowUser = ({
   };
 
   return (
-    <li className="follow-user">
-      <img
-        src={avatar}
-        className="follow-user__avatar"
-        alt={`${name}'s avatar`}
-      />
-      <div className="follow-user__info">
-        <p className="follow-user__info--name">{name}</p>
-        <p className="follow-user__info--handle">{handle}</p>
+    <li className="follow-user__container">
+      <div className="follow-user">
+        <img
+          src={avatar}
+          className="follow-user__avatar"
+          alt={`${name}'s avatar`}
+        />
+        <div className="follow-user__info">
+          <p className="follow-user__info--name">{name}</p>
+          <p className="follow-user__info--handle">{handle}</p>
+        </div>
+        <button
+          className={`follow-user__button last-child ${follow ? 'follow_active' : ''}`}
+          onClick={() => changeFollow(id)}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          {follow && isHovered
+            ? 'Již nesledovat'
+            : follow
+              ? 'Sleduji'
+              : 'Sledovat'}
+        </button>
       </div>
-      <button
-        className={`follow-user__button last-child ${follow ? 'follow_active' : ''}`}
-        onClick={() => changeFollow(id)}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        {follow && isHovered
-          ? 'Již nesledovat'
-          : follow
-            ? 'Sleduji'
-            : 'Sledovat'}
-      </button>
     </li>
   );
 };
