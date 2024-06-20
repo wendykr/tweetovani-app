@@ -5,12 +5,12 @@ import { Post } from '../../components/Post/Post';
 import { Timeline } from '../../components/Timeline/Timeline';
 import { messages } from '../../data/messages';
 import MessageStructure from '../../model/Message';
-import { PersonStructure } from '../../model/Person';
+import { useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
 
 interface HomePageProps {
   messagesData: MessageStructure[];
   setMessagesData: Dispatch<SetStateAction<MessageStructure[]>>;
-  randomPerson: PersonStructure;
   handleClickLike: (messageId: number) => void;
   handleClickBookmark: (messageId: number) => void;
   handleClickDelete: (messageId: number) => void;
@@ -19,11 +19,11 @@ interface HomePageProps {
 export const HomePage = ({
   messagesData,
   setMessagesData,
-  randomPerson,
   handleClickLike,
   handleClickBookmark,
   handleClickDelete,
 }: HomePageProps) => {
+  const { randomPerson } = useContext(UserContext);
   const prevId = useRef<number>(
     sessionStorage.getItem('messagesData')
       ? JSON.parse(sessionStorage.getItem('messagesData')!).length + 1
@@ -58,14 +58,10 @@ export const HomePage = ({
 
   return (
     <>
-      <Post
-        onNewMessage={(textMessage) => addNewMessage(textMessage)}
-        randomPerson={randomPerson}
-      />
+      <Post onNewMessage={(textMessage) => addNewMessage(textMessage)} />
 
       <Timeline
         messagesData={messagesData}
-        randomPerson={randomPerson}
         onClickLike={handleClickLike}
         onClickBookmark={handleClickBookmark}
         onClickDelete={handleClickDelete}
