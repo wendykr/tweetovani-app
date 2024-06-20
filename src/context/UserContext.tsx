@@ -12,6 +12,7 @@ export const UserContext = createContext<UserContextData>({
     name: '',
     handle: '',
     avatar: '',
+    follow: false,
   },
   setRandomPerson: () => {},
 });
@@ -26,6 +27,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     name: '',
     handle: '',
     avatar: '',
+    follow: false,
   });
 
   return (
