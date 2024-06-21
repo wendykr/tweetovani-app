@@ -17,9 +17,9 @@ export const Timeline = ({
   onClickDelete,
 }: TimelineProps) => {
   const { searchQuery } = useSearch();
-  const sortedMessages = messagesData.sort((a, b) => {
-    return new Date(b.time).getTime() - new Date(a.time).getTime();
-  });
+  const sortedMessages = messagesData.sort(
+    (a, b) => new Date(b.time).getTime() - new Date(a.time).getTime()
+  );
 
   const filterMessagesData = (
     messagesData: MessageStructure[],

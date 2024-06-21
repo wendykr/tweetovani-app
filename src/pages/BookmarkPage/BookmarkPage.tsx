@@ -20,11 +20,10 @@ export const BookmarkPage = ({
     (message) => message.bookmark === true
   );
 
-  const sortedMessages = filterMessagesData.sort((a, b) => {
-    return (
+  const sortedMessages = filterMessagesData.sort(
+    (a, b) =>
       new Date(b.bookmarkedAt).getTime() - new Date(a.bookmarkedAt).getTime()
-    );
-  });
+  );
 
   return (
     <>

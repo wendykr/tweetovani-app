@@ -20,9 +20,9 @@ export const LikePage = ({
     (message) => message.likeCount > 0 && message.like
   );
 
-  const sortedMessages = filterMessagesData.sort((a, b) => {
-    return new Date(b.likedAt).getTime() - new Date(a.likedAt).getTime();
-  });
+  const sortedMessages = filterMessagesData.sort(
+    (a, b) => new Date(b.likedAt).getTime() - new Date(a.likedAt).getTime()
+  );
 
   return (
     <>
