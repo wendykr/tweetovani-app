@@ -11,10 +11,10 @@ interface PostProps {
 }
 
 export const Post = ({ onNewMessage }: PostProps) => {
-  const [valueMessage, setValueMessage] = useState<string>('');
-  const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
-  const [charactersCount, setCharactersCount] = useState<number>(280);
-  const [isTextareaFocused, setIsTextareaFocused] = useState<boolean>(false);
+  const [valueMessage, setValueMessage] = useState('');
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [charactersCount, setCharactersCount] = useState(280);
+  const [isTextareaFocused, setIsTextareaFocused] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const { randomPerson } = useContext(UserContext);
