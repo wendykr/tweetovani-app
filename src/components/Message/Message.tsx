@@ -37,7 +37,12 @@ export const Message = ({
   return (
     <article className="message" key={message.id}>
       <div className="message__avatar">
-        <img src={message.avatar} alt="" />
+        <img
+          src={message.avatar}
+          alt={`Profilová fotka uživatele ${message.name}`}
+          width="3em"
+          height="auto"
+        />
       </div>
       <div className="message__content">
         <header className="message__header">
