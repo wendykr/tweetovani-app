@@ -8,7 +8,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import { ToastContainer, toast, Slide } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { HomePage } from './pages/HomePage/HomePage';
 import { LikePage } from './pages/LikePage/LikePage';
@@ -20,10 +20,12 @@ import dayjs from 'dayjs';
 import { getRandomPerson } from './helpers/getRandomPerson.ts';
 import { SearchProvider } from './context/SearchContext.tsx';
 import { UserContext, UserProvider } from './context/UserContext.tsx';
+import { useToast } from './hooks/useToast.tsx';
 
 const Main = () => {
   const [messagesData, setMessagesData] = useState<MessageStructure[]>([]);
   const { randomPerson, setRandomPerson } = useContext(UserContext);
+  const { showToast } = useToast();
 
   const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
 
@@ -96,49 +98,9 @@ const Main = () => {
 
     const message = messagesData.find((msg) => msg.id === messageId);
     if (message) {
-      if (!message.bookmark) {
-        toast(`Přidáno do Záložky.`, {
-          position: 'bottom-center',
-          autoClose: 2000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: 0,
-          theme: 'light',
-          transition: Slide,
-          closeButton: false,
-          style: {
-            width: '220px',
-            height: '20px',
-            background: '#1da1f2',
-            color: '#ffffff',
-            fontSize: '18px',
-            textAlign: 'center',
-          },
-        });
-      } else {
-        toast(`Odebráno ze Záložky.`, {
-          position: 'bottom-center',
-          autoClose: 2000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: 0,
-          theme: 'light',
-          transition: Slide,
-          closeButton: false,
-          style: {
-            width: '220px',
-            height: '20px',
-            background: '#1da1f2',
-            color: '#ffffff',
-            fontSize: '18px',
-            textAlign: 'center',
-          },
-        });
-      }
+      message.bookmark
+        ? showToast('Odebráno ze Záložky.')
+        : showToast('Přidáno do Záložky.');
     }
   };
 
