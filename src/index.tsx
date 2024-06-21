@@ -46,6 +46,10 @@ const Main = () => {
     }
   }, [setRandomPerson]);
 
+  const onSetMessagesData = (messagesData: MessageStructure[]) => {
+    setMessagesData(messagesData);
+  };
+
   const handleClickLike = (messageId: number) => {
     setMessagesData((prevMessages) => {
       const updatedMessages = prevMessages.map((message) => {
@@ -157,7 +161,7 @@ const Main = () => {
           element={
             <HomePage
               messagesData={messagesData}
-              setMessagesData={setMessagesData}
+              onSetMessagesData={onSetMessagesData}
               handleClickLike={handleClickLike}
               handleClickBookmark={handleClickBookmark}
               handleClickDelete={handleClickDelete}

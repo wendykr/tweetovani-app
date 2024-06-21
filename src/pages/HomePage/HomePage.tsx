@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useRef } from 'react';
+import { useRef } from 'react';
 import dayjs from 'dayjs';
 import { Post } from '../../components/Post/Post';
 import { Timeline } from '../../components/Timeline/Timeline';
@@ -9,7 +9,7 @@ import { UserContext } from '../../context/UserContext';
 
 interface HomePageProps {
   messagesData: MessageStructure[];
-  setMessagesData: Dispatch<SetStateAction<MessageStructure[]>>;
+  onSetMessagesData: (message: MessageStructure[]) => void;
   handleClickLike: (messageId: number) => void;
   handleClickBookmark: (messageId: number) => void;
   handleClickDelete: (messageId: number) => void;
@@ -17,7 +17,7 @@ interface HomePageProps {
 
 export const HomePage = ({
   messagesData,
-  setMessagesData,
+  onSetMessagesData,
   handleClickLike,
   handleClickBookmark,
   handleClickDelete,
@@ -47,7 +47,7 @@ export const HomePage = ({
       };
 
       const updatedMessages = [...messagesData, newMessage];
-      setMessagesData(updatedMessages);
+      onSetMessagesData(updatedMessages);
       sessionStorage.setItem('messagesData', JSON.stringify(updatedMessages));
       prevId.current += 1;
     } else {
