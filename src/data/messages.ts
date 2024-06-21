@@ -1,4 +1,4 @@
-import MessageStructure from '../model/Message';
+import MessageStructure from '../types/Message';
 
 export const messages: MessageStructure[] = [
   {
@@ -10,9 +10,9 @@ export const messages: MessageStructure[] = [
     text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus illum temporibus sit nemo, impedit maxime ipsum numquam laboriosam accusamus eius.',
     like: true,
     likeCount: 43,
-    timeLike: '2024-05-20 18:50:00',
+    likedAt: '2024-05-20 18:50:00',
     bookmark: false,
-    timeBookmark: '0000-00-00 00:00:00',
+    bookmarkedAt: '0000-00-00 00:00:00',
   },
   {
     id: 2,
@@ -23,9 +23,9 @@ export const messages: MessageStructure[] = [
     text: 'Temporibus ad nihil molestiae eaque officiis ipsum omnis incidunt voluptas nemo esse saepe cum repellendus.',
     like: true,
     likeCount: 13,
-    timeLike: '2024-06-09 18:00:00',
+    likedAt: '2024-06-09 18:00:00',
     bookmark: true,
-    timeBookmark: '2024-05-20 18:00:00',
+    bookmarkedAt: '2024-05-20 18:00:00',
   },
   {
     id: 3,
@@ -36,9 +36,9 @@ export const messages: MessageStructure[] = [
     text: 'Voluptas dolorem quis beatae doloribus nobis eligendi aperiam. Voluptates, deleniti eaque dolore, vitae consequatur, aspernatur reiciendis odio necessitatibus at natus labore.',
     like: false,
     likeCount: 2,
-    timeLike: '2024-05-20 14:00:00',
+    likedAt: '2024-05-20 14:00:00',
     bookmark: false,
-    timeBookmark: '0000-00-00 00:00:00',
+    bookmarkedAt: '0000-00-00 00:00:00',
   },
   {
     id: 4,
@@ -49,8 +49,8 @@ export const messages: MessageStructure[] = [
     text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.',
     like: false,
     likeCount: 0,
-    timeLike: '0000-00-00 00:00:00',
+    likedAt: '0000-00-00 00:00:00',
     bookmark: false,
-    timeBookmark: '0000-00-00 00:00:00',
+    bookmarkedAt: '0000-00-00 00:00:00',
   },
 ];

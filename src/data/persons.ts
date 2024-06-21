@@ -1,4 +1,4 @@
-import { PersonStructure } from '../model/Person';
+import { PersonStructure } from '../types/Person';
 
 export const persons: PersonStructure[] = [
   {

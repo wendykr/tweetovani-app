@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { persons } from '../../data/persons';
 import { FollowUser } from '../FollowUser/FollowUser';
 import './Follow.css';
-import { PersonStructure } from '../../model/Person';
+import { PersonStructure } from '../../types/Person';
 import { getRandomPerson } from '../../helpers/getRandomPerson';
 
 export const Follow = () => {

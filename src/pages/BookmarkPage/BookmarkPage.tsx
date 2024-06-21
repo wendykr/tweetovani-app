@@ -1,5 +1,5 @@
 import { Message } from '../../components/Message/Message';
-import MessageStructure from '../../model/Message';
+import MessageStructure from '../../types/Message';
 import './BookmarkPage.css';
 import { FaRegBookmark } from 'react-icons/fa';
 
@@ -22,7 +22,7 @@ export const BookmarkPage = ({
 
   const sortedMessages = filterMessagesData.sort((a, b) => {
     return (
-      new Date(b.timeBookmark).getTime() - new Date(a.timeBookmark).getTime()
+      new Date(b.bookmarkedAt).getTime() - new Date(a.bookmarkedAt).getTime()
     );
   });
 

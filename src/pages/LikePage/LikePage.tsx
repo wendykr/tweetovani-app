@@ -1,5 +1,5 @@
 import { Message } from '../../components/Message/Message';
-import MessageStructure from '../../model/Message';
+import MessageStructure from '../../types/Message';
 import './LikePage.css';
 import { FaRegHeart } from 'react-icons/fa';
 
@@ -21,7 +21,7 @@ export const LikePage = ({
   );
 
   const sortedMessages = filterMessagesData.sort((a, b) => {
-    return new Date(b.timeLike).getTime() - new Date(a.timeLike).getTime();
+    return new Date(b.likedAt).getTime() - new Date(a.likedAt).getTime();
   });
 
   return (

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { PersonStructure } from '../../model/Person';
+import { PersonStructure } from '../../types/Person';
 import './FollowUser.css';
 
 interface FollowUserProps extends PersonStructure {

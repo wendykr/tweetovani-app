@@ -1,5 +1,5 @@
 import { Message } from '../Message/Message';
-import MessageStructure from '../../model/Message';
+import MessageStructure from '../../types/Message';
 import './Timeline.css';
 import { useSearch } from '../../context/SearchContext';
 

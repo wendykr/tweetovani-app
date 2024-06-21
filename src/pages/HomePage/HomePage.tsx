@@ -1,10 +1,9 @@
 import { Dispatch, SetStateAction, useRef } from 'react';
 import dayjs from 'dayjs';
-
 import { Post } from '../../components/Post/Post';
 import { Timeline } from '../../components/Timeline/Timeline';
 import { messages } from '../../data/messages';
-import MessageStructure from '../../model/Message';
+import MessageStructure from '../../types/Message';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 
@@ -42,9 +41,9 @@ export const HomePage = ({
         text: textMessage,
         like: false,
         likeCount: 0,
-        timeLike: '0000-00-00 00:00:00',
+        likedAt: '0000-00-00 00:00:00',
         bookmark: false,
-        timeBookmark: '0000-00-00 00:00:00',
+        bookmarkedAt: '0000-00-00 00:00:00',
       };
 
       const updatedMessages = [...messagesData, newMessage];

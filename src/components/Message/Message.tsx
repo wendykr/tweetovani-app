@@ -1,5 +1,5 @@
 import './Message.css';
-import MessageStructure from '../../model/Message';
+import MessageStructure from '../../types/Message';
 import { FaRegHeart } from 'react-icons/fa';
 import { FaHeart } from 'react-icons/fa';
 import { FaRegBookmark } from 'react-icons/fa';

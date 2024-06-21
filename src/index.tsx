@@ -15,7 +15,7 @@ import { LikePage } from './pages/LikePage/LikePage';
 import { BookmarkPage } from './pages/BookmarkPage/BookmarkPage';
 import { messages } from './data/messages';
 import { persons } from './data/persons';
-import MessageStructure from './model/Message';
+import MessageStructure from './types/Message.ts';
 import dayjs from 'dayjs';
 import { getRandomPerson } from './helpers/getRandomPerson.ts';
 import { SearchProvider } from './context/SearchContext.tsx';
@@ -55,14 +55,14 @@ const Main = () => {
               ...message,
               likeCount: message.likeCount - 1,
               like: false,
-              timeLike: now,
+              likedAt: now,
             };
           } else {
             return {
               ...message,
               likeCount: message.likeCount + 1,
               like: true,
-              timeLike: now,
+              likedAt: now,
             };
           }
         }
@@ -81,7 +81,7 @@ const Main = () => {
           return {
             ...message,
             bookmark: !message.bookmark,
-            timeBookmark: message.bookmark ? '0000-00-00 00:00:00' : now,
+            bookmarkedAt: message.bookmark ? '0000-00-00 00:00:00' : now,
           };
         }
         return message;
@@ -197,11 +197,11 @@ const Main = () => {
 const rootElement: HTMLElement = document.getElementById('root')!;
 ReactDOM.createRoot(rootElement).render(
   <>
-  <UserProvider>
-    <SearchProvider>
-      <ToastContainer />
-      <Main />
-    </SearchProvider>
+    <UserProvider>
+      <SearchProvider>
+        <ToastContainer />
+        <Main />
+      </SearchProvider>
     </UserProvider>
   </>
 );

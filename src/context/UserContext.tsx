@@ -1,5 +1,5 @@
 import React, { ReactNode, createContext, useContext, useState } from 'react';
-import { PersonStructure } from '../model/Person';
+import { PersonStructure } from '../types/Person';
 
 interface UserContextData {
   randomPerson: PersonStructure;
