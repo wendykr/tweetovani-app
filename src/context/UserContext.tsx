@@ -1,4 +1,9 @@
-import React, { ReactNode, createContext, useContext, useState } from 'react';
+import React, {
+  PropsWithChildren,
+  createContext,
+  useContext,
+  useState,
+} from 'react';
 import { PersonStructure } from '../types/Person';
 
 interface UserContextData {
@@ -17,11 +22,7 @@ export const UserContext = createContext<UserContextData>({
   setRandomPerson: () => {},
 });
 
-interface UserProviderProps {
-  children: ReactNode;
-}
-
-export const UserProvider = ({ children }: UserProviderProps) => {
+export const UserProvider = ({ children }: PropsWithChildren) => {
   const [randomPerson, setRandomPerson] = useState<PersonStructure>({
     id: 0,
     name: '',

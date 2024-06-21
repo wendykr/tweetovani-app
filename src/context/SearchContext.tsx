@@ -1,4 +1,9 @@
-import React, { ReactNode, createContext, useContext, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  PropsWithChildren,
+} from 'react';
 
 interface SearchContextData {
   searchQuery: string;
@@ -12,11 +17,7 @@ export const SearchContext = createContext<SearchContextData>({
   onSearchChange: () => {},
 });
 
-interface SearchProviderProps {
-  children: ReactNode;
-}
-
-export const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
+export const SearchProvider = ({ children }: PropsWithChildren) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
