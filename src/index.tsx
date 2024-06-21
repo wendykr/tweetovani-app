@@ -140,12 +140,10 @@ const Main = () => {
 
   const handleClickDelete = (messageId: number) => {
     setMessagesData((prevMessages) => {
-      const currentMessages = prevMessages.filter((message) => {
-        if (message.id === messageId && message.name === randomPerson.name) {
-          return false;
-        }
-        return true;
-      });
+      const currentMessages = prevMessages.filter(
+        (message) =>
+          !(message.id === messageId && message.name === randomPerson.name)
+      );
       sessionStorage.setItem('messagesData', JSON.stringify(currentMessages));
       return currentMessages;
     });
