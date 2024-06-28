@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import dayjs from 'dayjs';
 import { Post } from '../../components/Post/Post';
 import { Timeline } from '../../components/Timeline/Timeline';
-import { messages as messagesData } from '../../data/messages';
+import { messages as initialMessages } from '../../data/messages';
 import Message from '../../types/Message';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
@@ -26,7 +26,7 @@ export const HomePage = ({
   const prevId = useRef<number>(
     sessionStorage.getItem('messages')
       ? JSON.parse(sessionStorage.getItem('messages')!).length + 1
-      : messagesData.length + 1
+      : initialMessages.length + 1
   );
   const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
 
