@@ -1,22 +1,22 @@
+import { useContext } from 'react';
 import { ProfileMessage } from '../../components/ProfileMessage/ProfileMessage';
+import { MessageContext } from '../../context/MessageContext';
 import { getSortedMessages } from '../../helpers/getSortedMessages';
-import Message from '../../types/Message';
 import './LikePage.css';
 import { FaRegHeart } from 'react-icons/fa';
 
 interface LikePageProps {
-  messages: Message[];
   handleClickLike: (messageId: number) => void;
   handleClickBookmark: (messageId: number) => void;
   handleClickDelete: (messageId: number) => void;
 }
 
 export const LikePage = ({
-  messages,
   handleClickLike,
   handleClickBookmark,
   handleClickDelete,
 }: LikePageProps) => {
+  const { messages } = useContext(MessageContext);
   const filterMessages = messages.filter(
     (message) => message.likeCount > 0 && message.like
   );

@@ -3,20 +3,21 @@ import Message from '../../types/Message';
 import './Timeline.css';
 import { useSearch } from '../../context/SearchContext';
 import { getSortedMessages } from '../../helpers/getSortedMessages';
+import { MessageContext } from '../../context/MessageContext';
+import { useContext } from 'react';
 
 interface TimelineProps {
-  messages: Message[];
   onClickLike: (messageId: number) => void;
   onClickBookmark: (messageId: number) => void;
   onClickDelete: (messageId: number) => void;
 }
 
 export const Timeline = ({
-  messages,
   onClickLike,
   onClickBookmark,
   onClickDelete,
 }: TimelineProps) => {
+  const { messages } = useContext(MessageContext);
   const { searchQuery } = useSearch();
   const sortedMessages = getSortedMessages(messages, 'time');
 

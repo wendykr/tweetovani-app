@@ -1,22 +1,22 @@
+import { useContext } from 'react';
 import { ProfileMessage } from '../../components/ProfileMessage/ProfileMessage';
+import { MessageContext } from '../../context/MessageContext';
 import { getSortedMessages } from '../../helpers/getSortedMessages';
-import Message from '../../types/Message';
 import './BookmarkPage.css';
 import { FaRegBookmark } from 'react-icons/fa';
 
 interface BookmarkPageProps {
-  messages: Message[];
   handleClickLike: (messageId: number) => void;
   handleClickBookmark: (messageId: number) => void;
   handleClickDelete: (messageId: number) => void;
 }
 
 export const BookmarkPage = ({
-  messages,
   handleClickLike,
   handleClickBookmark,
   handleClickDelete,
 }: BookmarkPageProps) => {
+      const { messages } = useContext(MessageContext);
   const filterMessages = messages.filter(
     (message) => message.bookmark === true
   );

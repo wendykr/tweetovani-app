@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
@@ -21,9 +21,10 @@ import { getRandomPerson } from './helpers/getRandomPerson.ts';
 import { SearchProvider } from './context/SearchContext.tsx';
 import { UserContext, UserProvider } from './context/UserContext.tsx';
 import { useToast } from './hooks/useToast.tsx';
+import { MessageContext, MessageProvider } from './context/MessageContext.tsx';
 
 const Main = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const { messages, setMessages} = useContext(MessageContext);
   const { randomPerson, setRandomPerson } = useContext(UserContext);
   const { showToast } = useToast();
 
@@ -122,7 +123,6 @@ const Main = () => {
           path="/"
           element={
             <HomePage
-              messages={messages}
               onSetMessages={onSetMessages}
               handleClickLike={handleClickLike}
               handleClickBookmark={handleClickBookmark}
@@ -134,7 +134,6 @@ const Main = () => {
           path="/bookmark"
           element={
             <BookmarkPage
-              messages={messages}
               handleClickLike={handleClickLike}
               handleClickBookmark={handleClickBookmark}
               handleClickDelete={handleClickDelete}
@@ -145,7 +144,6 @@ const Main = () => {
           path="/like"
           element={
             <LikePage
-              messages={messages}
               handleClickLike={handleClickLike}
               handleClickBookmark={handleClickBookmark}
               handleClickDelete={handleClickDelete}
@@ -161,11 +159,13 @@ const Main = () => {
 const rootElement: HTMLElement = document.getElementById('root')!;
 ReactDOM.createRoot(rootElement).render(
   <>
-    <UserProvider>
-      <SearchProvider>
-        <ToastContainer />
-        <Main />
-      </SearchProvider>
-    </UserProvider>
+    <MessageProvider>
+      <UserProvider>
+        <SearchProvider>
+          <ToastContainer />
+          <Main />
+        </SearchProvider>
+      </UserProvider>
+    </MessageProvider>
   </>
 );

@@ -6,9 +6,9 @@ import { messages as initialMessages } from '../../data/messages';
 import Message from '../../types/Message';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
+import { MessageContext } from '../../context/MessageContext';
 
 interface HomePageProps {
-  messages: Message[];
   onSetMessages: (message: Message[]) => void;
   handleClickLike: (messageId: number) => void;
   handleClickBookmark: (messageId: number) => void;
@@ -16,12 +16,12 @@ interface HomePageProps {
 }
 
 export const HomePage = ({
-  messages,
   onSetMessages,
   handleClickLike,
   handleClickBookmark,
   handleClickDelete,
 }: HomePageProps) => {
+    const { messages } = useContext(MessageContext);
   const { randomPerson } = useContext(UserContext);
   const prevId = useRef<number>(
     sessionStorage.getItem('messages')
@@ -60,7 +60,6 @@ export const HomePage = ({
       <Post onNewMessage={(textMessage) => addNewMessage(textMessage)} />
 
       <Timeline
-        messages={messages}
         onClickLike={handleClickLike}
         onClickBookmark={handleClickBookmark}
         onClickDelete={handleClickDelete}
