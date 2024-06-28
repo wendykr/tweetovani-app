@@ -2,6 +2,7 @@ import { ProfileMessage } from '../ProfileMessage/ProfileMessage';
 import Message from '../../types/Message';
 import './Timeline.css';
 import { useSearch } from '../../context/SearchContext';
+import { getSortedMessages } from '../../helpers/getSortedMessages';
 
 interface TimelineProps {
   messages: Message[];
@@ -17,9 +18,7 @@ export const Timeline = ({
   onClickDelete,
 }: TimelineProps) => {
   const { searchQuery } = useSearch();
-  const sortedMessages = messages.sort(
-    (a, b) => new Date(b.time).getTime() - new Date(a.time).getTime()
-  );
+  const sortedMessages = getSortedMessages(messages, 'time');
 
   const filterMessages = (
     messages: Message[],

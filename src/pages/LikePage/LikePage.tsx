@@ -1,4 +1,5 @@
 import { ProfileMessage } from '../../components/ProfileMessage/ProfileMessage';
+import { getSortedMessages } from '../../helpers/getSortedMessages';
 import Message from '../../types/Message';
 import './LikePage.css';
 import { FaRegHeart } from 'react-icons/fa';
@@ -20,9 +21,7 @@ export const LikePage = ({
     (message) => message.likeCount > 0 && message.like
   );
 
-  const sortedMessages = filterMessages.sort(
-    (a, b) => new Date(b.likedAt).getTime() - new Date(a.likedAt).getTime()
-  );
+  const sortedMessages = getSortedMessages(filterMessages, 'likedAt');
 
   return (
     <>

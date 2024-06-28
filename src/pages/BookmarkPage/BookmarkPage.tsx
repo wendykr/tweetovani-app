@@ -1,4 +1,5 @@
 import { ProfileMessage } from '../../components/ProfileMessage/ProfileMessage';
+import { getSortedMessages } from '../../helpers/getSortedMessages';
 import Message from '../../types/Message';
 import './BookmarkPage.css';
 import { FaRegBookmark } from 'react-icons/fa';
@@ -20,10 +21,7 @@ export const BookmarkPage = ({
     (message) => message.bookmark === true
   );
 
-  const sortedMessages = filterMessages.sort(
-    (a, b) =>
-      new Date(b.bookmarkedAt).getTime() - new Date(a.bookmarkedAt).getTime()
-  );
+  const sortedMessages = getSortedMessages(filterMessages, 'bookmarkedAt');
 
   return (
     <>
