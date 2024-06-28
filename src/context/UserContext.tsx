@@ -4,9 +4,9 @@ import React, {
   useContext,
   useState,
 } from 'react';
-import { PersonStructure } from '../types/Person';
+import { Person } from '../types/Person';
 
-const initialUser: PersonStructure = {
+const initialUser: Person = {
   id: 0,
   name: '',
   handle: '',
@@ -15,8 +15,8 @@ const initialUser: PersonStructure = {
 };
 
 interface UserContextData {
-  randomPerson: PersonStructure;
-  setRandomPerson: React.Dispatch<React.SetStateAction<PersonStructure>>;
+  randomPerson: Person;
+  setRandomPerson: React.Dispatch<React.SetStateAction<Person>>;
 }
 
 export const UserContext = createContext<UserContextData>({
@@ -26,7 +26,7 @@ export const UserContext = createContext<UserContextData>({
 
 export const UserProvider = ({ children }: PropsWithChildren) => {
   const [randomPerson, setRandomPerson] =
-    useState<PersonStructure>(initialUser);
+    useState<Person>(initialUser);
 
   return (
     <UserContext.Provider

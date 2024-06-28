@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { PersonStructure } from '../../types/Person';
+import { Person } from '../../types/Person';
 import './FollowUser.css';
 
-interface FollowUserProps extends PersonStructure {
+interface FollowUserProps extends Person {
   changeFollow: (followerId: number) => void;
 }
 

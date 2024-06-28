@@ -1,6 +1,6 @@
-import { PersonStructure } from '../types/Person';
+import { Person } from '../types/Person';
 
-export const persons: PersonStructure[] = [
+export const persons: Person[] = [
   {
     id: 1,
     name: 'Alena Nováková',
