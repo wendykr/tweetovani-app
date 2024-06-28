@@ -15,22 +15,21 @@ import { LikePage } from './pages/LikePage/LikePage';
 import { BookmarkPage } from './pages/BookmarkPage/BookmarkPage';
 import { messages as initialMessages } from './data/messages';
 import { persons } from './data/persons';
-import Message from './types/Message.ts';
 import { getRandomPerson } from './helpers/getRandomPerson.ts';
 import { SearchProvider } from './context/SearchContext.tsx';
 import { UserContext, UserProvider } from './context/UserContext.tsx';
 import { MessageContext, MessageProvider } from './context/MessageContext.tsx';
 
 const Main = () => {
-  const { setMessages} = useContext(MessageContext);
+  const { onSetMessages} = useContext(MessageContext);
   const { setRandomPerson } = useContext(UserContext);
 
   useEffect(() => {
     const storedMessages = sessionStorage.getItem('messages');
     if (storedMessages) {
-      setMessages(JSON.parse(storedMessages));
+      onSetMessages(JSON.parse(storedMessages));
     } else {
-      setMessages(initialMessages);
+      onSetMessages(initialMessages);
       sessionStorage.setItem('messages', JSON.stringify(initialMessages));
     }
 
@@ -44,10 +43,6 @@ const Main = () => {
     }
   }, [setRandomPerson]);
 
-  const onSetMessages = (messages: Message[]) => {
-    setMessages(messages);
-  };
-
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<App />}>
@@ -55,7 +50,6 @@ const Main = () => {
           path="/"
           element={
             <HomePage
-              onSetMessages={onSetMessages}
             />
           }
         />

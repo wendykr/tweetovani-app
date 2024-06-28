@@ -1,4 +1,4 @@
-import React, {
+import {
   createContext,
   useContext,
   useState,
@@ -12,7 +12,7 @@ import { UserContext } from './UserContext';
 
 interface MessageContextData {
   messages: Message[];
-  setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+  onSetMessages: (messages: Message[]) => void;
   handleClickBookmark: (messageId: number) => void;
   handleClickDelete: (messageId: number) => void;
   handleClickLike: (messageId: number) => void;
@@ -20,7 +20,7 @@ interface MessageContextData {
 
 export const MessageContext = createContext<MessageContextData>({
   messages: [],
-  setMessages: () => {},
+  onSetMessages: () => {},
   handleClickBookmark: () => {},
   handleClickDelete: () => {},
   handleClickLike: () => {},
@@ -97,11 +97,15 @@ export const MessageProvider = ({ children }: PropsWithChildren) => {
       });
     };
 
+  const onSetMessages = (messages: Message[]) => {
+    setMessages(messages);
+  };
+
   return (
     <MessageContext.Provider
       value={{
         messages,
-        setMessages,
+        onSetMessages,
         handleClickDelete,
         handleClickBookmark,
         handleClickLike,

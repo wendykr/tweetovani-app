@@ -3,19 +3,12 @@ import dayjs from 'dayjs';
 import { Post } from '../../components/Post/Post';
 import { Timeline } from '../../components/Timeline/Timeline';
 import { messages as initialMessages } from '../../data/messages';
-import Message from '../../types/Message';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 import { MessageContext } from '../../context/MessageContext';
 
-interface HomePageProps {
-  onSetMessages: (message: Message[]) => void;
-}
-
-export const HomePage = ({
-  onSetMessages
-}: HomePageProps) => {
-    const { messages } = useContext(MessageContext);
+export const HomePage = () => {
+    const { messages, onSetMessages } = useContext(MessageContext);
   const { randomPerson } = useContext(UserContext);
   const prevId = useRef<number>(
     sessionStorage.getItem('messages')
