@@ -5,17 +5,7 @@ import { getSortedMessages } from '../../helpers/getSortedMessages';
 import './BookmarkPage.css';
 import { FaRegBookmark } from 'react-icons/fa';
 
-interface BookmarkPageProps {
-  handleClickLike: (messageId: number) => void;
-  handleClickBookmark: (messageId: number) => void;
-  handleClickDelete: (messageId: number) => void;
-}
-
-export const BookmarkPage = ({
-  handleClickLike,
-  handleClickBookmark,
-  handleClickDelete,
-}: BookmarkPageProps) => {
+export const BookmarkPage = () => {
       const { messages } = useContext(MessageContext);
   const filterMessages = messages.filter(
     (message) => message.bookmark === true
@@ -30,9 +20,6 @@ export const BookmarkPage = ({
           <ProfileMessage
             key={message.id}
             message={message}
-            onClickLike={handleClickLike}
-            onClickBookmark={handleClickBookmark}
-            onClickDelete={handleClickDelete}
           />
         ))
       ) : (

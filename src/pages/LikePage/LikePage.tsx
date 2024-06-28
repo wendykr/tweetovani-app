@@ -5,17 +5,7 @@ import { getSortedMessages } from '../../helpers/getSortedMessages';
 import './LikePage.css';
 import { FaRegHeart } from 'react-icons/fa';
 
-interface LikePageProps {
-  handleClickLike: (messageId: number) => void;
-  handleClickBookmark: (messageId: number) => void;
-  handleClickDelete: (messageId: number) => void;
-}
-
-export const LikePage = ({
-  handleClickLike,
-  handleClickBookmark,
-  handleClickDelete,
-}: LikePageProps) => {
+export const LikePage = () => {
   const { messages } = useContext(MessageContext);
   const filterMessages = messages.filter(
     (message) => message.likeCount > 0 && message.like
@@ -30,9 +20,6 @@ export const LikePage = ({
           <ProfileMessage
             key={message.id}
             message={message}
-            onClickLike={handleClickLike}
-            onClickBookmark={handleClickBookmark}
-            onClickDelete={handleClickDelete}
           />
         ))
       ) : (

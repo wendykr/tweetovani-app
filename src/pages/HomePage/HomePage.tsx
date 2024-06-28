@@ -10,16 +10,10 @@ import { MessageContext } from '../../context/MessageContext';
 
 interface HomePageProps {
   onSetMessages: (message: Message[]) => void;
-  handleClickLike: (messageId: number) => void;
-  handleClickBookmark: (messageId: number) => void;
-  handleClickDelete: (messageId: number) => void;
 }
 
 export const HomePage = ({
-  onSetMessages,
-  handleClickLike,
-  handleClickBookmark,
-  handleClickDelete,
+  onSetMessages
 }: HomePageProps) => {
     const { messages } = useContext(MessageContext);
   const { randomPerson } = useContext(UserContext);
@@ -59,11 +53,7 @@ export const HomePage = ({
     <>
       <Post onNewMessage={(textMessage) => addNewMessage(textMessage)} />
 
-      <Timeline
-        onClickLike={handleClickLike}
-        onClickBookmark={handleClickBookmark}
-        onClickDelete={handleClickDelete}
-      />
+      <Timeline/>
     </>
   );
 };

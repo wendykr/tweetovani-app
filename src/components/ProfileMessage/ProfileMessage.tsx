@@ -8,21 +8,17 @@ import { FiTrash } from 'react-icons/fi';
 import dayjs from 'dayjs';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
+import { MessageContext } from '../../context/MessageContext';
 
 interface ProfileMessageProps {
   message: Message;
-  onClickLike: (messageId: number) => void;
-  onClickBookmark: (messageId: number) => void;
-  onClickDelete: (messageId: number) => void;
 }
 
 export const ProfileMessage = ({
   message,
-  onClickLike,
-  onClickBookmark,
-  onClickDelete,
 }: ProfileMessageProps) => {
   const { randomPerson } = useContext(UserContext);
+  const { handleClickBookmark, handleClickDelete, handleClickLike } = useContext(MessageContext);
   const countDay = (time: string) => {
     const difference = dayjs().diff(dayjs(time), 'hour');
 
@@ -55,7 +51,7 @@ export const ProfileMessage = ({
         <footer className="message__footer">
           <button
             className="icon-button icon-button--rosa"
-            onClick={() => onClickLike(message.id)}
+            onClick={() => handleClickLike(message.id)}
             title="Miluju to"
           >
             <span className="icon-button__icon">
@@ -69,7 +65,7 @@ export const ProfileMessage = ({
           </button>
           <button
             className="icon-button icon-button--blue"
-            onClick={() => onClickBookmark(message.id)}
+            onClick={() => handleClickBookmark(message.id)}
             title={
               message.bookmark ? 'Odebrat ze záložek' : 'Přidat do záložek'
             }
@@ -86,7 +82,7 @@ export const ProfileMessage = ({
           {message.name === randomPerson.name && (
             <button
               className="icon-button icon-button--red"
-              onClick={() => onClickDelete(message.id)}
+              onClick={() => handleClickDelete(message.id)}
               title="Smazat zprávu"
             >
               <span className="icon-button__icon">

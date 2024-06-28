@@ -16,19 +16,14 @@ import { BookmarkPage } from './pages/BookmarkPage/BookmarkPage';
 import { messages as initialMessages } from './data/messages';
 import { persons } from './data/persons';
 import Message from './types/Message.ts';
-import dayjs from 'dayjs';
 import { getRandomPerson } from './helpers/getRandomPerson.ts';
 import { SearchProvider } from './context/SearchContext.tsx';
 import { UserContext, UserProvider } from './context/UserContext.tsx';
-import { useToast } from './hooks/useToast.tsx';
 import { MessageContext, MessageProvider } from './context/MessageContext.tsx';
 
 const Main = () => {
-  const { messages, setMessages} = useContext(MessageContext);
-  const { randomPerson, setRandomPerson } = useContext(UserContext);
-  const { showToast } = useToast();
-
-  const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
+  const { setMessages} = useContext(MessageContext);
+  const { setRandomPerson } = useContext(UserContext);
 
   useEffect(() => {
     const storedMessages = sessionStorage.getItem('messages');
@@ -53,69 +48,6 @@ const Main = () => {
     setMessages(messages);
   };
 
-  const handleClickLike = (messageId: number) => {
-    setMessages((prevMessages) => {
-      const updatedMessages = prevMessages.map((message) => {
-        if (message.id === messageId) {
-          if (message.like) {
-            return {
-              ...message,
-              likeCount: message.likeCount - 1,
-              like: false,
-              likedAt: now,
-            };
-          } else {
-            return {
-              ...message,
-              likeCount: message.likeCount + 1,
-              like: true,
-              likedAt: now,
-            };
-          }
-        }
-        return message;
-      });
-      sessionStorage.setItem('messages', JSON.stringify(updatedMessages));
-      return updatedMessages;
-    });
-  };
-
-  const handleClickBookmark = (messageId: number) => {
-    setMessages((prevMessages) => {
-      const updatedMessages = prevMessages.map((message) => {
-        if (message.id === messageId) {
-          const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
-          return {
-            ...message,
-            bookmark: !message.bookmark,
-            bookmarkedAt: message.bookmark ? '0000-00-00 00:00:00' : now,
-          };
-        }
-        return message;
-      });
-      sessionStorage.setItem('messages', JSON.stringify(updatedMessages));
-      return updatedMessages;
-    });
-
-    const message = messages.find((msg) => msg.id === messageId);
-    if (message) {
-      message.bookmark
-        ? showToast('Odebráno ze Záložky.')
-        : showToast('Přidáno do Záložky.');
-    }
-  };
-
-  const handleClickDelete = (messageId: number) => {
-    setMessages((prevMessages) => {
-      const currentMessages = prevMessages.filter(
-        (message) =>
-          !(message.id === messageId && message.name === randomPerson.name)
-      );
-      sessionStorage.setItem('messages', JSON.stringify(currentMessages));
-      return currentMessages;
-    });
-  };
-
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<App />}>
@@ -124,9 +56,6 @@ const Main = () => {
           element={
             <HomePage
               onSetMessages={onSetMessages}
-              handleClickLike={handleClickLike}
-              handleClickBookmark={handleClickBookmark}
-              handleClickDelete={handleClickDelete}
             />
           }
         />
@@ -134,9 +63,6 @@ const Main = () => {
           path="/bookmark"
           element={
             <BookmarkPage
-              handleClickLike={handleClickLike}
-              handleClickBookmark={handleClickBookmark}
-              handleClickDelete={handleClickDelete}
             />
           }
         />
@@ -144,9 +70,6 @@ const Main = () => {
           path="/like"
           element={
             <LikePage
-              handleClickLike={handleClickLike}
-              handleClickBookmark={handleClickBookmark}
-              handleClickDelete={handleClickDelete}
             />
           }
         />
@@ -159,13 +82,13 @@ const Main = () => {
 const rootElement: HTMLElement = document.getElementById('root')!;
 ReactDOM.createRoot(rootElement).render(
   <>
-    <MessageProvider>
-      <UserProvider>
+    <UserProvider>
+      <MessageProvider>
         <SearchProvider>
           <ToastContainer />
           <Main />
         </SearchProvider>
-      </UserProvider>
-    </MessageProvider>
+      </MessageProvider>
+    </UserProvider>
   </>
 );

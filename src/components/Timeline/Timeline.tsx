@@ -6,17 +6,7 @@ import { getSortedMessages } from '../../helpers/getSortedMessages';
 import { MessageContext } from '../../context/MessageContext';
 import { useContext } from 'react';
 
-interface TimelineProps {
-  onClickLike: (messageId: number) => void;
-  onClickBookmark: (messageId: number) => void;
-  onClickDelete: (messageId: number) => void;
-}
-
-export const Timeline = ({
-  onClickLike,
-  onClickBookmark,
-  onClickDelete,
-}: TimelineProps) => {
+export const Timeline = () => {
   const { messages } = useContext(MessageContext);
   const { searchQuery } = useSearch();
   const sortedMessages = getSortedMessages(messages, 'time');
@@ -39,9 +29,6 @@ export const Timeline = ({
             <ProfileMessage
               key={message.id}
               message={message}
-              onClickLike={onClickLike}
-              onClickBookmark={onClickBookmark}
-              onClickDelete={onClickDelete}
             />
           ))
         ) : (
