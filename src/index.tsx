@@ -15,7 +15,7 @@ import { LikePage } from './pages/LikePage/LikePage';
 import { BookmarkPage } from './pages/BookmarkPage/BookmarkPage';
 import { messages } from './data/messages';
 import { persons } from './data/persons';
-import MessageStructure from './types/Message.ts';
+import Message from './types/Message.ts';
 import dayjs from 'dayjs';
 import { getRandomPerson } from './helpers/getRandomPerson.ts';
 import { SearchProvider } from './context/SearchContext.tsx';
@@ -23,7 +23,7 @@ import { UserContext, UserProvider } from './context/UserContext.tsx';
 import { useToast } from './hooks/useToast.tsx';
 
 const Main = () => {
-  const [messagesData, setMessagesData] = useState<MessageStructure[]>([]);
+  const [messagesData, setMessagesData] = useState<Message[]>([]);
   const { randomPerson, setRandomPerson } = useContext(UserContext);
   const { showToast } = useToast();
 
@@ -48,7 +48,7 @@ const Main = () => {
     }
   }, [setRandomPerson]);
 
-  const onSetMessagesData = (messagesData: MessageStructure[]) => {
+  const onSetMessagesData = (messagesData: Message[]) => {
     setMessagesData(messagesData);
   };
 

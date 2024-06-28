@@ -1,10 +1,10 @@
-import { Message } from '../Message/Message';
-import MessageStructure from '../../types/Message';
+import { ProfileMessage } from '../ProfileMessage/ProfileMessage';
+import Message from '../../types/Message';
 import './Timeline.css';
 import { useSearch } from '../../context/SearchContext';
 
 interface TimelineProps {
-  messagesData: MessageStructure[];
+  messagesData: Message[];
   onClickLike: (messageId: number) => void;
   onClickBookmark: (messageId: number) => void;
   onClickDelete: (messageId: number) => void;
@@ -22,7 +22,7 @@ export const Timeline = ({
   );
 
   const filterMessagesData = (
-    messagesData: MessageStructure[],
+    messagesData: Message[],
     searchTerm: string
   ) =>
     messagesData.filter((message) =>
@@ -36,7 +36,7 @@ export const Timeline = ({
       {messagesData && messagesData.length > 0 ? (
         filteredMessagesData.length > 0 ? (
           filteredMessagesData.map((message) => (
-            <Message
+            <ProfileMessage
               key={message.id}
               message={message}
               onClickLike={onClickLike}

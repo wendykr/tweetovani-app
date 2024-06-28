@@ -1,5 +1,5 @@
-import './Message.css';
-import MessageStructure from '../../types/Message';
+import './ProfileMessage.css';
+import Message from '../../types/Message';
 import { FaRegHeart } from 'react-icons/fa';
 import { FaHeart } from 'react-icons/fa';
 import { FaRegBookmark } from 'react-icons/fa';
@@ -9,19 +9,19 @@ import dayjs from 'dayjs';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 
-interface MessageProps {
-  message: MessageStructure;
+interface ProfileMessageProps {
+  message: Message;
   onClickLike: (messageId: number) => void;
   onClickBookmark: (messageId: number) => void;
   onClickDelete: (messageId: number) => void;
 }
 
-export const Message = ({
+export const ProfileMessage = ({
   message,
   onClickLike,
   onClickBookmark,
   onClickDelete,
-}: MessageProps) => {
+}: ProfileMessageProps) => {
   const { randomPerson } = useContext(UserContext);
   const countDay = (time: string) => {
     const difference = dayjs().diff(dayjs(time), 'hour');

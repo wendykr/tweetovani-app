@@ -3,13 +3,13 @@ import dayjs from 'dayjs';
 import { Post } from '../../components/Post/Post';
 import { Timeline } from '../../components/Timeline/Timeline';
 import { messages } from '../../data/messages';
-import MessageStructure from '../../types/Message';
+import Message from '../../types/Message';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 
 interface HomePageProps {
-  messagesData: MessageStructure[];
-  onSetMessagesData: (message: MessageStructure[]) => void;
+  messagesData: Message[];
+  onSetMessagesData: (message: Message[]) => void;
   handleClickLike: (messageId: number) => void;
   handleClickBookmark: (messageId: number) => void;
   handleClickDelete: (messageId: number) => void;

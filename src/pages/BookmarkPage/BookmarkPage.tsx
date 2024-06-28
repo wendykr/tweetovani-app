@@ -1,10 +1,10 @@
-import { Message } from '../../components/Message/Message';
-import MessageStructure from '../../types/Message';
+import { ProfileMessage } from '../../components/ProfileMessage/ProfileMessage';
+import Message from '../../types/Message';
 import './BookmarkPage.css';
 import { FaRegBookmark } from 'react-icons/fa';
 
 interface BookmarkPageProps {
-  messagesData: MessageStructure[];
+  messagesData: Message[];
   handleClickLike: (messageId: number) => void;
   handleClickBookmark: (messageId: number) => void;
   handleClickDelete: (messageId: number) => void;
@@ -29,7 +29,7 @@ export const BookmarkPage = ({
     <>
       {filterMessagesData.length > 0 ? (
         sortedMessages.map((message) => (
-          <Message
+          <ProfileMessage
             key={message.id}
             message={message}
             onClickLike={handleClickLike}

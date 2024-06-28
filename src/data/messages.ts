@@ -1,6 +1,6 @@
-import MessageStructure from '../types/Message';
+import Message from '../types/Message';
 
-export const messages: MessageStructure[] = [
+export const messages: Message[] = [
   {
     id: 1,
     avatar: '../avatars/woman1.jpg',

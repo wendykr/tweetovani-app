@@ -1,4 +1,4 @@
-export default interface MessageStructure {
+export default interface Message {
   id: number;
   avatar: string;
   name: string;
