@@ -40,8 +40,7 @@ export const ProfileMessage = ({
         <img
           src={message.avatar}
           alt={`Profilová fotka uživatele ${message.name}`}
-          width="3em"
-          height="auto"
+          width="48"
         />
       </div>
       <div className="message__content">

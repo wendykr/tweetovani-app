@@ -12,7 +12,6 @@ export const UserCard = () => {
         className="usercard__avatar"
         alt={`Profilová fotka uživatele ${randomPerson.name}`}
         width="50"
-        height="auto"
       />
       <div className="usercard__info">
         <p className="usercard__info--name">{randomPerson.name}</p>

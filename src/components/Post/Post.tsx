@@ -38,7 +38,7 @@ export const Post = ({ onNewMessage }: PostProps) => {
           className="post__avatar"
           src={randomPerson.avatar}
           alt={`Profilová fotka uživatele ${randomPerson.name}`}
-          width="3em"
+          width="48"
           height="auto"
         />
       </div>
