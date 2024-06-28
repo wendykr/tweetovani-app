@@ -4,29 +4,29 @@ import './LikePage.css';
 import { FaRegHeart } from 'react-icons/fa';
 
 interface LikePageProps {
-  messagesData: Message[];
+  messages: Message[];
   handleClickLike: (messageId: number) => void;
   handleClickBookmark: (messageId: number) => void;
   handleClickDelete: (messageId: number) => void;
 }
 
 export const LikePage = ({
-  messagesData,
+  messages,
   handleClickLike,
   handleClickBookmark,
   handleClickDelete,
 }: LikePageProps) => {
-  const filterMessagesData = messagesData.filter(
+  const filterMessages = messages.filter(
     (message) => message.likeCount > 0 && message.like
   );
 
-  const sortedMessages = filterMessagesData.sort(
+  const sortedMessages = filterMessages.sort(
     (a, b) => new Date(b.likedAt).getTime() - new Date(a.likedAt).getTime()
   );
 
   return (
     <>
-      {filterMessagesData.length > 0 ? (
+      {filterMessages.length > 0 ? (
         sortedMessages.map((message) => (
           <ProfileMessage
             key={message.id}

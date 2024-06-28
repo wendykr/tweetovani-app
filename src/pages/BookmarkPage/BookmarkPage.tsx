@@ -4,30 +4,30 @@ import './BookmarkPage.css';
 import { FaRegBookmark } from 'react-icons/fa';
 
 interface BookmarkPageProps {
-  messagesData: Message[];
+  messages: Message[];
   handleClickLike: (messageId: number) => void;
   handleClickBookmark: (messageId: number) => void;
   handleClickDelete: (messageId: number) => void;
 }
 
 export const BookmarkPage = ({
-  messagesData,
+  messages,
   handleClickLike,
   handleClickBookmark,
   handleClickDelete,
 }: BookmarkPageProps) => {
-  const filterMessagesData = messagesData.filter(
+  const filterMessages = messages.filter(
     (message) => message.bookmark === true
   );
 
-  const sortedMessages = filterMessagesData.sort(
+  const sortedMessages = filterMessages.sort(
     (a, b) =>
       new Date(b.bookmarkedAt).getTime() - new Date(a.bookmarkedAt).getTime()
   );
 
   return (
     <>
-      {filterMessagesData.length > 0 ? (
+      {filterMessages.length > 0 ? (
         sortedMessages.map((message) => (
           <ProfileMessage
             key={message.id}

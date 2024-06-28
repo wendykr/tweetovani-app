@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { HomePage } from './pages/HomePage/HomePage';
 import { LikePage } from './pages/LikePage/LikePage';
 import { BookmarkPage } from './pages/BookmarkPage/BookmarkPage';
-import { messages } from './data/messages';
+import { messages as initialMessages } from './data/messages';
 import { persons } from './data/persons';
 import Message from './types/Message.ts';
 import dayjs from 'dayjs';
@@ -23,19 +23,19 @@ import { UserContext, UserProvider } from './context/UserContext.tsx';
 import { useToast } from './hooks/useToast.tsx';
 
 const Main = () => {
-  const [messagesData, setMessagesData] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const { randomPerson, setRandomPerson } = useContext(UserContext);
   const { showToast } = useToast();
 
   const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
 
   useEffect(() => {
-    const storedMessagesData = sessionStorage.getItem('messagesData');
-    if (storedMessagesData) {
-      setMessagesData(JSON.parse(storedMessagesData));
+    const storedMessages = sessionStorage.getItem('messages');
+    if (storedMessages) {
+      setMessages(JSON.parse(storedMessages));
     } else {
-      setMessagesData(messages);
-      sessionStorage.setItem('messagesData', JSON.stringify(messages));
+      setMessages(initialMessages);
+      sessionStorage.setItem('messages', JSON.stringify(initialMessages));
     }
 
     const storedRandomPerson = sessionStorage.getItem('randomPerson');
@@ -48,12 +48,12 @@ const Main = () => {
     }
   }, [setRandomPerson]);
 
-  const onSetMessagesData = (messagesData: Message[]) => {
-    setMessagesData(messagesData);
+  const onSetMessages = (messages: Message[]) => {
+    setMessages(messages);
   };
 
   const handleClickLike = (messageId: number) => {
-    setMessagesData((prevMessages) => {
+    setMessages((prevMessages) => {
       const updatedMessages = prevMessages.map((message) => {
         if (message.id === messageId) {
           if (message.like) {
@@ -74,13 +74,13 @@ const Main = () => {
         }
         return message;
       });
-      sessionStorage.setItem('messagesData', JSON.stringify(updatedMessages));
+      sessionStorage.setItem('messages', JSON.stringify(updatedMessages));
       return updatedMessages;
     });
   };
 
   const handleClickBookmark = (messageId: number) => {
-    setMessagesData((prevMessages) => {
+    setMessages((prevMessages) => {
       const updatedMessages = prevMessages.map((message) => {
         if (message.id === messageId) {
           const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
@@ -92,11 +92,11 @@ const Main = () => {
         }
         return message;
       });
-      sessionStorage.setItem('messagesData', JSON.stringify(updatedMessages));
+      sessionStorage.setItem('messages', JSON.stringify(updatedMessages));
       return updatedMessages;
     });
 
-    const message = messagesData.find((msg) => msg.id === messageId);
+    const message = messages.find((msg) => msg.id === messageId);
     if (message) {
       message.bookmark
         ? showToast('Odebráno ze Záložky.')
@@ -105,12 +105,12 @@ const Main = () => {
   };
 
   const handleClickDelete = (messageId: number) => {
-    setMessagesData((prevMessages) => {
+    setMessages((prevMessages) => {
       const currentMessages = prevMessages.filter(
         (message) =>
           !(message.id === messageId && message.name === randomPerson.name)
       );
-      sessionStorage.setItem('messagesData', JSON.stringify(currentMessages));
+      sessionStorage.setItem('messages', JSON.stringify(currentMessages));
       return currentMessages;
     });
   };
@@ -122,8 +122,8 @@ const Main = () => {
           path="/"
           element={
             <HomePage
-              messagesData={messagesData}
-              onSetMessagesData={onSetMessagesData}
+              messages={messages}
+              onSetMessages={onSetMessages}
               handleClickLike={handleClickLike}
               handleClickBookmark={handleClickBookmark}
               handleClickDelete={handleClickDelete}
@@ -134,7 +134,7 @@ const Main = () => {
           path="/bookmark"
           element={
             <BookmarkPage
-              messagesData={messagesData}
+              messages={messages}
               handleClickLike={handleClickLike}
               handleClickBookmark={handleClickBookmark}
               handleClickDelete={handleClickDelete}
@@ -145,7 +145,7 @@ const Main = () => {
           path="/like"
           element={
             <LikePage
-              messagesData={messagesData}
+              messages={messages}
               handleClickLike={handleClickLike}
               handleClickBookmark={handleClickBookmark}
               handleClickDelete={handleClickDelete}

@@ -4,38 +4,38 @@ import './Timeline.css';
 import { useSearch } from '../../context/SearchContext';
 
 interface TimelineProps {
-  messagesData: Message[];
+  messages: Message[];
   onClickLike: (messageId: number) => void;
   onClickBookmark: (messageId: number) => void;
   onClickDelete: (messageId: number) => void;
 }
 
 export const Timeline = ({
-  messagesData,
+  messages,
   onClickLike,
   onClickBookmark,
   onClickDelete,
 }: TimelineProps) => {
   const { searchQuery } = useSearch();
-  const sortedMessages = messagesData.sort(
+  const sortedMessages = messages.sort(
     (a, b) => new Date(b.time).getTime() - new Date(a.time).getTime()
   );
 
-  const filterMessagesData = (
-    messagesData: Message[],
+  const filterMessages = (
+    messages: Message[],
     searchTerm: string
   ) =>
-    messagesData.filter((message) =>
+    messages.filter((message) =>
       message.text.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-  const filteredMessagesData = filterMessagesData(sortedMessages, searchQuery);
+  const filteredMessages = filterMessages(sortedMessages, searchQuery);
 
   return (
     <div className="timeline">
-      {messagesData && messagesData.length > 0 ? (
-        filteredMessagesData.length > 0 ? (
-          filteredMessagesData.map((message) => (
+      {messages && messages.length > 0 ? (
+        filteredMessages.length > 0 ? (
+          filteredMessages.map((message) => (
             <ProfileMessage
               key={message.id}
               message={message}
