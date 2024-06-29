@@ -22,7 +22,7 @@ import { MessageContext, MessageProvider } from './context/MessageContext.tsx';
 
 const Main = () => {
   const { onSetMessages} = useContext(MessageContext);
-  const { setRandomPerson } = useContext(UserContext);
+  const { onSetRandomPerson } = useContext(UserContext);
 
   useEffect(() => {
     const storedMessages = sessionStorage.getItem('messages');
@@ -35,13 +35,13 @@ const Main = () => {
 
     const storedRandomPerson = sessionStorage.getItem('randomPerson');
     if (storedRandomPerson) {
-      setRandomPerson(JSON.parse(storedRandomPerson));
+      onSetRandomPerson(JSON.parse(storedRandomPerson));
     } else {
       const randomPerson = getRandomPerson(persons);
-      setRandomPerson(randomPerson);
+      onSetRandomPerson(randomPerson);
       sessionStorage.setItem('randomPerson', JSON.stringify(randomPerson));
     }
-  }, [setRandomPerson]);
+  }, []);
 
   const router = createBrowserRouter(
     createRoutesFromElements(

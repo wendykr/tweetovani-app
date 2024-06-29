@@ -1,4 +1,4 @@
-import React, {
+import {
   PropsWithChildren,
   createContext,
   useContext,
@@ -16,23 +16,27 @@ const initialUser: Person = {
 
 interface UserContextData {
   randomPerson: Person;
-  setRandomPerson: React.Dispatch<React.SetStateAction<Person>>;
+  onSetRandomPerson: (person: Person) => void;
 }
 
 export const UserContext = createContext<UserContextData>({
   randomPerson: initialUser,
-  setRandomPerson: () => {},
+  onSetRandomPerson: () => {},
 });
 
 export const UserProvider = ({ children }: PropsWithChildren) => {
   const [randomPerson, setRandomPerson] =
     useState<Person>(initialUser);
 
+  const onSetRandomPerson = (person: Person) => {
+    setRandomPerson(person);
+  }
+
   return (
     <UserContext.Provider
       value={{
         randomPerson,
-        setRandomPerson,
+        onSetRandomPerson
       }}
     >
       {children}
