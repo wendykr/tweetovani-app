@@ -7,18 +7,22 @@ import React, {
 
 interface SearchContextData {
   searchQuery: string;
-  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+  onSetSearchQuery: (query: string) => void;
   onSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const SearchContext = createContext<SearchContextData>({
   searchQuery: '',
-  setSearchQuery: () => {},
+  onSetSearchQuery: () => {},
   onSearchChange: () => {},
 });
 
 export const SearchProvider = ({ children }: PropsWithChildren) => {
   const [searchQuery, setSearchQuery] = useState('');
+
+  const onSetSearchQuery = (query: string) => {
+    setSearchQuery(query);
+  }
 
   const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
@@ -29,7 +33,7 @@ export const SearchProvider = ({ children }: PropsWithChildren) => {
       value={{
         searchQuery,
         onSearchChange,
-        setSearchQuery,
+        onSetSearchQuery,
       }}
     >
       {children}
