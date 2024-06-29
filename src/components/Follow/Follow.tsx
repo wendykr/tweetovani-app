@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { persons } from '../../data/persons';
 import { FollowUser } from '../FollowUser/FollowUser';
 import './Follow.css';
-import { PersonStructure } from '../../model/Person';
+import { Person } from '../../types/Person';
 import { getRandomPerson } from '../../helpers/getRandomPerson';
 
 export const Follow = () => {
-  const [randomFollowers, setRandomFollowers] = useState<PersonStructure[]>([]);
+  const [randomFollowers, setRandomFollowers] = useState<Person[]>([]);
   const [storedRandomPerson, setStoredRandomPerson] =
-    useState<PersonStructure>();
+    useState<Person>();
 
   useEffect(() => {
     const storedRandomPerson = sessionStorage.getItem('randomPerson');
@@ -28,7 +28,7 @@ export const Follow = () => {
       if (storedRandomFollowers) {
         setRandomFollowers(JSON.parse(storedRandomFollowers));
       } else {
-        const followers: PersonStructure[] = [];
+        const followers: Person[] = [];
 
         while (followers.length < 3) {
           let currentFollower = getRandomPerson(persons);

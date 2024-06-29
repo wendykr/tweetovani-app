@@ -1,5 +1,5 @@
-import './Message.css';
-import MessageStructure from '../../model/Message';
+import './ProfileMessage.css';
+import Message from '../../types/Message';
 import { FaRegHeart } from 'react-icons/fa';
 import { FaHeart } from 'react-icons/fa';
 import { FaRegBookmark } from 'react-icons/fa';
@@ -8,21 +8,17 @@ import { FiTrash } from 'react-icons/fi';
 import dayjs from 'dayjs';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
+import { MessageContext } from '../../context/MessageContext';
 
-interface MessageProps {
-  message: MessageStructure;
-  onClickLike: (messageId: number) => void;
-  onClickBookmark: (messageId: number) => void;
-  onClickDelete: (messageId: number) => void;
+interface ProfileMessageProps {
+  message: Message;
 }
 
-export const Message = ({
+export const ProfileMessage = ({
   message,
-  onClickLike,
-  onClickBookmark,
-  onClickDelete,
-}: MessageProps) => {
+}: ProfileMessageProps) => {
   const { randomPerson } = useContext(UserContext);
+  const { handleClickBookmark, handleClickDelete, handleClickLike } = useContext(MessageContext);
   const countDay = (time: string) => {
     const difference = dayjs().diff(dayjs(time), 'hour');
 
@@ -37,7 +33,11 @@ export const Message = ({
   return (
     <article className="message" key={message.id}>
       <div className="message__avatar">
-        <img src={message.avatar} alt="" />
+        <img
+          src={message.avatar}
+          alt={`Profilová fotka uživatele ${message.name}`}
+          width="48"
+        />
       </div>
       <div className="message__content">
         <header className="message__header">
@@ -51,7 +51,7 @@ export const Message = ({
         <footer className="message__footer">
           <button
             className="icon-button icon-button--rosa"
-            onClick={() => onClickLike(message.id)}
+            onClick={() => handleClickLike(message.id)}
             title="Miluju to"
           >
             <span className="icon-button__icon">
@@ -65,7 +65,7 @@ export const Message = ({
           </button>
           <button
             className="icon-button icon-button--blue"
-            onClick={() => onClickBookmark(message.id)}
+            onClick={() => handleClickBookmark(message.id)}
             title={
               message.bookmark ? 'Odebrat ze záložek' : 'Přidat do záložek'
             }
@@ -82,7 +82,7 @@ export const Message = ({
           {message.name === randomPerson.name && (
             <button
               className="icon-button icon-button--red"
-              onClick={() => onClickDelete(message.id)}
+              onClick={() => handleClickDelete(message.id)}
               title="Smazat zprávu"
             >
               <span className="icon-button__icon">

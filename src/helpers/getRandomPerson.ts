@@ -1,6 +1,4 @@
-import { PersonStructure } from "../model/Person";
+import { Person } from '../types/Person';
 
-export const getRandomPerson = (persons: PersonStructure[]): PersonStructure => {
-  const randomIndex = Math.floor(Math.random() * persons.length);
-  return persons[randomIndex];
-};
+export const getRandomPerson = (persons: Person[]): Person =>
+  persons[Math.floor(Math.random() * persons.length)];

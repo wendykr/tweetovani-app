@@ -6,14 +6,14 @@ import { useSearch } from './context/SearchContext';
 import { useEffect } from 'react';
 
 function App() {
-  const { setSearchQuery } = useSearch();
+  const { onSetSearchQuery } = useSearch();
 
   const location = useLocation();
   const path = location.pathname;
 
   useEffect(() => {
-    setSearchQuery('');
-  }, [path, setSearchQuery]);
+    onSetSearchQuery('');
+  }, [path]);
 
   return (
     <div className="container">
