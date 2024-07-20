@@ -1,9 +1,8 @@
 import './UserCard.css';
-import { useContext } from 'react';
-import { UserContext } from '../../context/UserContext';
+import { useUser } from '../../context/UserContext';
 
 export const UserCard = () => {
-  const { randomPerson } = useContext(UserContext);
+  const { randomPerson } = useUser();
 
   return (
     <div className="usercard">

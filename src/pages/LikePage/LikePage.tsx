@@ -1,12 +1,11 @@
-import { useContext } from 'react';
 import { ProfileMessage } from '../../components/ProfileMessage/ProfileMessage';
-import { MessageContext } from '../../context/MessageContext';
+import { useMessage } from '../../context/MessageContext';
 import { getSortedMessages } from '../../helpers/getSortedMessages';
 import './LikePage.css';
 import { FaRegHeart } from 'react-icons/fa';
 
 export const LikePage = () => {
-  const { messages } = useContext(MessageContext);
+  const { messages } = useMessage();
   const filterMessages = messages.filter(
     (message) => message.likeCount > 0 && message.like
   );

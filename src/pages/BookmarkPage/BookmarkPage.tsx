@@ -1,12 +1,11 @@
-import { useContext } from 'react';
 import { ProfileMessage } from '../../components/ProfileMessage/ProfileMessage';
-import { MessageContext } from '../../context/MessageContext';
+import { useMessage } from '../../context/MessageContext';
 import { getSortedMessages } from '../../helpers/getSortedMessages';
 import './BookmarkPage.css';
 import { FaRegBookmark } from 'react-icons/fa';
 
 export const BookmarkPage = () => {
-      const { messages } = useContext(MessageContext);
+      const { messages } = useMessage();
   const filterMessages = messages.filter(
     (message) => message.bookmark === true
   );

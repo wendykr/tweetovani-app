@@ -6,9 +6,8 @@ import { FaRegBookmark } from 'react-icons/fa';
 import { FaBookmark } from 'react-icons/fa';
 import { FiTrash } from 'react-icons/fi';
 import dayjs from 'dayjs';
-import { useContext } from 'react';
-import { UserContext } from '../../context/UserContext';
-import { MessageContext } from '../../context/MessageContext';
+import { useUser } from '../../context/UserContext';
+import { useMessage } from '../../context/MessageContext';
 
 interface ProfileMessageProps {
   message: Message;
@@ -17,8 +16,8 @@ interface ProfileMessageProps {
 export const ProfileMessage = ({
   message,
 }: ProfileMessageProps) => {
-  const { randomPerson } = useContext(UserContext);
-  const { handleClickBookmark, handleClickDelete, handleClickLike } = useContext(MessageContext);
+  const { randomPerson } = useUser();
+  const { handleClickBookmark, handleClickDelete, handleClickLike } = useMessage();
   const countDay = (time: string) => {
     const difference = dayjs().diff(dayjs(time), 'hour');
 

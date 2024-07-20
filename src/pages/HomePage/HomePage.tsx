@@ -3,13 +3,12 @@ import dayjs from 'dayjs';
 import { Post } from '../../components/Post/Post';
 import { Timeline } from '../../components/Timeline/Timeline';
 import { messages as initialMessages } from '../../data/messages';
-import { useContext } from 'react';
-import { UserContext } from '../../context/UserContext';
-import { MessageContext } from '../../context/MessageContext';
+import { useUser } from '../../context/UserContext';
+import { useMessage } from '../../context/MessageContext';
 
 export const HomePage = () => {
-    const { messages, onSetMessages } = useContext(MessageContext);
-  const { randomPerson } = useContext(UserContext);
+  const { messages, onSetMessages } = useMessage();
+  const { randomPerson } = useUser();
   const prevId = useRef<number>(
     sessionStorage.getItem('messages')
       ? JSON.parse(sessionStorage.getItem('messages')!).length + 1

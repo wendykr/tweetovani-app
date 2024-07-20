@@ -3,11 +3,10 @@ import Message from '../../types/Message';
 import './Timeline.css';
 import { useSearch } from '../../context/SearchContext';
 import { getSortedMessages } from '../../helpers/getSortedMessages';
-import { MessageContext } from '../../context/MessageContext';
-import { useContext } from 'react';
+import { useMessage } from '../../context/MessageContext';
 
 export const Timeline = () => {
-  const { messages } = useContext(MessageContext);
+  const { messages } = useMessage();
   const { searchQuery } = useSearch();
   const sortedMessages = getSortedMessages(messages, 'time');
 

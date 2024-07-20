@@ -3,8 +3,7 @@ import { Button } from '../Button/Button';
 import { Form } from '../Form/Form';
 import './Post.css';
 import { declineCharacters } from '../../helpers/declineCharacters';
-import { useContext } from 'react';
-import { UserContext } from '../../context/UserContext';
+import { useUser } from '../../context/UserContext';
 
 interface PostProps {
   onNewMessage: (textMessage: string) => void;
@@ -17,7 +16,7 @@ export const Post = ({ onNewMessage }: PostProps) => {
   const [isTextareaFocused, setIsTextareaFocused] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const { randomPerson } = useContext(UserContext);
+  const { randomPerson } = useUser();
 
   const handleClickSend = () => {
     onNewMessage(valueMessage);
