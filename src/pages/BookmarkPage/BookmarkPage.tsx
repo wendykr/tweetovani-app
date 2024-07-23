@@ -1,41 +1,24 @@
-import { Message } from '../../components/Message/Message';
-import MessageStructure from '../../model/Message';
+import { ProfileMessage } from '../../components/ProfileMessage/ProfileMessage';
+import { useMessage } from '../../context/MessageContext';
+import { getSortedMessages } from '../../helpers/getSortedMessages';
 import './BookmarkPage.css';
 import { FaRegBookmark } from 'react-icons/fa';
 
-interface BookmarkPageProps {
-  messagesData: MessageStructure[];
-  handleClickLike: (messageId: number) => void;
-  handleClickBookmark: (messageId: number) => void;
-  handleClickDelete: (messageId: number) => void;
-}
-
-export const BookmarkPage = ({
-  messagesData,
-  handleClickLike,
-  handleClickBookmark,
-  handleClickDelete,
-}: BookmarkPageProps) => {
-  const filterMessagesData = messagesData.filter(
+export const BookmarkPage = () => {
+      const { messages } = useMessage();
+  const filterMessages = messages.filter(
     (message) => message.bookmark === true
   );
 
-  const sortedMessages = filterMessagesData.sort((a, b) => {
-    return (
-      new Date(b.timeBookmark).getTime() - new Date(a.timeBookmark).getTime()
-    );
-  });
+  const sortedMessages = getSortedMessages(filterMessages, 'bookmarkedAt');
 
   return (
     <>
-      {filterMessagesData.length > 0 ? (
+      {filterMessages.length > 0 ? (
         sortedMessages.map((message) => (
-          <Message
+          <ProfileMessage
             key={message.id}
             message={message}
-            onClickLike={handleClickLike}
-            onClickBookmark={handleClickBookmark}
-            onClickDelete={handleClickDelete}
           />
         ))
       ) : (

@@ -1,23 +1,28 @@
-import React, { ReactNode, createContext, useContext, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  PropsWithChildren,
+} from 'react';
 
 interface SearchContextData {
   searchQuery: string;
-  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+  onSetSearchQuery: (query: string) => void;
   onSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const SearchContext = createContext<SearchContextData>({
   searchQuery: '',
-  setSearchQuery: () => {},
+  onSetSearchQuery: () => {},
   onSearchChange: () => {},
 });
 
-interface SearchProviderProps {
-  children: ReactNode;
-}
+export const SearchProvider = ({ children }: PropsWithChildren) => {
+  const [searchQuery, setSearchQuery] = useState('');
 
-export const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const onSetSearchQuery = (query: string) => {
+    setSearchQuery(query);
+  }
 
   const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
@@ -28,7 +33,7 @@ export const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
       value={{
         searchQuery,
         onSearchChange,
-        setSearchQuery,
+        onSetSearchQuery,
       }}
     >
       {children}

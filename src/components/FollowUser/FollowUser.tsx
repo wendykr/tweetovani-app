@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { PersonStructure } from '../../model/Person';
+import { Person } from '../../types/Person';
 import './FollowUser.css';
 
-interface FollowUserProps extends PersonStructure {
+interface FollowUserProps extends Person {
   changeFollow: (followerId: number) => void;
 }
 
@@ -30,7 +30,8 @@ export const FollowUser = ({
         <img
           src={avatar}
           className="follow-user__avatar"
-          alt={`${name}'s avatar`}
+          alt={`Profilová fotka uživatele ${name}`}
+          width="50"
         />
         <div className="follow-user__info">
           <p className="follow-user__info--name">{name}</p>

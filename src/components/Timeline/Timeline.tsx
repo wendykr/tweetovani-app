@@ -1,47 +1,33 @@
-import { Message } from '../Message/Message';
-import MessageStructure from '../../model/Message';
+import { ProfileMessage } from '../ProfileMessage/ProfileMessage';
+import Message from '../../types/Message';
 import './Timeline.css';
 import { useSearch } from '../../context/SearchContext';
+import { getSortedMessages } from '../../helpers/getSortedMessages';
+import { useMessage } from '../../context/MessageContext';
 
-interface TimelineProps {
-  messagesData: MessageStructure[];
-  onClickLike: (messageId: number) => void;
-  onClickBookmark: (messageId: number) => void;
-  onClickDelete: (messageId: number) => void;
-}
-
-export const Timeline = ({
-  messagesData,
-  onClickLike,
-  onClickBookmark,
-  onClickDelete,
-}: TimelineProps) => {
+export const Timeline = () => {
+  const { messages } = useMessage();
   const { searchQuery } = useSearch();
-  const sortedMessages = messagesData.sort((a, b) => {
-    return new Date(b.time).getTime() - new Date(a.time).getTime();
-  });
+  const sortedMessages = getSortedMessages(messages, 'time');
 
-  const filterMessagesData = (
-    messagesData: MessageStructure[],
+  const filterMessages = (
+    messages: Message[],
     searchTerm: string
   ) =>
-    messagesData.filter((message) =>
+    messages.filter((message) =>
       message.text.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-  const filteredMessagesData = filterMessagesData(sortedMessages, searchQuery);
+  const filteredMessages = filterMessages(sortedMessages, searchQuery);
 
   return (
     <div className="timeline">
-      {messagesData && messagesData.length > 0 ? (
-        filteredMessagesData.length > 0 ? (
-          filteredMessagesData.map((message) => (
-            <Message
+      {messages && messages.length > 0 ? (
+        filteredMessages.length > 0 ? (
+          filteredMessages.map((message) => (
+            <ProfileMessage
               key={message.id}
               message={message}
-              onClickLike={onClickLike}
-              onClickBookmark={onClickBookmark}
-              onClickDelete={onClickDelete}
             />
           ))
         ) : (

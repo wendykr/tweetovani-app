@@ -3,21 +3,20 @@ import { Button } from '../Button/Button';
 import { Form } from '../Form/Form';
 import './Post.css';
 import { declineCharacters } from '../../helpers/declineCharacters';
-import { useContext } from 'react';
-import { UserContext } from '../../context/UserContext';
+import { useUser } from '../../context/UserContext';
 
 interface PostProps {
   onNewMessage: (textMessage: string) => void;
 }
 
 export const Post = ({ onNewMessage }: PostProps) => {
-  const [valueMessage, setValueMessage] = useState<string>('');
-  const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
-  const [charactersCount, setCharactersCount] = useState<number>(280);
-  const [isTextareaFocused, setIsTextareaFocused] = useState<boolean>(false);
+  const [valueMessage, setValueMessage] = useState('');
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [charactersCount, setCharactersCount] = useState(280);
+  const [isTextareaFocused, setIsTextareaFocused] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const { randomPerson } = useContext(UserContext);
+  const { randomPerson } = useUser();
 
   const handleClickSend = () => {
     onNewMessage(valueMessage);
@@ -34,7 +33,13 @@ export const Post = ({ onNewMessage }: PostProps) => {
   return (
     <div className="post">
       <div className="post__user">
-        <img className="post__avatar" src={randomPerson.avatar} />
+        <img
+          className="post__avatar"
+          src={randomPerson.avatar}
+          alt={`Profilová fotka uživatele ${randomPerson.name}`}
+          width="48"
+          height="auto"
+        />
       </div>
       <div className="post__form">
         <Form

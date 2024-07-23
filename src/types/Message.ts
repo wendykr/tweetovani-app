@@ -1,4 +1,4 @@
-export default interface MessageStructure {
+export default interface Message {
   id: number;
   avatar: string;
   name: string;
@@ -7,7 +7,7 @@ export default interface MessageStructure {
   text: string;
   like: boolean;
   likeCount: number;
-  timeLike: string;
+  likedAt: string;
   bookmark: boolean;
-  timeBookmark: string;
+  bookmarkedAt: string;
 }

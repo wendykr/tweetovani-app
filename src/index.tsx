@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
@@ -8,148 +8,40 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import { ToastContainer, toast, Slide } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { HomePage } from './pages/HomePage/HomePage';
 import { LikePage } from './pages/LikePage/LikePage';
 import { BookmarkPage } from './pages/BookmarkPage/BookmarkPage';
-import { messages } from './data/messages';
+import { messages as initialMessages } from './data/messages';
 import { persons } from './data/persons';
-import MessageStructure from './model/Message';
-import dayjs from 'dayjs';
 import { getRandomPerson } from './helpers/getRandomPerson.ts';
 import { SearchProvider } from './context/SearchContext.tsx';
 import { UserContext, UserProvider } from './context/UserContext.tsx';
+import { MessageContext, MessageProvider } from './context/MessageContext.tsx';
 
 const Main = () => {
-  const [messagesData, setMessagesData] = useState<MessageStructure[]>([]);
-  const { randomPerson, setRandomPerson } = useContext(UserContext);
-
-  const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
+  const { onSetMessages} = useContext(MessageContext);
+  const { onSetRandomPerson } = useContext(UserContext);
 
   useEffect(() => {
-    const storedMessagesData = sessionStorage.getItem('messagesData');
-    if (storedMessagesData) {
-      setMessagesData(JSON.parse(storedMessagesData));
+    const storedMessages = sessionStorage.getItem('messages');
+    if (storedMessages) {
+      onSetMessages(JSON.parse(storedMessages));
     } else {
-      setMessagesData(messages);
-      sessionStorage.setItem('messagesData', JSON.stringify(messages));
+      onSetMessages(initialMessages);
+      sessionStorage.setItem('messages', JSON.stringify(initialMessages));
     }
 
     const storedRandomPerson = sessionStorage.getItem('randomPerson');
     if (storedRandomPerson) {
-      setRandomPerson(JSON.parse(storedRandomPerson));
+      onSetRandomPerson(JSON.parse(storedRandomPerson));
     } else {
       const randomPerson = getRandomPerson(persons);
-      setRandomPerson(randomPerson);
+      onSetRandomPerson(randomPerson);
       sessionStorage.setItem('randomPerson', JSON.stringify(randomPerson));
     }
-  }, [setRandomPerson]);
-
-  const handleClickLike = (messageId: number) => {
-    setMessagesData((prevMessages) => {
-      const updatedMessages = prevMessages.map((message) => {
-        if (message.id === messageId) {
-          if (message.like) {
-            return {
-              ...message,
-              likeCount: message.likeCount - 1,
-              like: false,
-              timeLike: now,
-            };
-          } else {
-            return {
-              ...message,
-              likeCount: message.likeCount + 1,
-              like: true,
-              timeLike: now,
-            };
-          }
-        }
-        return message;
-      });
-      sessionStorage.setItem('messagesData', JSON.stringify(updatedMessages));
-      return updatedMessages;
-    });
-  };
-
-  const handleClickBookmark = (messageId: number) => {
-    setMessagesData((prevMessages) => {
-      const updatedMessages = prevMessages.map((message) => {
-        if (message.id === messageId) {
-          const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
-          return {
-            ...message,
-            bookmark: !message.bookmark,
-            timeBookmark: message.bookmark ? '0000-00-00 00:00:00' : now,
-          };
-        }
-        return message;
-      });
-      sessionStorage.setItem('messagesData', JSON.stringify(updatedMessages));
-      return updatedMessages;
-    });
-
-    const message = messagesData.find((msg) => msg.id === messageId);
-    if (message) {
-      if (!message.bookmark) {
-        toast(`Přidáno do Záložky.`, {
-          position: 'bottom-center',
-          autoClose: 2000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: 0,
-          theme: 'light',
-          transition: Slide,
-          closeButton: false,
-          style: {
-            width: '220px',
-            height: '20px',
-            background: '#1da1f2',
-            color: '#ffffff',
-            fontSize: '18px',
-            textAlign: 'center',
-          },
-        });
-      } else {
-        toast(`Odebráno ze Záložky.`, {
-          position: 'bottom-center',
-          autoClose: 2000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: 0,
-          theme: 'light',
-          transition: Slide,
-          closeButton: false,
-          style: {
-            width: '220px',
-            height: '20px',
-            background: '#1da1f2',
-            color: '#ffffff',
-            fontSize: '18px',
-            textAlign: 'center',
-          },
-        });
-      }
-    }
-  };
-
-  const handleClickDelete = (messageId: number) => {
-    setMessagesData((prevMessages) => {
-      const currentMessages = prevMessages.filter((message) => {
-        if (message.id === messageId && message.name === randomPerson.name) {
-          return false;
-        }
-        return true;
-      });
-      sessionStorage.setItem('messagesData', JSON.stringify(currentMessages));
-      return currentMessages;
-    });
-  };
+  }, []);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -158,11 +50,6 @@ const Main = () => {
           path="/"
           element={
             <HomePage
-              messagesData={messagesData}
-              setMessagesData={setMessagesData}
-              handleClickLike={handleClickLike}
-              handleClickBookmark={handleClickBookmark}
-              handleClickDelete={handleClickDelete}
             />
           }
         />
@@ -170,10 +57,6 @@ const Main = () => {
           path="/bookmark"
           element={
             <BookmarkPage
-              messagesData={messagesData}
-              handleClickLike={handleClickLike}
-              handleClickBookmark={handleClickBookmark}
-              handleClickDelete={handleClickDelete}
             />
           }
         />
@@ -181,10 +64,6 @@ const Main = () => {
           path="/like"
           element={
             <LikePage
-              messagesData={messagesData}
-              handleClickLike={handleClickLike}
-              handleClickBookmark={handleClickBookmark}
-              handleClickDelete={handleClickDelete}
             />
           }
         />
@@ -197,11 +76,13 @@ const Main = () => {
 const rootElement: HTMLElement = document.getElementById('root')!;
 ReactDOM.createRoot(rootElement).render(
   <>
-  <UserProvider>
-    <SearchProvider>
-      <ToastContainer />
-      <Main />
-    </SearchProvider>
+    <UserProvider>
+      <MessageProvider>
+        <SearchProvider>
+          <ToastContainer />
+          <Main />
+        </SearchProvider>
+      </MessageProvider>
     </UserProvider>
   </>
 );

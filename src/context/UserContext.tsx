@@ -1,40 +1,42 @@
-import React, { ReactNode, createContext, useContext, useState } from 'react';
-import { PersonStructure } from '../model/Person';
+import {
+  PropsWithChildren,
+  createContext,
+  useContext,
+  useState,
+} from 'react';
+import { Person } from '../types/Person';
+
+const initialUser: Person = {
+  id: 0,
+  name: '',
+  handle: '',
+  avatar: '',
+  follow: false,
+};
 
 interface UserContextData {
-  randomPerson: PersonStructure;
-  setRandomPerson: React.Dispatch<React.SetStateAction<PersonStructure>>;
+  randomPerson: Person;
+  onSetRandomPerson: (person: Person) => void;
 }
 
 export const UserContext = createContext<UserContextData>({
-  randomPerson: {
-    id: 0,
-    name: '',
-    handle: '',
-    avatar: '',
-    follow: false,
-  },
-  setRandomPerson: () => {},
+  randomPerson: initialUser,
+  onSetRandomPerson: () => {},
 });
 
-interface UserProviderProps {
-  children: ReactNode;
-}
+export const UserProvider = ({ children }: PropsWithChildren) => {
+  const [randomPerson, setRandomPerson] =
+    useState<Person>(initialUser);
 
-export const UserProvider = ({ children }: UserProviderProps) => {
-  const [randomPerson, setRandomPerson] = useState<PersonStructure>({
-    id: 0,
-    name: '',
-    handle: '',
-    avatar: '',
-    follow: false,
-  });
+  const onSetRandomPerson = (person: Person) => {
+    setRandomPerson(person);
+  }
 
   return (
     <UserContext.Provider
       value={{
         randomPerson,
-        setRandomPerson,
+        onSetRandomPerson
       }}
     >
       {children}
