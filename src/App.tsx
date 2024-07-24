@@ -1,7 +1,7 @@
 import './App.css';
-import { Sidebar } from './components/Sidebar/Sidebar';
+import { Navigation } from './components/Navigation/Navigation';
 import { Outlet, useLocation } from 'react-router-dom';
-import { SidebarRight } from './components/SidebarRight/SidebarRight';
+import { Sidebar } from './components/Sidebar/Sidebar';
 import { useSearch } from './context/SearchContext';
 import { useEffect } from 'react';
 
@@ -17,12 +17,12 @@ function App() {
 
   return (
     <div className="container">
-      <Sidebar />
+      <Navigation />
       <main className="main">
         <h1 className="page-title">Tweetování</h1>
         <Outlet />
       </main>
-      <SidebarRight />
+      <Sidebar />
     </div>
   );
 }
