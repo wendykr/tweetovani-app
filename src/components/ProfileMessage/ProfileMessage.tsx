@@ -31,12 +31,16 @@ export const ProfileMessage = ({ message }: ProfileMessageProps) => {
   return (
     <article className="message" key={message.id}>
       <div className="message__avatar">
-        <img
-          src={message.avatar}
-          alt={`Profilová fotka uživatele ${message.name}`}
-          width="60"
-          height="60"
-        />
+        <picture>
+          <source srcSet={message.avatarAvif} type="image/avif" />
+          <source srcSet={message.avatarWebp} type="image/webp" />
+          <img
+            src={message.avatar}
+            alt={`Profilová fotka uživatele ${message.name}`}
+            width="60"
+            height="60"
+          />
+        </picture>
       </div>
       <div className="message__content">
         <header className="message__header">
