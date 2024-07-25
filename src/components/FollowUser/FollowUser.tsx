@@ -32,6 +32,7 @@ export const FollowUser = ({
           className="follow-user__avatar"
           alt={`Profilová fotka uživatele ${name}`}
           width="50"
+          height="50"
         />
         <div className="follow-user__info">
           <p className="follow-user__info--name">{name}</p>

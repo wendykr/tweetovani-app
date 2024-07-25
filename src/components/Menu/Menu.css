@@ -1,46 +1,47 @@
 .menu__item:not(:last-child) {
-	margin-bottom: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .menu__link {
-	display: flex;
-	align-items:center;
-	gap: 0.5em;
-	padding: 0.7em;
-	border-radius: 100vh;
-	text-decoration: none;
-	color: var(--menu-text--hover);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.7em;
+  border-radius: 100vh;
+  text-decoration: none;
+  color: var(--menu-text--hover);
 }
 
 .menu__link:hover {
-	background-color: var(--menu-hover-bg);
+  background-color: var(--menu-hover-bg);
 }
 
 .menu__logo {
-	display: inline-block;
+  display: inline-block;
 }
 
 .menu__logo .menu__link:hover {
-	background-color: var(--menu-hover-bg)
+  background-color: var(--menu-hover-bg);
 }
 
 .menu__icon {
-	flex: 0 0 2em;
-	align-self: center;
-	height: 1.5em;
-	margin: auto;
+  flex: 0 0 2em;
+  align-self: center;
+  width: 1.75em;
+  height: 1.5em;
+  margin: auto;
 }
 
 .menu__text {
-	display: block;
-	flex: 1 1 auto;
+  display: block;
+  flex: 1 1 auto;
 }
 
 .menu__link:hover .menu__text {
-	color: var(--menu-text-hover);
+  color: var(--menu-text-hover);
 }
 
 .menu__link--active {
-	color: var(--menu-text--hover);
-	font-weight: 600;
+  color: var(--menu-text--hover);
+  font-weight: 600;
 }

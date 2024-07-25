@@ -13,11 +13,10 @@ interface ProfileMessageProps {
   message: Message;
 }
 
-export const ProfileMessage = ({
-  message,
-}: ProfileMessageProps) => {
+export const ProfileMessage = ({ message }: ProfileMessageProps) => {
   const { randomPerson } = useUser();
-  const { handleClickBookmark, handleClickDelete, handleClickLike } = useMessage();
+  const { handleClickBookmark, handleClickDelete, handleClickLike } =
+    useMessage();
   const countDay = (time: string) => {
     const difference = dayjs().diff(dayjs(time), 'hour');
 
@@ -35,7 +34,8 @@ export const ProfileMessage = ({
         <img
           src={message.avatar}
           alt={`Profilová fotka uživatele ${message.name}`}
-          width="48"
+          width="60"
+          height="60"
         />
       </div>
       <div className="message__content">
