@@ -19,9 +19,10 @@ import { getRandomPerson } from './helpers/getRandomPerson.ts';
 import { SearchProvider } from './context/SearchContext.tsx';
 import { UserContext, UserProvider } from './context/UserContext.tsx';
 import { MessageContext, MessageProvider } from './context/MessageContext.tsx';
+import { ErrorPage } from './pages/ErrorPage/ErrorPage.tsx';
 
 const Main = () => {
-  const { onSetMessages} = useContext(MessageContext);
+  const { onSetMessages } = useContext(MessageContext);
   const { onSetRandomPerson } = useContext(UserContext);
 
   useEffect(() => {
@@ -46,27 +47,10 @@ const Main = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<App />}>
-        <Route
-          path="/"
-          element={
-            <HomePage
-            />
-          }
-        />
-        <Route
-          path="/bookmark"
-          element={
-            <BookmarkPage
-            />
-          }
-        />
-        <Route
-          path="/like"
-          element={
-            <LikePage
-            />
-          }
-        />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/bookmark" element={<BookmarkPage />} />
+        <Route path="/like" element={<LikePage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Route>
     )
   );
