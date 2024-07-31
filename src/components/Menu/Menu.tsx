@@ -12,7 +12,13 @@ export const Menu = () => {
     <nav className="menu">
       <div className="menu__item menu__logo">
         <NavLink to="/" className="menu__link">
-          <img className="menu__icon" src="icons/twitter.svg" alt="Logo" width="auto" height="24" />
+          <img
+            className="menu__icon"
+            src="icons/twitter.svg"
+            alt="Logo"
+            width="40"
+            height="30"
+          />
         </NavLink>
       </div>
       <div className="menu__item">
@@ -73,5 +79,5 @@ export const Menu = () => {
         </NavLink>
       </div>
     </nav>
-  )
-}
+  );
+};

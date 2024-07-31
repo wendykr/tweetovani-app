@@ -13,11 +13,10 @@ interface ProfileMessageProps {
   message: Message;
 }
 
-export const ProfileMessage = ({
-  message,
-}: ProfileMessageProps) => {
+export const ProfileMessage = ({ message }: ProfileMessageProps) => {
   const { randomPerson } = useUser();
-  const { handleClickBookmark, handleClickDelete, handleClickLike } = useMessage();
+  const { handleClickBookmark, handleClickDelete, handleClickLike } =
+    useMessage();
   const countDay = (time: string) => {
     const difference = dayjs().diff(dayjs(time), 'hour');
 
@@ -32,11 +31,16 @@ export const ProfileMessage = ({
   return (
     <article className="message" key={message.id}>
       <div className="message__avatar">
-        <img
-          src={message.avatar}
-          alt={`Profilová fotka uživatele ${message.name}`}
-          width="48"
-        />
+        <picture>
+          <source srcSet={message.avatarAvif} type="image/avif" />
+          <source srcSet={message.avatarWebp} type="image/webp" />
+          <img
+            src={message.avatar}
+            alt={`Profilová fotka uživatele ${message.name}`}
+            width="60"
+            height="60"
+          />
+        </picture>
       </div>
       <div className="message__content">
         <header className="message__header">

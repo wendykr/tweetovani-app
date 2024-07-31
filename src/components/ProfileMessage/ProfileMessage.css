@@ -1,20 +1,21 @@
 .message {
-	display: flex;
-	gap: 1em;
-	padding: 1em;
-	border-top: 1px solid var(--light-grey);
+  display: flex;
+  gap: 1em;
+  padding: 1em;
+  border-top: 1px solid var(--light-grey);
 }
 
 .message:hover {
-	background-color: var(--bright-grey);
+  background-color: var(--bright-grey);
 }
 
 .message__avatar img {
-	width: 3em;
-	aspect-ratio: 1/1;
-	object-fit: cover;
-	object-position: center;
-	border-radius: 50%;
+  width: 3em;
+  height: 3em;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
 }
 
 .message__header {
@@ -24,90 +25,90 @@
 }
 
 .message__name {
-	font-weight: 700;
+  font-weight: 700;
 }
 
 .message__handle {
-	color: var(--dark-grey);
+  color: var(--dark-grey);
 }
 
 .message__time {
-	color: var(--dark-grey);
+  color: var(--dark-grey);
 }
 .message__time::before {
-	content: '⋅ ';
+  content: '⋅ ';
 }
 
 .message__text {
-	margin: 0.5em 0 1em 0;
+  margin: 0.5em 0 1em 0;
 }
 
 .message__footer {
-	display: flex;
-	gap: 1em;
-	margin-left: -12px;
+  display: flex;
+  gap: 1em;
+  margin-left: -12px;
 }
 
 .icon-button {
-	font-size: 16px;
-	display: inline-flex;
-	align-items: center;
-	gap: 0.2em;
-	border: 0;
-	outline: 0;
-	background: transparent;
-	cursor: pointer;
-	color: var(--dark-grey);
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2em;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  cursor: pointer;
+  color: var(--dark-grey);
 }
 
 .icon-button__icon {
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	width: 40px;
-	height: 40px;
-	padding: 10px;
-	border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 50%;
 }
 
 .icon-button__icon img {
-	height: 100%;
-	display: block;
+  height: 100%;
+  display: block;
 }
 
 .icon-button:hover .icon-button__icon {
-	background-color: var(--light-grey);
+  background-color: var(--light-grey);
 }
 
 .icon-button--blue:hover {
-	color: var(--blue);
+  color: var(--blue);
 }
 .icon-button--blue:hover .icon-button__icon {
-	background-color: var(--light-blue);
+  background-color: var(--light-blue);
 }
 
 .icon-button--red:hover {
-	color: var(--red);
+  color: var(--red);
 }
 .icon-button--red:hover .icon-button__icon {
-	background-color: var(--light-red);
+  background-color: var(--light-red);
 }
 
 .icon-button--rosa:hover {
-	color: var(--rosa);
+  color: var(--rosa);
 }
 .icon-button--rosa:hover .icon-button__icon {
-	background-color: var(--light-rosa);
+  background-color: var(--light-rosa);
 }
 
 .message__icon {
-	font-size: 20px;
+  font-size: 20px;
 }
 
 .fill-blue {
-	fill: var(--blue);
+  fill: var(--blue);
 }
 
 .fill-rosa {
-	fill: var(--rosa);
+  fill: var(--rosa);
 }

@@ -6,6 +6,8 @@ export const persons: Person[] = [
     name: 'Alena Nováková',
     handle: '@novalena',
     avatar: '../avatars/woman1.jpg',
+    avatarAvif: '../avatars/woman1.avif',
+    avatarWebp: '../avatars/woman1.webp',
     follow: true,
   },
   {
@@ -13,6 +15,8 @@ export const persons: Person[] = [
     name: 'Jana Novotná',
     handle: '@janicka',
     avatar: '../avatars/woman2.jpg',
+    avatarAvif: '../avatars/woman2.avif',
+    avatarWebp: '../avatars/woman2.webp',
     follow: false,
   },
   {
@@ -20,6 +24,8 @@ export const persons: Person[] = [
     name: 'Lenka Skočdopole',
     handle: '@fieldshop',
     avatar: '../avatars/woman3.jpg',
+    avatarAvif: '../avatars/woman3.avif',
+    avatarWebp: '../avatars/woman3.webp',
     follow: false,
   },
   {
@@ -27,6 +33,8 @@ export const persons: Person[] = [
     name: 'Petra Malá',
     handle: '@petruush',
     avatar: '../avatars/woman4.jpg',
+    avatarAvif: '../avatars/woman4.avif',
+    avatarWebp: '../avatars/woman4.webp',
     follow: false,
   },
   {
@@ -34,6 +42,8 @@ export const persons: Person[] = [
     name: 'Anna Veselá',
     handle: '@anickavesela',
     avatar: '../avatars/woman5.jpg',
+    avatarAvif: '../avatars/woman5.avif',
+    avatarWebp: '../avatars/woman5.webp',
     follow: false,
   },
   {
@@ -41,6 +51,8 @@ export const persons: Person[] = [
     name: 'Petr Novák',
     handle: '@pesnovak',
     avatar: '../avatars/man1.jpg',
+    avatarAvif: '../avatars/man1.avif',
+    avatarWebp: '../avatars/man1.webp',
     follow: true,
   },
   {
@@ -48,6 +60,8 @@ export const persons: Person[] = [
     name: 'Jan Svoboda',
     handle: '@jansvoboda',
     avatar: '../avatars/man2.jpg',
+    avatarAvif: '../avatars/man2.avif',
+    avatarWebp: '../avatars/man2.webp',
     follow: false,
   },
   {
@@ -55,6 +69,8 @@ export const persons: Person[] = [
     name: 'Karel Dvořák',
     handle: '@dvorka',
     avatar: '../avatars/man3.jpg',
+    avatarAvif: '../avatars/man3.avif',
+    avatarWebp: '../avatars/man3.webp',
     follow: true,
   },
   {
@@ -62,6 +78,8 @@ export const persons: Person[] = [
     name: 'Marek Černý',
     handle: '@marekcerny',
     avatar: '../avatars/man4.jpg',
+    avatarAvif: '../avatars/man4.avif',
+    avatarWebp: '../avatars/man4.webp',
     follow: false,
   },
   {
@@ -69,6 +87,8 @@ export const persons: Person[] = [
     name: 'Tomáš Král',
     handle: '@tkral',
     avatar: '../avatars/man5.jpg',
+    avatarAvif: '../avatars/man5.avif',
+    avatarWebp: '../avatars/man5.webp',
     follow: false,
   },
 ];

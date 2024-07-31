@@ -7,8 +7,7 @@ import { getRandomPerson } from '../../helpers/getRandomPerson';
 
 export const Follow = () => {
   const [randomFollowers, setRandomFollowers] = useState<Person[]>([]);
-  const [storedRandomPerson, setStoredRandomPerson] =
-    useState<Person>();
+  const [storedRandomPerson, setStoredRandomPerson] = useState<Person>();
 
   useEffect(() => {
     const storedRandomPerson = sessionStorage.getItem('randomPerson');
@@ -78,6 +77,8 @@ export const Follow = () => {
             key={follower.id}
             id={follower.id}
             avatar={follower.avatar}
+            avatarAvif={follower.avatarAvif}
+            avatarWebp={follower.avatarWebp}
             name={follower.name}
             handle={follower.handle}
             follow={follower.follow}

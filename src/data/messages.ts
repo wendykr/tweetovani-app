@@ -4,6 +4,8 @@ export const messages: Message[] = [
   {
     id: 1,
     avatar: '../avatars/woman1.jpg',
+    avatarAvif: '../avatars/woman1.avif',
+    avatarWebp: '../avatars/woman1.webp',
     name: 'Alena Nováková',
     handle: '@novalena',
     time: '2024-05-20 18:00:00',
@@ -17,6 +19,8 @@ export const messages: Message[] = [
   {
     id: 2,
     avatar: '../avatars/woman2.jpg',
+    avatarAvif: '../avatars/woman2.avif',
+    avatarWebp: '../avatars/woman2.webp',
     name: 'Jana Novotná',
     handle: '@janicka',
     time: '2024-06-09 06:05:00',
@@ -30,6 +34,8 @@ export const messages: Message[] = [
   {
     id: 3,
     avatar: '../avatars/woman3.jpg',
+    avatarAvif: '../avatars/woman3.avif',
+    avatarWebp: '../avatars/woman3.webp',
     name: 'Lenka Skočdopole',
     handle: '@fieldhop',
     time: '2024-01-20 18:00:00',
@@ -43,6 +49,8 @@ export const messages: Message[] = [
   {
     id: 4,
     avatar: '../avatars/man4.jpg',
+    avatarAvif: '../avatars/man4.avif',
+    avatarWebp: '../avatars/man4.webp',
     name: 'Marek Černý',
     handle: '@marekcerny',
     time: '2024-05-28 07:00:40',
