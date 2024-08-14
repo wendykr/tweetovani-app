@@ -10,7 +10,7 @@
   --light-grey: #e5e5e5;
   --dark-grey: #536471;
 
-  --red: red;
+  --red: #ff0000;
   --light-red: #fabfbf;
   --rosa: #f91880;
   --light-rosa: #f7e0eb;
@@ -35,7 +35,7 @@ html {
 
 body {
   margin: 0;
-  font: 20px/1.5 var(--font);
+  font: 16px/1.5 var(--font);
 }
 
 h1 {

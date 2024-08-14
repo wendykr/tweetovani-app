@@ -2,9 +2,16 @@
   padding: 16px;
   display: flex;
   flex-direction: row;
+  justify-content: end;
   align-items: center;
   gap: 12px;
   border-radius: 45px;
+}
+
+@media screen and (min-width: 1280px) {
+  .usercard {
+    justify-content: start;
+  }
 }
 
 .usercard:hover {
@@ -21,8 +28,14 @@
 }
 
 .usercard__info {
-  display: flex;
+  display: none;
   flex-direction: column;
+}
+
+@media screen and (min-width: 1280px) {
+  .usercard__info {
+    display: flex;
+  }
 }
 
 .usercard__info--name,

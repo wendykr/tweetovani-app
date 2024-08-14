@@ -1,11 +1,24 @@
 .navigation {
-  padding: 1em;
+  padding: 1em 0 1em 1em;
   overflow: auto;
   position: fixed;
-  width: 14em;
+  width: 6em;
   height: 100%;
   grid-column: 1 / 2;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
+}
+
+@media screen and (min-width: 500px) {
+  .navigation {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .navigation {
+    padding: 1em;
+    width: 14em;
+  }
 }

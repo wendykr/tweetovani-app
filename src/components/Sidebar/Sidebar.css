@@ -1,8 +1,15 @@
 .sidebar {
+  display: none;
   margin: 1em;
   width: 19em;
   position: absolute;
   grid-column: 3 / 4;
+}
+
+@media screen and (min-width: 1000px) {
+  .sidebar {
+    display: block;
+  }
 }
 
 .sidebar__head {

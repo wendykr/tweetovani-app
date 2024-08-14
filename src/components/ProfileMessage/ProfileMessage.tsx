@@ -13,11 +13,10 @@ interface ProfileMessageProps {
   message: Message;
 }
 
-export const ProfileMessage = ({
-  message,
-}: ProfileMessageProps) => {
+export const ProfileMessage = ({ message }: ProfileMessageProps) => {
   const { randomPerson } = useUser();
-  const { handleClickBookmark, handleClickDelete, handleClickLike } = useMessage();
+  const { handleClickBookmark, handleClickDelete, handleClickLike } =
+    useMessage();
   const countDay = (time: string) => {
     const difference = dayjs().diff(dayjs(time), 'hour');
 
@@ -41,10 +40,12 @@ export const ProfileMessage = ({
       <div className="message__content">
         <header className="message__header">
           <span className="message__name">{message.name}</span>
-          <span className="message__handle">{message.handle}</span>
-          <span className="message__time" title={message.time}>
-            {countDay(message.time)}
-          </span>
+          <div className="message__header--">
+            <span className="message__handle">{message.handle}</span>
+            <span className="message__time" title={message.time}>
+              {countDay(message.time)}
+            </span>
+          </div>
         </header>
         <div className="message__text">{message.text}</div>
         <footer className="message__footer">
