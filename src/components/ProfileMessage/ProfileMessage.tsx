@@ -77,7 +77,9 @@ export const ProfileMessage = ({ message }: ProfileMessageProps) => {
                 <FaRegBookmark className="message__icon" />
               )}
             </span>
-            {message.bookmark ? 'Odebrat ze záložek' : 'Přidat do záložek'}
+            <span className="message__icon--text">
+              {message.bookmark ? 'Odebrat ze záložek' : 'Přidat do záložek'}
+            </span>
           </button>
           {message.name === randomPerson.name && (
             <button
@@ -88,7 +90,7 @@ export const ProfileMessage = ({ message }: ProfileMessageProps) => {
               <span className="icon-button__icon">
                 <FiTrash className="message__icon" />
               </span>
-              Smazat zprávu
+              <span className="message__icon--text">Smazat zprávu</span>
             </button>
           )}
         </footer>

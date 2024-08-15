@@ -1,20 +1,40 @@
+.menu {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+@media screen and (min-width: 500px) {
+  .menu {
+    display: block;
+  }
+}
+
 .menu__item {
   font-size: 20px;
 }
 
-.menu__item:not(:last-child) {
-  margin-bottom: 0.5em;
+@media screen and (min-width: 500px) {
+  .menu__item:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
 }
 
 .menu__link {
   display: flex;
   justify-content: end;
   align-items: center;
-  gap: 0.5em;
-  padding: 0.7em;
+  padding: 0 1em;
   border-radius: 100vh;
   text-decoration: none;
   color: var(--menu-text--hover);
+}
+
+@media screen and (min-width: 500px) {
+  .menu__link {
+    padding: 0.7em;
+    gap: 0.5em;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -28,8 +48,14 @@
 }
 
 .menu__logo {
-  display: flex;
-  justify-content: end;
+  display: none;
+}
+
+@media screen and (min-width: 500px) {
+  .menu__logo {
+    display: flex;
+    justify-content: end;
+  }
 }
 
 @media screen and (min-width: 1280px) {

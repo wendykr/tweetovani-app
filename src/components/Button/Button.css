@@ -6,6 +6,7 @@
   border: 0;
   border-radius: 100vh;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .button:hover {
