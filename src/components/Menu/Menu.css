@@ -43,8 +43,10 @@
   }
 }
 
-.menu__link:hover {
-  background-color: var(--menu-hover-bg);
+@media (hover: hover) {
+  .menu__link:hover {
+    background-color: var(--menu-hover-bg);
+  }
 }
 
 .menu__logo {
@@ -64,8 +66,10 @@
   }
 }
 
-.menu__logo .menu__link:hover {
-  background-color: var(--menu-hover-bg);
+@media (hover: hover) {
+  .menu__logo .menu__link:hover {
+    background-color: var(--menu-hover-bg);
+  }
 }
 
 .menu__icon {
@@ -92,8 +96,10 @@
   }
 }
 
-.menu__link:hover .menu__text {
-  color: var(--menu-text-hover);
+@media (hover: hover) {
+  .menu__link:hover .menu__text {
+    color: var(--menu-text-hover);
+  }
 }
 
 .menu__link--active {

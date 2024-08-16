@@ -9,8 +9,10 @@
   flex-shrink: 0;
 }
 
-.button:hover {
-  background-color: var(--primary-dark);
+@media (hover: hover) {
+  .button:hover {
+    background-color: var(--primary-dark);
+  }
 }
 
 .button:disabled {

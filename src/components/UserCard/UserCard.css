@@ -14,9 +14,11 @@
   }
 }
 
-.usercard:hover {
-  background-color: var(--menu-hover-bg);
-  cursor: pointer;
+@media (hover: hover) {
+  .usercard:hover {
+    background-color: var(--menu-hover-bg);
+    cursor: pointer;
+  }
 }
 
 .usercard__avatar {
