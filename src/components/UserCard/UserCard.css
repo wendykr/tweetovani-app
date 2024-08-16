@@ -1,11 +1,17 @@
 .usercard {
-  padding: 16px;
+  padding: 8px 20px 8px 16px;
   display: flex;
   flex-direction: row;
   justify-content: end;
   align-items: center;
   gap: 12px;
   border-radius: 45px;
+}
+
+@media screen and (min-width: 500px) {
+  .usercard {
+    padding: 16px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -22,11 +28,17 @@
 }
 
 .usercard__avatar {
-  width: 50px;
+  width: 40px;
   aspect-ratio: 1/1;
   object-fit: cover;
   object-position: center;
   border-radius: 50%;
+}
+
+@media screen and (min-width: 500px) {
+  .usercard__avatar {
+    width: 50px;
+  }
 }
 
 .usercard__info {
