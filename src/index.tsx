@@ -21,7 +21,7 @@ import { UserContext, UserProvider } from './context/UserContext.tsx';
 import { MessageContext, MessageProvider } from './context/MessageContext.tsx';
 
 const Main = () => {
-  const { onSetMessages} = useContext(MessageContext);
+  const { onSetMessages } = useContext(MessageContext);
   const { onSetRandomPerson } = useContext(UserContext);
 
   useEffect(() => {
@@ -46,27 +46,9 @@ const Main = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<App />}>
-        <Route
-          path="/"
-          element={
-            <HomePage
-            />
-          }
-        />
-        <Route
-          path="/bookmark"
-          element={
-            <BookmarkPage
-            />
-          }
-        />
-        <Route
-          path="/like"
-          element={
-            <LikePage
-            />
-          }
-        />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/bookmark" element={<BookmarkPage />} />
+        <Route path="/like" element={<LikePage />} />
       </Route>
     )
   );
@@ -79,7 +61,7 @@ ReactDOM.createRoot(rootElement).render(
     <UserProvider>
       <MessageProvider>
         <SearchProvider>
-          <ToastContainer />
+          <ToastContainer className="toastify-container" />
           <Main />
         </SearchProvider>
       </MessageProvider>

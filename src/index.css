@@ -46,3 +46,7 @@ h1 {
 .background-blue {
   color: var(--blue);
 }
+
+.toastify-container {
+  margin: 0 auto;
+}

@@ -21,6 +21,7 @@ export const useToast = () => {
         fontSize: '18px',
         textAlign: 'center',
       },
+      className: 'toastify-container',
     });
   };
 
