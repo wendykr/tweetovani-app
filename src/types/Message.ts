@@ -1,6 +1,8 @@
 export default interface Message {
   id: number;
   avatar: string;
+  avatarAvif: string;
+  avatarWebp: string;
   name: string;
   handle: string;
   time: string;

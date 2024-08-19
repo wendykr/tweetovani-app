@@ -21,6 +21,8 @@ export const HomePage = () => {
       const newMessage = {
         id: prevId.current,
         avatar: randomPerson.avatar,
+        avatarAvif: randomPerson.avatarAvif,
+        avatarWebp: randomPerson.avatarWebp,
         name: randomPerson.name,
         handle: randomPerson.handle,
         time: now,
@@ -45,7 +47,7 @@ export const HomePage = () => {
     <>
       <Post onNewMessage={(textMessage) => addNewMessage(textMessage)} />
 
-      <Timeline/>
+      <Timeline />
     </>
   );
 };

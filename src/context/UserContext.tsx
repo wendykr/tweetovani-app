@@ -1,9 +1,4 @@
-import {
-  PropsWithChildren,
-  createContext,
-  useContext,
-  useState,
-} from 'react';
+import { PropsWithChildren, createContext, useContext, useState } from 'react';
 import { Person } from '../types/Person';
 
 const initialUser: Person = {
@@ -11,6 +6,8 @@ const initialUser: Person = {
   name: '',
   handle: '',
   avatar: '',
+  avatarAvif: '',
+  avatarWebp: '',
   follow: false,
 };
 
@@ -25,18 +22,17 @@ export const UserContext = createContext<UserContextData>({
 });
 
 export const UserProvider = ({ children }: PropsWithChildren) => {
-  const [randomPerson, setRandomPerson] =
-    useState<Person>(initialUser);
+  const [randomPerson, setRandomPerson] = useState<Person>(initialUser);
 
   const onSetRandomPerson = (person: Person) => {
     setRandomPerson(person);
-  }
+  };
 
   return (
     <UserContext.Provider
       value={{
         randomPerson,
-        onSetRandomPerson
+        onSetRandomPerson,
       }}
     >
       {children}

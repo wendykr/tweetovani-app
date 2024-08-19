@@ -11,6 +11,8 @@ export const FollowUser = ({
   name,
   handle,
   avatar,
+  avatarAvif,
+  avatarWebp,
   follow,
   changeFollow,
 }: FollowUserProps) => {
@@ -27,12 +29,17 @@ export const FollowUser = ({
   return (
     <li className="follow-user__container">
       <div className="follow-user">
-        <img
-          src={avatar}
-          className="follow-user__avatar"
-          alt={`Profilová fotka uživatele ${name}`}
-          width="50"
-        />
+        <picture>
+          <source srcSet={avatarAvif} type="image/avif" />
+          <source srcSet={avatarWebp} type="image/webp" />
+          <img
+            src={avatar}
+            className="follow-user__avatar"
+            alt={`Profilová fotka uživatele ${name}`}
+            width="50"
+            height="50"
+          />
+        </picture>
         <div className="follow-user-foot">
           <div className="follow-user__info">
             <p className="follow-user__info--name">{name}</p>

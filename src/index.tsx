@@ -19,6 +19,7 @@ import { getRandomPerson } from './helpers/getRandomPerson.ts';
 import { SearchProvider } from './context/SearchContext.tsx';
 import { UserContext, UserProvider } from './context/UserContext.tsx';
 import { MessageContext, MessageProvider } from './context/MessageContext.tsx';
+import { ErrorPage } from './pages/ErrorPage/ErrorPage.tsx';
 
 const Main = () => {
   const { onSetMessages } = useContext(MessageContext);
@@ -49,6 +50,7 @@ const Main = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/bookmark" element={<BookmarkPage />} />
         <Route path="/like" element={<LikePage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Route>
     )
   );
