@@ -10,9 +10,8 @@
 
 @media screen and (min-width: 500px) {
   .usercard {
+    width: 100%;
     padding: 16px;
-    overflow: hidden; /* Skryje vše, co přesahuje */
-    white-space: nowrap; /* Zabrání zalamování textu */
   }
 }
 
@@ -31,6 +30,7 @@
 
 .usercard__avatar {
   width: 40px;
+  height: 40px;
   aspect-ratio: 1/1;
   object-fit: cover;
   object-position: center;
@@ -40,6 +40,7 @@
 @media screen and (min-width: 500px) {
   .usercard__avatar {
     width: 50px;
+    height: 50px;
   }
 }
 
@@ -51,6 +52,9 @@
 @media screen and (min-width: 1280px) {
   .usercard__info {
     display: flex;
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
   }
 }
 

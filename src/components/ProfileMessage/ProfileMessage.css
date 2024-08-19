@@ -13,6 +13,7 @@
 
 .message__avatar img {
   width: 3em;
+  height: 3em;
   aspect-ratio: 1/1;
   object-fit: cover;
   object-position: center;
