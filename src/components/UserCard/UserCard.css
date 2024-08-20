@@ -1,28 +1,62 @@
 .usercard {
-  padding: 16px;
+  padding: 8px 20px 8px 16px;
   display: flex;
   flex-direction: row;
+  justify-content: end;
   align-items: center;
   gap: 12px;
   border-radius: 45px;
 }
 
-.usercard:hover {
-  background-color: var(--menu-hover-bg);
-  cursor: pointer;
+@media screen and (min-width: 500px) {
+  .usercard {
+    width: 100%;
+    padding: 16px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .usercard {
+    justify-content: start;
+  }
+}
+
+@media (hover: hover) {
+  .usercard:hover {
+    background-color: var(--menu-hover-bg);
+    cursor: pointer;
+  }
 }
 
 .usercard__avatar {
-  width: 50px;
+  width: 40px;
+  height: 40px;
   aspect-ratio: 1/1;
   object-fit: cover;
   object-position: center;
   border-radius: 50%;
+  display: block;
+}
+
+@media screen and (min-width: 500px) {
+  .usercard__avatar {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 .usercard__info {
-  display: flex;
+  display: none;
   flex-direction: column;
+}
+
+@media screen and (min-width: 1280px) {
+  .usercard__info {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 }
 
 .usercard__info--name,
@@ -37,5 +71,5 @@
 
 .usercard__info--handle {
   font-size: 16px;
-  color: var(--dark-grey);
+  color: var(--menu-text--hover);
 }

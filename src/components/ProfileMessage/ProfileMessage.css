@@ -5,8 +5,10 @@
   border-top: 1px solid var(--light-grey);
 }
 
-.message:hover {
-  background-color: var(--bright-grey);
+@media (hover: hover) {
+  .message:hover {
+    background-color: var(--bright-grey);
+  }
 }
 
 .message__avatar img {
@@ -20,8 +22,14 @@
 
 .message__header {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 4px;
+}
+
+@media screen and (min-width: 500px) {
+  .message__header {
+    flex-direction: row;
+  }
 }
 
 .message__name {
@@ -36,7 +44,7 @@
   color: var(--dark-grey);
 }
 .message__time::before {
-  content: '⋅ ';
+  content: ' ⋅ ';
 }
 
 .message__text {
@@ -45,7 +53,6 @@
 
 .message__footer {
   display: flex;
-  gap: 1em;
   margin-left: -12px;
 }
 
@@ -76,33 +83,60 @@
   display: block;
 }
 
-.icon-button:hover .icon-button__icon {
-  background-color: var(--light-grey);
+@media (hover: hover) {
+  .icon-button:hover .icon-button__icon {
+    background-color: var(--light-grey);
+  }
 }
 
-.icon-button--blue:hover {
-  color: var(--blue);
-}
-.icon-button--blue:hover .icon-button__icon {
-  background-color: var(--light-blue);
-}
-
-.icon-button--red:hover {
-  color: var(--red);
-}
-.icon-button--red:hover .icon-button__icon {
-  background-color: var(--light-red);
+@media (hover: hover) {
+  .icon-button--blue:hover {
+    color: var(--blue);
+  }
 }
 
-.icon-button--rosa:hover {
-  color: var(--rosa);
+@media (hover: hover) {
+  .icon-button--blue:hover .icon-button__icon {
+    background-color: var(--light-blue);
+  }
 }
-.icon-button--rosa:hover .icon-button__icon {
-  background-color: var(--light-rosa);
+
+@media (hover: hover) {
+  .icon-button--red:hover {
+    color: var(--red);
+  }
+}
+
+@media (hover: hover) {
+  .icon-button--red:hover .icon-button__icon {
+    background-color: var(--light-red);
+  }
+}
+
+@media (hover: hover) {
+  .icon-button--rosa:hover {
+    color: var(--rosa);
+  }
+}
+
+@media (hover: hover) {
+  .icon-button--rosa:hover .icon-button__icon {
+    background-color: var(--light-rosa);
+  }
 }
 
 .message__icon {
   font-size: 20px;
+}
+
+.message__icon--text {
+  display: none;
+}
+
+@media screen and (min-width: 500px) {
+  .message__icon--text {
+    display: block;
+  }
 }
 
 .fill-blue {

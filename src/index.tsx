@@ -63,7 +63,7 @@ ReactDOM.createRoot(rootElement).render(
     <UserProvider>
       <MessageProvider>
         <SearchProvider>
-          <ToastContainer />
+          <ToastContainer className="toastify-container" />
           <Main />
         </SearchProvider>
       </MessageProvider>

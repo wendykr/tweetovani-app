@@ -4,9 +4,9 @@ import './Navigation.css';
 
 export const Navigation = () => {
   return (
-    <aside className="navigation">
+    <nav className="navigation">
       <Menu />
       <UserCard />
-    </aside>
+    </nav>
   );
 };

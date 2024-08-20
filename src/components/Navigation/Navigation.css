@@ -1,11 +1,42 @@
 .navigation {
-  padding: 1em;
-  overflow: auto;
+  order: 2;
+  width: 100%;
   position: fixed;
-  width: 14em;
-  height: 100%;
-  grid-column: 1 / 2;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  z-index: 1000;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  padding-left: 1em;
+  scrollbar-width: none;
+  border-top: 1px solid #ddd;
+}
+
+@media screen and (min-width: 500px) {
+  .navigation {
+    padding: 1em 0 1em 1em;
+    overflow: auto;
+    position: fixed;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    width: 6em;
+    height: 100%;
+    grid-column: 1 / 2;
+    flex-direction: column;
+    align-items: start;
+    justify-self: end;
+    border-top: none;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .navigation {
+    padding: 1em;
+    width: 15em;
+  }
 }
