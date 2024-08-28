@@ -4,12 +4,14 @@ import { Form } from '../Form/Form';
 import './Post.css';
 import { declineCharacters } from '../../helpers/declineCharacters';
 import { useUser } from '../../context/UserContext';
+import { usePopUp } from '../../context/PopUpContext';
 
 interface PostProps {
   onNewMessage: (textMessage: string) => void;
 }
 
 export const Post = ({ onNewMessage }: PostProps) => {
+  const { onClickClosePopUp } = usePopUp();
   const [valueMessage, setValueMessage] = useState('');
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [charactersCount, setCharactersCount] = useState(280);
@@ -24,6 +26,7 @@ export const Post = ({ onNewMessage }: PostProps) => {
     setIsButtonDisabled(true);
     setCharactersCount(280);
     setIsTextareaFocused(false);
+    onClickClosePopUp();
   };
 
   const handleTextareaFocus = () => {
