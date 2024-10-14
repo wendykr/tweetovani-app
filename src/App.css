@@ -43,6 +43,7 @@
   .main {
     margin: 0 auto;
     padding-bottom: 0;
+    min-width: 100%;
     grid-column: 2 / 3;
   }
 }
