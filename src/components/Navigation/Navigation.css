@@ -20,7 +20,7 @@
   .navigation {
     padding: 1em 0 1em 1em;
     overflow: auto;
-    position: fixed;
+    position: absolute;
     bottom: auto;
     left: auto;
     right: auto;
