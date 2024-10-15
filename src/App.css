@@ -4,12 +4,12 @@
   flex-direction: column;
   margin: 0 auto;
   max-width: 70em;
+  position: relative;
 }
 
 @media screen and (min-width: 500px) {
   .container {
     display: grid;
-    position: relative;
     gap: 20px;
     grid-template-columns: 6em 80%;
   }

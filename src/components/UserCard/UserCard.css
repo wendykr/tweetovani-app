@@ -1,5 +1,6 @@
 .usercard {
   padding: 8px 20px 8px 16px;
+  padding: 8px;
   display: flex;
   flex-direction: row;
   justify-content: end;
@@ -11,13 +12,15 @@
 @media screen and (min-width: 500px) {
   .usercard {
     width: 100%;
-    padding: 16px;
+    padding: 0 0 16px 0;
+    justify-content: center;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .usercard {
     justify-content: start;
+    padding: 16px;
   }
 }
 

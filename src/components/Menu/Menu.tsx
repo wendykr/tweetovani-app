@@ -16,8 +16,8 @@ export const Menu = () => {
             className="menu__icon"
             src="icons/twitter.svg"
             alt="Logo"
-            width="40"
-            height="30"
+            width="auto"
+            height="24"
           />
         </NavLink>
       </div>

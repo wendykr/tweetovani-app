@@ -20,6 +20,7 @@ import { SearchProvider } from './context/SearchContext.tsx';
 import { UserContext, UserProvider } from './context/UserContext.tsx';
 import { MessageContext, MessageProvider } from './context/MessageContext.tsx';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage.tsx';
+import { PopUpProvider } from './context/PopUpContext.tsx';
 
 const Main = () => {
   const { onSetMessages } = useContext(MessageContext);
@@ -63,8 +64,10 @@ ReactDOM.createRoot(rootElement).render(
     <UserProvider>
       <MessageProvider>
         <SearchProvider>
-          <ToastContainer className="toastify-container" />
-          <Main />
+          <PopUpProvider>
+            <ToastContainer className="toastify-container" />
+            <Main />
+          </PopUpProvider>
         </SearchProvider>
       </MessageProvider>
     </UserProvider>
