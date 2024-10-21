@@ -19,6 +19,7 @@
   --menu-text: var(--dark-grey);
   --menu-text-hover: #000000;
   --menu-hover-bg: var(--light-grey);
+  position: relative;
 }
 
 html {
