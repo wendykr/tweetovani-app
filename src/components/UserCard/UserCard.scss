@@ -1,0 +1,70 @@
+.usercard {
+  padding: 8px 20px 8px 16px;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  gap: 12px;
+  border-radius: 45px;
+
+  @media screen and (min-width: 500px) {
+    width: 100%;
+    padding: 0 0 16px 0;
+    justify-content: center;
+  }
+
+  @media screen and (min-width: 1280px) {
+    justify-content: start;
+    padding: 16px;
+  }
+
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--menu-hover-bg);
+      cursor: pointer;
+    }
+  }
+
+  &__avatar {
+    width: 40px;
+    height: 40px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    display: block;
+
+    @media screen and (min-width: 500px) {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__info {
+    display: none;
+    flex-direction: column;
+
+    @media screen and (min-width: 1280px) {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    &--name,
+    &--handle {
+      margin: 0;
+    }
+
+    &--name {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    &--handle {
+      font-size: 16px;
+      color: var(--menu-text--hover);
+    }
+  }
+}

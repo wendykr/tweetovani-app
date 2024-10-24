@@ -1,4 +1,4 @@
-import './ProfileMessage.css';
+import './ProfileMessage.scss';
 import Message from '../../types/Message';
 import { FaRegHeart } from 'react-icons/fa';
 import { FaHeart } from 'react-icons/fa';

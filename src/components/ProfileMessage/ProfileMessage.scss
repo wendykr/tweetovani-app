@@ -1,0 +1,151 @@
+.message {
+  display: flex;
+  gap: 1em;
+  padding: 1em;
+  border-top: 1px solid var(--light-grey);
+
+  @media (hover: hover) {
+    background-color: var(--bright-grey);
+  }
+
+  &__avatar img {
+    width: 3em;
+    height: 3em;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    @media screen and (min-width: 500px) {
+      flex-direction: row;
+    }
+  }
+
+  &__name {
+    font-weight: 700;
+  }
+
+  &__handle {
+    color: var(--dark-grey);
+  }
+
+  &__time {
+    color: var(--dark-grey);
+
+    &::before {
+      content: ' ⋅ ';
+    }
+  }
+
+  &__text {
+    margin: 0.5em 0 1em 0;
+  }
+
+  &__footer {
+    display: flex;
+    margin-left: -12px;
+  }
+
+  &__icon {
+    font-size: 20px;
+
+    &--text {
+      display: none;
+
+      @media screen and (min-width: 500px) {
+        display: block;
+      }
+    }
+  }
+}
+
+.icon-button {
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2em;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  cursor: pointer;
+  color: var(--dark-grey);
+
+  &__icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 50%;
+
+    img {
+      height: 100%;
+      display: block;
+    }
+  }
+
+  &:hover {
+    @media (hover: hover) {
+      .icon-button__icon {
+        background-color: var(--light-grey);
+      }
+    }
+  }
+
+  &--blue {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--blue);
+      }
+
+      .icon-button__icon {
+        @media (hover: hover) {
+          background-color: var(--light-blue);
+        }
+      }
+    }
+  }
+
+  &--red {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--red);
+      }
+
+      .icon-button__icon {
+        @media (hover: hover) {
+          background-color: var(--light-red);
+        }
+      }
+    }
+  }
+
+  &--rosa {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--rosa);
+      }
+
+      .icon-button__icon {
+        @media (hover: hover) {
+          background-color: var(--light-rosa);
+        }
+      }
+    }
+  }
+}
+
+.fill-blue {
+  fill: var(--blue);
+}
+
+.fill-rosa {
+  fill: var(--rosa);
+}

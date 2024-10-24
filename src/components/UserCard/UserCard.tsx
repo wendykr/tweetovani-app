@@ -1,4 +1,4 @@
-import './UserCard.css';
+import './UserCard.scss';
 import { useUser } from '../../context/UserContext';
 
 export const UserCard = () => {

@@ -1,4 +1,4 @@
-import './Search.css';
+import './Search.scss';
 import { IoSearch } from 'react-icons/io5';
 import { useSearch } from '../../context/SearchContext';
 

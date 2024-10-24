@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import './Menu.css';
+import './Menu.scss';
 import { IoHomeOutline } from 'react-icons/io5';
 import { IoIosHome } from 'react-icons/io';
 import { FaRegHeart } from 'react-icons/fa';

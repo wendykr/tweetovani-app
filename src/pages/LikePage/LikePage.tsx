@@ -1,7 +1,7 @@
 import { ProfileMessage } from '../../components/ProfileMessage/ProfileMessage';
 import { useMessage } from '../../context/MessageContext';
 import { getSortedMessages } from '../../helpers/getSortedMessages';
-import './LikePage.css';
+import './LikePage.scss';
 import { FaRegHeart } from 'react-icons/fa';
 
 export const LikePage = () => {
@@ -16,10 +16,7 @@ export const LikePage = () => {
     <>
       {filterMessages.length > 0 ? (
         sortedMessages.map((message) => (
-          <ProfileMessage
-            key={message.id}
-            message={message}
-          />
+          <ProfileMessage key={message.id} message={message} />
         ))
       ) : (
         <div className="bookmarkPage">

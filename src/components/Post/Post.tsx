@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { Button } from '../Button/Button';
 import { Form } from '../Form/Form';
-import './Post.css';
+import './Post.scss';
 import { declineCharacters } from '../../helpers/declineCharacters';
 import { useUser } from '../../context/UserContext';
 import { usePopUp } from '../../context/PopUpContext';

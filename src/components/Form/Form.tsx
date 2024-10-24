@@ -1,4 +1,4 @@
-import './Form.css';
+import './Form.scss';
 
 interface FormProps {
   valueMessage: string;
@@ -15,7 +15,7 @@ export const Form = ({
   setIsButtonDisabled,
   setCharactersCount,
   textareaRef,
-  onFocus
+  onFocus,
 }: FormProps) => {
   const handleChangeMessage = (
     event: React.ChangeEvent<HTMLTextAreaElement>
@@ -33,7 +33,7 @@ export const Form = ({
     }
 
     setValueMessage(inputValue);
-    setCharactersCount(280 - inputValue.length)
+    setCharactersCount(280 - inputValue.length);
   };
 
   return (

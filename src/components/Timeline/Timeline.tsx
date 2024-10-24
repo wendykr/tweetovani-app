@@ -1,6 +1,6 @@
 import { ProfileMessage } from '../ProfileMessage/ProfileMessage';
 import Message from '../../types/Message';
-import './Timeline.css';
+import './Timeline.scss';
 import { useSearch } from '../../context/SearchContext';
 import { getSortedMessages } from '../../helpers/getSortedMessages';
 import { useMessage } from '../../context/MessageContext';
@@ -10,10 +10,7 @@ export const Timeline = () => {
   const { searchQuery } = useSearch();
   const sortedMessages = getSortedMessages(messages, 'time');
 
-  const filterMessages = (
-    messages: Message[],
-    searchTerm: string
-  ) =>
+  const filterMessages = (messages: Message[], searchTerm: string) =>
     messages.filter((message) =>
       message.text.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -25,10 +22,7 @@ export const Timeline = () => {
       {messages && messages.length > 0 ? (
         filteredMessages.length > 0 ? (
           filteredMessages.map((message) => (
-            <ProfileMessage
-              key={message.id}
-              message={message}
-            />
+            <ProfileMessage key={message.id} message={message} />
           ))
         ) : (
           <div className="timeline__empty">

@@ -1,0 +1,21 @@
+.errorPage {
+  margin: 1em;
+  padding: 1em;
+  text-align: center;
+
+  &__button {
+    padding: 0.7em 1em;
+    font-size: 1em;
+    color: white;
+    background-color: var(--primary);
+    border: 0;
+    border-radius: 100vh;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+
+    &:hover {
+      background-color: var(--primary-dark);
+    }
+  }
+}
