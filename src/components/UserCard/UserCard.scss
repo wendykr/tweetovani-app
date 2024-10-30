@@ -1,6 +1,5 @@
 .usercard {
-  padding: 8px 20px 8px 16px;
-  padding: 8px;
+  padding: 0.5rem 1.25rem 0.5rem 1rem;
   display: flex;
   flex-direction: row;
   justify-content: end;
@@ -10,13 +9,13 @@
 
   @media screen and (min-width: 500px) {
     width: 100%;
-    padding: 0 0 16px 0;
+    padding: 0 0 1rem 0;
     justify-content: center;
   }
 
   @media screen and (min-width: 1280px) {
     justify-content: start;
-    padding: 16px;
+    padding: 1rem;
   }
 
   &:hover {
@@ -27,8 +26,8 @@
   }
 
   &__avatar {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
     aspect-ratio: 1/1;
     object-fit: cover;
     object-position: center;
@@ -36,8 +35,8 @@
     display: block;
 
     @media screen and (min-width: 500px) {
-      width: 50px;
-      height: 50px;
+      width: 3.125rem;
+      height: 3.125rem;
     }
   }
 
@@ -58,12 +57,12 @@
     }
 
     &--name {
-      font-size: 16px;
+      font-size: 1rem;
       font-weight: 600;
     }
 
     &--handle {
-      font-size: 16px;
+      font-size: 1rem;
       color: var(--menu-text--hover);
     }
   }

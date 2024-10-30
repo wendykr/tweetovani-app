@@ -1,7 +1,7 @@
 .message {
   display: flex;
-  gap: 1em;
-  padding: 1em;
+  gap: 1rem;
+  padding: 1rem;
   border-top: 1px solid var(--light-grey);
 
   @media (hover: hover) {
@@ -9,8 +9,8 @@
   }
 
   &__avatar img {
-    width: 3em;
-    height: 3em;
+    width: 3rem;
+    height: 3rem;
     aspect-ratio: 1/1;
     object-fit: cover;
     object-position: center;
@@ -20,7 +20,7 @@
   &__header {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 0.25rem;
 
     @media screen and (min-width: 500px) {
       flex-direction: row;
@@ -44,16 +44,16 @@
   }
 
   &__text {
-    margin: 0.5em 0 1em 0;
+    margin: 0.5rem 0 1rem 0;
   }
 
   &__footer {
     display: flex;
-    margin-left: -12px;
+    margin-left: -0.75rem;
   }
 
   &__icon {
-    font-size: 20px;
+    font-size: 1.25rem;
 
     &--text {
       display: none;
@@ -66,10 +66,10 @@
 }
 
 .icon-button {
-  font-size: 16px;
+  font-size: 1rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.2em;
+  gap: 0.2rem;
   border: 0;
   outline: 0;
   background: transparent;
@@ -80,9 +80,9 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
-    padding: 10px;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.625rem;
     border-radius: 50%;
 
     img {

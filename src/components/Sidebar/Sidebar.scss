@@ -1,7 +1,7 @@
 .sidebar {
   display: none;
-  margin: 1em;
-  width: 19em;
+  margin: 1rem;
+  width: 19rem;
   position: absolute;
   grid-column: 3 / 4;
 
@@ -12,8 +12,8 @@
   &__head {
     position: fixed;
     background-color: #ffffff;
-    width: 21em;
-    margin: -20px -20px 4px -20px;
-    padding: 20px 20px 4px 20px;
+    width: 21rem;
+    margin: -1.25rem -1.25rem 0.25rem -1.25rem;
+    padding: 1.25rem 1.25rem 0.25rem 1.25rem;
   }
 }

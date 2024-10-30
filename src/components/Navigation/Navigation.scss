@@ -11,18 +11,18 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-left: 1em;
+  padding-left: 1rem;
   scrollbar-width: none;
   border-top: 1px solid #ddd;
 
   @media screen and (min-width: 500px) {
-    padding: 1em 0 1em 1em;
+    padding: 1rem 0 1rem 1rem;
     overflow: auto;
     position: absolute;
     bottom: auto;
     left: auto;
     right: auto;
-    width: 5em;
+    width: 5rem;
     height: 100%;
     grid-column: 1 / 2;
     flex-direction: column;
@@ -31,8 +31,8 @@
   }
 
   @media screen and (min-width: 1280px) {
-    padding: 1em;
-    width: 15em;
+    padding: 1rem;
+    width: 15rem;
   }
 
   &__head {
@@ -40,18 +40,18 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 0.5rem;
   }
 
   &__icon {
     margin: 0;
-    width: 2em;
-    height: 2em;
+    width: 2rem;
+    height: 2rem;
     fill: #ffffff;
 
     &--button {
-      margin: 16px 0;
-      padding: 16px;
+      margin: 1rem 0;
+      padding: 1rem;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -59,8 +59,8 @@
       background-color: var(--primary);
       border-radius: 50%;
       position: absolute;
-      bottom: 80px;
-      right: 20px;
+      bottom: 5rem;
+      right: 1.25rem;
 
       @media screen and (min-width: 500px) {
         display: flex;
@@ -84,11 +84,11 @@
 }
 
 .buttonPost {
-  margin: 16px 0;
-  padding: 0.7em 1em;
+  margin: 1rem 0;
+  padding: 0.7rem 1erm;
   width: 100%;
-  height: 50px;
-  font-size: 20px;
+  height: 3.125rem;
+  font-size: 1.25rem;
   color: #ffffff;
   background-color: var(--primary);
   border: 0;
