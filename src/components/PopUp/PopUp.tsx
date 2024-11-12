@@ -4,7 +4,7 @@ import { useUser } from '../../context/UserContext';
 import { Post } from '../Post/Post';
 import dayjs from 'dayjs';
 import { messages as initialMessages } from '../../data/messages';
-import './PopUp.css';
+import './PopUp.scss';
 import { FaArrowLeft } from 'react-icons/fa';
 import { usePopUp } from '../../context/PopUpContext';
 

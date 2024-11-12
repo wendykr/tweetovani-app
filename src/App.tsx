@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { Navigation } from './components/Navigation/Navigation';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Sidebar } from './components/Sidebar/Sidebar';

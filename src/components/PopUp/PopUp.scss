@@ -1,0 +1,25 @@
+.popup {
+  padding: 1.25rem;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  z-index: 20;
+
+  &__icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.25rem;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: var(--light-grey);
+      cursor: pointer;
+    }
+  }
+}

@@ -1,11 +1,11 @@
 import { ProfileMessage } from '../../components/ProfileMessage/ProfileMessage';
 import { useMessage } from '../../context/MessageContext';
 import { getSortedMessages } from '../../helpers/getSortedMessages';
-import './BookmarkPage.css';
+import './BookmarkPage.scss';
 import { FaRegBookmark } from 'react-icons/fa';
 
 export const BookmarkPage = () => {
-      const { messages } = useMessage();
+  const { messages } = useMessage();
   const filterMessages = messages.filter(
     (message) => message.bookmark === true
   );
@@ -16,10 +16,7 @@ export const BookmarkPage = () => {
     <>
       {filterMessages.length > 0 ? (
         sortedMessages.map((message) => (
-          <ProfileMessage
-            key={message.id}
-            message={message}
-          />
+          <ProfileMessage key={message.id} message={message} />
         ))
       ) : (
         <div className="bookmarkPage">

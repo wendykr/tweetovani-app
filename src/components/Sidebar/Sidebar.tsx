@@ -1,6 +1,6 @@
 import { Follow } from '../Follow/Follow';
 import { Search } from '../Search/Search';
-import './Sidebar.css';
+import './Sidebar.scss';
 
 export const Sidebar = () => {
   return (

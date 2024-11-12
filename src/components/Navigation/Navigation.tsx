@@ -1,7 +1,7 @@
 import { usePopUp } from '../../context/PopUpContext';
 import { Menu } from '../Menu/Menu';
 import { UserCard } from '../UserCard/UserCard';
-import './Navigation.css';
+import './Navigation.scss';
 import { FaFeatherAlt } from 'react-icons/fa';
 
 export const Navigation = () => {
